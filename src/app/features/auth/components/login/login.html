@@ -1,0 +1,112 @@
+<div
+  class="relative flex items-center justify-center min-h-screen py-12 bg-center bg-cover bg-[url('assets/images/others/auth.jpg')]"
+>
+  <div class="absolute inset-0 bg-gray-950/50"></div>
+  <div class="container relative">
+    <div class="grid grid-cols-12">
+      <div
+        class="col-span-12 md:col-span-10 lg:col-span-6 xl:col-span-4 md:col-start-2 lg:col-start-4 xl:col-start-5 mb-0 border-none shadow-none card bg-white/10 backdrop-blur-md"
+      >
+        <div class="md:p-10 card-body">
+          <!-- <div class="mb-5 text-center">
+            <a href="javascript:void(0);"
+              ><img src="assets/images/logo-white.png" alt="" class="h-8 mx-auto"
+            /></a>
+          </div> -->
+          <h4 class="mb-2 leading-relaxed text-xl font-bold text-center text-white">
+            Welcome Back, Username!
+          </h4>
+          <p class="mb-5 text-center text-white/75">
+            Don't have an account?
+            <a
+              href="javascript:void(0);"
+              routerLink="/auth-signup-modern"
+              class="cursor-pointer font-medium text-white"
+              >Sign Up</a
+            >
+          </p>
+          <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+            <!-- Alert Section -->
+            <div
+              *ngIf="alert.isVisible"
+              [ngClass]="alert.type"
+              class="relative py-3 text-sm rounded-md ltr:pl-5 rtl:pr-5 ltr:pr-7 rtl:pl-7"
+            >
+              <span>{{ alert.message }}</span>
+              <a
+                href="javascript:void(0);"
+                (click)="alert.isVisible = false"
+                class="absolute text-lg transition duration-200 ease-linear ltr:right-5 rtl:left-5 top-2"
+              >
+                <i class="ri-close-fill"></i>
+              </a>
+            </div>
+
+            <!-- Input Fields -->
+            <div class="grid grid-cols-12 gap-5 mt-5">
+              <div class="col-span-12">
+                <div class="flex flex-col gap-2">
+                  <label for="emailOrUsername" class="form-label text-white"
+                    >Email Or Username</label
+                  >
+                  <input
+                    type="text"
+                    id="emailOrUsername"
+                    formControlName="emailOrUsername"
+                    class="text-white border-none outline-none p-2 rounded-md w-full form-input bg-white/10 placeholder:text-white/75"
+                    placeholder="Enter your email or username"
+                  />
+                </div>
+              </div>
+
+              <div class="col-span-12">
+                <div class="flex flex-col gap-2">
+                  <label for="password" class="form-label text-white">Password</label>
+                  <div class="relative">
+                    <input
+                      [type]="showPassword ? 'text' : 'password'"
+                      id="password"
+                      formControlName="password"
+                      class="w-full p-2 rounded-md outline-none text-white border-none ltr:pr-8 rtl:pl-8 form-input bg-white/10 placeholder:text-white/75"
+                      placeholder="Enter your password"
+                    />
+                    <button
+                      type="button"
+                      (click)="togglePasswordVisibility()"
+                      class="absolute inset-y-0 flex items-center text-gray-500 ltr:right-3 rtl:left-3 focus:outline-hidden dark:text-dark-500"
+                    >
+                      @if (showPassword) {
+                      <lucide-angular [img]="Eye" class="size-5 text-gray-200"></lucide-angular>
+                      } @if(!showPassword) {
+                      <lucide-angular [img]="EyeOff" class="size-5"></lucide-angular>
+                      }
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-span-12">
+                <div class="flex items-center justify-end">
+                  <a
+                    routerLink="/auth-forgot-password-basic"
+                    class="cursor-pointer block text-sm font-medium text-right underline transition duration-300 ease-linear shrink-0 text-white/75 hover:text-white"
+                    >Forgot Password?</a
+                  >
+                </div>
+              </div>
+
+              <div class="col-span-12">
+                <button
+                  type="submit"
+                  class="w-full bg-blue-500 text-white p-2 rounded-md cursor-pointer hover:bg-blue-600 transition duration-300 ease-linear btn font-medium"
+                >
+                  Sign In
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
