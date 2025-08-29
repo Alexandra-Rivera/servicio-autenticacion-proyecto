@@ -27,8 +27,8 @@
           </p>
           <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
             <!-- Alert Section -->
+            @if (alert.isVisible) {
             <div
-              *ngIf="alert.isVisible"
               [ngClass]="alert.type"
               class="relative py-3 text-sm rounded-md ltr:pl-5 rtl:pr-5 ltr:pr-7 rtl:pl-7"
             >
@@ -41,6 +41,7 @@
                 <i class="ri-close-fill"></i>
               </a>
             </div>
+            }
 
             <!-- Input Fields -->
             <div class="grid grid-cols-12 gap-5 mt-5">

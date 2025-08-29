@@ -41,9 +41,8 @@ export class Login {
   constructor(private fb: FormBuilder, private router: Router) {
     // Initialize the form with pre-filled values
     this.signInForm = this.fb.group({
-      emailOrUsername: [this.predefinedEmail, Validators.required],
-      password: [this.predefinedPassword, Validators.required],
-      rememberMe: [false],
+      emailOrUsername: ['', Validators.required],
+      password: ['', Validators.required],
   });
   }
 
@@ -58,33 +57,36 @@ export class Login {
     const password = this.signInForm.get('password')?.value;
 
     if (this.signInForm.valid) {
-      if (
-        emailOrUsername === this.predefinedEmail &&
-        password === this.predefinedPassword
-      ) {
         // Successful login
         this.alert.isVisible = true;
         this.alert.type =
           'relative py-3 text-sm rounded-md ltr:pl-5 rtl:pr-5 ltr:pr-7 rtl:pl-7 bg-green-100 text-green-500';
         this.alert.message = 'Login successful! Redirecting...';
 
+
+        /*Si la respuesta que viene de la api es success entonces se va a redireccionar la pagina hacia la cuenta de usuario 
+          Sino, entonces se muestra un mensaje de error
+        */
+
+        if (emailOrUsername === this.predefinedEmail && password === this.predefinedPassword) {
         // Redirect to another page after a short delay
         setTimeout(() => {
           this.router.navigate(['/']); // Change this to the desired route
         }, 1000);
+
       } else {
         // Show an error alert
         this.alert.isVisible = true;
         this.alert.type =
           'relative py-3 text-sm rounded-md ltr:pl-5 rtl:pr-5 ltr:pr-7 rtl:pl-7 bg-red-100 text-red-500';
-        this.alert.message = 'Invalid email or password. Please try again.';
+        this.alert.message = 'Contraseña o nombre de usuario inválido. Intente de nuevo.';
       }
     } else {
       // Show an error alert if form is not valid
       this.alert.isVisible = true;
       this.alert.type =
         'relative py-3 text-sm rounded-md ltr:pl-5 rtl:pr-5 ltr:pr-7 rtl:pl-7 bg-red-100 text-red-500';
-      this.alert.message = 'Please fill in all required fields.';
+      this.alert.message = 'Debe colocar su nombre y contraseña para ingresar.';
     }
   }
 }
