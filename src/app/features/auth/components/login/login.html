@@ -8,20 +8,13 @@
         class="col-span-12 md:col-span-10 lg:col-span-6 xl:col-span-4 md:col-start-2 lg:col-start-4 xl:col-start-5 mb-0 border-none shadow-none card bg-white/10 backdrop-blur-md"
       >
         <div class="md:p-10 card-body">
-          <!-- <div class="mb-5 text-center">
-            <a href="javascript:void(0);"
-              ><img src="assets/images/logo-white.png" alt="" class="h-8 mx-auto"
-            /></a>
-          </div> -->
-          <h4 class="mb-2 leading-relaxed text-xl font-bold text-center text-white">
-            Welcome Back, Username!
-          </h4>
+          <h4 class="mb-2 leading-relaxed text-xl font-bold text-center text-white">Bienvenid@!</h4>
           <p class="mb-5 text-center text-white/75">
-            Don't have an account?
+            ¿Aún no tienes una cuenta?
             <a
               href="javascript:void(0);"
               routerLink="/auth-signup-modern"
-              class="cursor-pointer font-medium text-white"
+              class="cursor-pointer transform transition duration-500 hover:scale-125 underline hover:text-green-500 hover:font-bold font-medium text-white"
               >Sign Up</a
             >
           </p>
@@ -30,16 +23,10 @@
             @if (alert.isVisible) {
             <div
               [ngClass]="alert.type"
-              class="relative py-3 text-sm rounded-md ltr:pl-5 rtl:pr-5 ltr:pr-7 rtl:pl-7"
+              (click)="alert.isVisible = false"
+              class="relative cursor-pointer py-3 text-sm rounded-md ltr:pl-5 rtl:pr-5 ltr:pr-7 rtl:pl-7"
             >
               <span>{{ alert.message }}</span>
-              <a
-                href="javascript:void(0);"
-                (click)="alert.isVisible = false"
-                class="absolute text-lg transition duration-200 ease-linear ltr:right-5 rtl:left-5 top-2"
-              >
-                <i class="ri-close-fill"></i>
-              </a>
             </div>
             }
 
@@ -47,15 +34,13 @@
             <div class="grid grid-cols-12 gap-5 mt-5">
               <div class="col-span-12">
                 <div class="flex flex-col gap-2">
-                  <label for="emailOrUsername" class="form-label text-white"
-                    >Email Or Username</label
-                  >
-                  <input
+                  <label for="username" class="form-label text-white">Username</label
+                  ><input
                     type="text"
-                    id="emailOrUsername"
-                    formControlName="emailOrUsername"
-                    class="text-white border-none outline-none p-2 rounded-md w-full form-input bg-white/10 placeholder:text-white/75"
-                    placeholder="Enter your email or username"
+                    id="username"
+                    formControlName="username"
+                    class="peer text-white border-none outline-none p-2 rounded-md w-full form-input bg-white/10 placeholder:text-white/75 focus:bg-pink-600/10 focus:border-pink-500 focus:ring-1 focus:ring-pink-500"
+                    placeholder="Ingresa tu Username"
                   />
                 </div>
               </div>
@@ -68,8 +53,8 @@
                       [type]="showPassword ? 'text' : 'password'"
                       id="password"
                       formControlName="password"
-                      class="w-full p-2 rounded-md outline-none text-white border-none ltr:pr-8 rtl:pl-8 form-input bg-white/10 placeholder:text-white/75"
-                      placeholder="Enter your password"
+                      class="text-white border-none outline-none p-2 rounded-md w-full form-input bg-white/10 placeholder:text-white/75 focus:bg-pink-600/10 focus:border-pink-500 focus:ring-1 focus:ring-pink-500"
+                      placeholder="Ingresa tu Password"
                     />
                     <button
                       type="button"
@@ -90,7 +75,7 @@
                 <div class="flex items-center justify-end">
                   <a
                     routerLink="/auth-forgot-password-basic"
-                    class="cursor-pointer block text-sm font-medium text-right underline transition duration-300 ease-linear shrink-0 text-white/75 hover:text-white"
+                    class="cursor-pointer block text-sm hover:text-violet-300 font-medium text-right underline transition duration-300 ease-linear shrink-0 text-white/75"
                     >Forgot Password?</a
                   >
                 </div>
@@ -99,7 +84,7 @@
               <div class="col-span-12">
                 <button
                   type="submit"
-                  class="w-full bg-blue-500 text-white p-2 rounded-md cursor-pointer hover:bg-blue-600 transition duration-300 ease-linear btn font-medium"
+                  class="w-full bg-linear-65 from-purple-500 to-pink-500 hover:bg-pink-300 text-white p-2 rounded-md cursor-pointer transition duration-300 ease-linear btn font-medium"
                 >
                   Sign In
                 </button>

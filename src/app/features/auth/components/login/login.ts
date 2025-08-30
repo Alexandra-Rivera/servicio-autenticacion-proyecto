@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -6,16 +6,19 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { LucideAngularModule, Eye, EyeOff } from 'lucide-angular';
+import { LucideAngularModule, Eye, EyeOff, LogIn } from 'lucide-angular';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../../core/auth/service/auth.service';
 
 @Component({
   selector: 'app-login',
   imports: [ReactiveFormsModule, CommonModule, LucideAngularModule, RouterLink],
   templateUrl: './login.html',
-  styleUrl: './login.css'
+  styleUrl: './login.css',
 })
 export class Login {
+
+
   //icons
   readonly Eye = Eye;
   readonly EyeOff = EyeOff;
@@ -33,15 +36,11 @@ export class Login {
     message: '',
   };
 
-  // Predefined credentials
-  private predefinedEmail = 'admin@SRBThemes.com';
-  private predefinedPassword = 'admin@123';
-
   // Inyectamos FormBuilder y Router en el constructor
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService, private changeDetectorRef: ChangeDetectorRef) {
     // Initialize the form with pre-filled values
     this.signInForm = this.fb.group({
-      emailOrUsername: ['', Validators.required],
+      username: ['', Validators.required],
       password: ['', Validators.required],
   });
   }
@@ -53,40 +52,53 @@ export class Login {
 
   // Método para manejar el envío del formulario
   onSubmit() {
-    const emailOrUsername = this.signInForm.get('emailOrUsername')?.value;
+    const username = this.signInForm.get('username')?.value;
     const password = this.signInForm.get('password')?.value;
 
+    console.log(this.signInForm.value);
     if (this.signInForm.valid) {
-        // Successful login
-        this.alert.isVisible = true;
-        this.alert.type =
-          'relative py-3 text-sm rounded-md ltr:pl-5 rtl:pr-5 ltr:pr-7 rtl:pl-7 bg-green-100 text-green-500';
-        this.alert.message = 'Login successful! Redirecting...';
-
-
-        /*Si la respuesta que viene de la api es success entonces se va a redireccionar la pagina hacia la cuenta de usuario 
-          Sino, entonces se muestra un mensaje de error
-        */
-
-        if (emailOrUsername === this.predefinedEmail && password === this.predefinedPassword) {
-        // Redirect to another page after a short delay
-        setTimeout(() => {
-          this.router.navigate(['/']); // Change this to the desired route
-        }, 1000);
-
-      } else {
-        // Show an error alert
-        this.alert.isVisible = true;
-        this.alert.type =
-          'relative py-3 text-sm rounded-md ltr:pl-5 rtl:pr-5 ltr:pr-7 rtl:pl-7 bg-red-100 text-red-500';
-        this.alert.message = 'Contraseña o nombre de usuario inválido. Intente de nuevo.';
+      const credentials: any = {
+        domain: '',
+        username: username || '',
+        password: password || ''
       }
+
+      this.authService.login(credentials).pipe().subscribe({
+        next: (response) => {
+          console.log('Login successful', response);
+        
+          // Successful login
+          this.alert.isVisible = true;
+          this.alert.type = 'relative py-3 text-sm rounded-md ltr:pl-5 rtl:pr-5 ltr:pr-7 rtl:pl-7 bg-green-100 text-green-500';
+          this.alert.message = 'Login successful! Redirecting...';
+
+          // Deteccion de cambios manual
+          this.changeDetectorRef.detectChanges();
+
+          //Redireccion
+          setTimeout(() => {
+            this.router.navigate(['/']);
+          }, 1000);
+        },
+        error: (error) => {
+          console.error('Login failed', error);
+          // Show an error alert
+          this.alert.isVisible = true;
+          this.alert.type =
+          'relative py-3 text-sm rounded-md ltr:pl-5 rtl:pr-5 ltr:pr-7 rtl:pl-7 bg-red-100 text-red-500';
+          this.alert.message = 'Contraseña o nombre de usuario inválido. Intente de nuevo.';
+
+          // Deteccion de cambios manual
+          this.changeDetectorRef.detectChanges();
+        }
+      });
     } else {
-      // Show an error alert if form is not valid
-      this.alert.isVisible = true;
-      this.alert.type =
+        // Show an error alert if form is not valid
+        this.alert.isVisible = true;
+        this.alert.type =
         'relative py-3 text-sm rounded-md ltr:pl-5 rtl:pr-5 ltr:pr-7 rtl:pl-7 bg-red-100 text-red-500';
-      this.alert.message = 'Debe colocar su nombre y contraseña para ingresar.';
+        this.alert.message = 'Debe colocar su nombre y contraseña para ingresar.';
+
     }
   }
 }
