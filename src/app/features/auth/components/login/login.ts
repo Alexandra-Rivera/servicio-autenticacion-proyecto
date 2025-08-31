@@ -52,7 +52,7 @@ export class Login {
 
   // Método para manejar el envío del formulario
   onSubmit() {
-    const username = this.signInForm.get('username')?.value;
+    const username = this.signInForm.get('username')?.value.trim();
     const password = this.signInForm.get('password')?.value;
 
     console.log(this.signInForm.value);
