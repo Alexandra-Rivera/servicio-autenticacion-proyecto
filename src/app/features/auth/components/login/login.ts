@@ -55,7 +55,6 @@ export class Login {
     const username = this.signInForm.get('username')?.value.trim();
     const password = this.signInForm.get('password')?.value;
 
-    console.log(this.signInForm.value);
     if (this.signInForm.valid) {
       const credentials: any = {
         domain: '',
@@ -64,9 +63,7 @@ export class Login {
       }
 
       this.authService.login(credentials).pipe().subscribe({
-        next: (response) => {
-          console.log('Login successful', response);
-        
+        next: (response) => {        
           // Successful login
           this.alert.isVisible = true;
           this.alert.type = 'relative py-3 text-sm rounded-md ltr:pl-5 rtl:pr-5 ltr:pr-7 rtl:pl-7 bg-green-100 text-green-500';
@@ -81,7 +78,6 @@ export class Login {
           }, 1000);
         },
         error: (error) => {
-          console.error('Login failed', error);
           // Show an error alert
           this.alert.isVisible = true;
           this.alert.type =
