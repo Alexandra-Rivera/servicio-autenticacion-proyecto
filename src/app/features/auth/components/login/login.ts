@@ -5,7 +5,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, ActivatedRoute } from '@angular/router';
 import { LucideAngularModule, Eye, EyeOff, LogIn } from 'lucide-angular';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../../core/auth/service/auth.service';
@@ -17,7 +17,8 @@ import { AuthService } from '../../../../core/auth/service/auth.service';
   styleUrl: './login.css',
 })
 export class Login {
-
+  //Variables de url
+  private returnUrl: string = "";
 
   //icons
   readonly Eye = Eye;
@@ -36,13 +37,18 @@ export class Login {
     message: '',
   };
 
-  // Inyectamos FormBuilder y Router en el constructor
-  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService, private changeDetectorRef: ChangeDetectorRef) {
+  constructor(private fb: FormBuilder, private route: ActivatedRoute, private authService: AuthService, private changeDetectorRef: ChangeDetectorRef) {
     // Initialize the form with pre-filled values
     this.signInForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
   });
+  }
+
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.returnUrl = params['to'] || "/";
+    });
   }
 
   // Método para manejar la visibilidad de la contraseña
@@ -73,9 +79,7 @@ export class Login {
           this.changeDetectorRef.detectChanges();
 
           //Redireccion
-          setTimeout(() => {
-            this.router.navigate(['/']);
-          }, 1000);
+          window.location.href = `${this.returnUrl}`; // Redirigir a la URL almacenada
         },
         error: (error) => {
           // Show an error alert
