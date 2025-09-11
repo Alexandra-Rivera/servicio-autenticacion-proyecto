@@ -38,20 +38,16 @@ export class Login {
   };
 
   constructor(
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     private router: Router,
-    private authService: AuthService, 
+    private authService: AuthService,
     private changeDetectorRef: ChangeDetectorRef) {
 
 
      this.signInForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
-  });
-  }
-
-  ngOnInit() {
-
+     });
   }
 
   // Método para manejar la visibilidad de la contraseña
@@ -72,7 +68,7 @@ export class Login {
       };
 
       this.authService.login(credentials).pipe().subscribe({
-        next: (response) => {    
+        next: (response) => {
 
           // Successful login
           this.alert.isVisible = true;
@@ -86,14 +82,14 @@ export class Login {
           const params = new URLSearchParams(window.location.search)
           const redirect: string | null = params.get('redirect')
 
-            if (redirect) {
-              if(redirect.includes("localhost")){
-              window.location.href = `http://${redirect}`; 
-              } else 
-              window.location.href = `https://${redirect}`; 
-            } else {
-              this.router.navigate(['/']);
-            }
+          if (redirect) {
+            if(redirect.includes("localhost")){
+            window.location.href = `http://${redirect}`;
+            } else
+            window.location.href = `https://${redirect}`;
+          } else {
+            this.router.navigate(['/']);
+          }
         },
         error: (error) => {
           // Show an error alert
