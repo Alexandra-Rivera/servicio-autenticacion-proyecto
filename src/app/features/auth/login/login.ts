@@ -5,10 +5,11 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Router, RouterLink, ActivatedRoute } from '@angular/router';
-import { LucideAngularModule, Eye, EyeOff, LogIn } from 'lucide-angular';
+import { Router, RouterLink } from '@angular/router';
+import { LucideAngularModule, Eye, EyeOff } from 'lucide-angular';
 import { CommonModule } from '@angular/common';
-import { AuthService } from '../../../../core/auth/service/auth.service';
+import { LoginDto } from 'colibrihub-shared-dtos';
+import { AuthService } from 'colibrihub-shared-services';
 
 @Component({
   selector: 'app-login',
@@ -18,14 +19,13 @@ import { AuthService } from '../../../../core/auth/service/auth.service';
 })
 export class Login {
   //Variables de url
-  private returnUrl: string = "";
 
   //icons
   readonly Eye = Eye;
   readonly EyeOff = EyeOff;
 
   // Declaramos la variable del formulario
-  signInForm: FormGroup;
+  protected signInForm: FormGroup;
 
   // Variable para mostrar/ocultar la contraseña
   showPassword = false;
@@ -37,18 +37,21 @@ export class Login {
     message: '',
   };
 
-  constructor(private fb: FormBuilder, private route: ActivatedRoute, private authService: AuthService, private changeDetectorRef: ChangeDetectorRef) {
-    // Initialize the form with pre-filled values
-    this.signInForm = this.fb.group({
+  constructor(
+    private fb: FormBuilder, 
+    private router: Router,
+    private authService: AuthService, 
+    private changeDetectorRef: ChangeDetectorRef) {
+
+
+     this.signInForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
   });
   }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      this.returnUrl = params['to'] || "/";
-    });
+
   }
 
   // Método para manejar la visibilidad de la contraseña
@@ -57,19 +60,20 @@ export class Login {
   }
 
   // Método para manejar el envío del formulario
-  onSubmit() {
+  protected onSubmit() {
     const username = this.signInForm.get('username')?.value.trim();
     const password = this.signInForm.get('password')?.value;
 
     if (this.signInForm.valid) {
-      const credentials: any = {
+      const credentials: LoginDto = {
         domain: '',
         username: username || '',
         password: password || ''
-      }
+      };
 
       this.authService.login(credentials).pipe().subscribe({
-        next: (response) => {        
+        next: (response) => {    
+
           // Successful login
           this.alert.isVisible = true;
           this.alert.type = 'relative py-3 text-sm rounded-md ltr:pl-5 rtl:pr-5 ltr:pr-7 rtl:pl-7 bg-green-100 text-green-500';
@@ -78,8 +82,18 @@ export class Login {
           // Deteccion de cambios manual
           this.changeDetectorRef.detectChanges();
 
-          //Redireccion
-          window.location.href = `${this.returnUrl}`; // Redirigir a la URL almacenada
+          // Redirect to the return URL or default to home
+          const params = new URLSearchParams(window.location.search)
+          const redirect: string | null = params.get('redirect')
+
+            if (redirect) {
+              if(redirect.includes("localhost")){
+              window.location.href = `http://${redirect}`; 
+              } else 
+              window.location.href = `https://${redirect}`; 
+            } else {
+              this.router.navigate(['/']);
+            }
         },
         error: (error) => {
           // Show an error alert
@@ -98,7 +112,6 @@ export class Login {
         this.alert.type =
         'relative py-3 text-sm rounded-md ltr:pl-5 rtl:pr-5 ltr:pr-7 rtl:pl-7 bg-red-100 text-red-500';
         this.alert.message = 'Debe colocar su nombre y contraseña para ingresar.';
-
     }
   }
 }
