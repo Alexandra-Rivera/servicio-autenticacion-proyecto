@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import { AuthService } from 'colibrihub-shared-services';
 
 @Component({
   selector: 'app-logout',
-  imports: [],
+  standalone: true,
+  imports: [
+    RouterLink
+  ],
   templateUrl: './logout.html',
   styleUrl: './logout.css'
 })
@@ -18,9 +21,8 @@ export class Logout {
   protected logout(): void {
     this.authService.logout().subscribe({
       next: (response) => {
-        console.log(response);
         this.route.queryParamMap.subscribe(params => {
-          const returnUrl = params.get('redirect') || '/';
+          const returnUrl = params.get('redirect');
 
           if (returnUrl) {
             if (returnUrl.includes('localhost')) {
