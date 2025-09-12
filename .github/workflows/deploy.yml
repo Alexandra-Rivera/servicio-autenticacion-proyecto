@@ -32,5 +32,5 @@ jobs:
         run: |
           echo "$SSH_PRIVATE_KEY" > private_key
           chmod 600 private_key
-          scp -o StrictHostKeyChecking=no -i private_key -r dist/my-angular-app/* $SERVER_USER@$SERVER_IP:/var/www/html/
+          scp -o StrictHostKeyChecking=no -i private_key -r dist/user-module/* $SERVER_USER@$SERVER_IP:/var/www/html/
           ssh -o StrictHostKeyChecking=no -i private_key $SERVER_USER@$SERVER_IP "sudo systemctl restart nginx"
