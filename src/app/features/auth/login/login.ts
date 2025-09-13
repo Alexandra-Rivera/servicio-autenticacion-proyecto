@@ -39,7 +39,6 @@ export class Login {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router,
     private authService: AuthService,
     private changeDetectorRef: ChangeDetectorRef) {
 
@@ -84,11 +83,11 @@ export class Login {
 
           if (redirect) {
             if(redirect.includes("localhost")){
-            window.location.href = `http://${redirect}`;
+              window.location.href = `http://${redirect}`;
             } else
-            window.location.href = `https://${redirect}`;
+              window.location.href = `https://${redirect}`;
           } else {
-            this.router.navigate(['/']);
+            window.location.href = '/';
           }
         },
         error: (error) => {

@@ -14,7 +14,6 @@ import { AuthService } from 'colibrihub-shared-services';
 export class Logout {
   constructor(
     private readonly authService: AuthService,
-    private readonly router: Router,
     private readonly route: ActivatedRoute
   ) {}
 
@@ -31,7 +30,7 @@ export class Logout {
               window.location.href = `https://${returnUrl}`;
             }
           } else {
-            this.router.navigate(['/']);
+            window.location.href = '/';
           }
         });
       },
