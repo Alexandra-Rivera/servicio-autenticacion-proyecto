@@ -32,5 +32,6 @@ jobs:
         run: |
           echo "$SSH_PRIVATE_KEY" > private_key
           chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key $SERVER_USER@$SERVER_IP "sudo mkdir -p /var/www/html/"
           scp -o StrictHostKeyChecking=no -i private_key -r dist/user-module/* $SERVER_USER@$SERVER_IP:/var/www/html/
           ssh -o StrictHostKeyChecking=no -i private_key $SERVER_USER@$SERVER_IP "sudo systemctl restart nginx"
