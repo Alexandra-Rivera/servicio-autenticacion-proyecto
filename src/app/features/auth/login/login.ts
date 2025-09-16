@@ -6,10 +6,11 @@ import { CommonModule } from '@angular/common';
 import { LoginDto } from 'colibrihub-shared-dtos';
 import { AuthService } from 'colibrihub-shared-services';
 import { SeoService } from '../../../core/services/seo.service';
+import { Footer } from '../../../shared/components/footer/footer';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, CommonModule, LucideAngularModule, RouterLink],
+  imports: [ReactiveFormsModule, CommonModule, LucideAngularModule, RouterLink, Footer],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
