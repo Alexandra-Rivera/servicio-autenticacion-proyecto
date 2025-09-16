@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AuthService } from 'colibrihub-shared-services';
 import { SeoService } from '../../../core/services/seo.service';
-import { Footer } from "../../../shared/components/footer/footer";
+import { Footer } from '../../../shared/components/footer/footer';
 
 @Component({
   selector: 'app-logout',
