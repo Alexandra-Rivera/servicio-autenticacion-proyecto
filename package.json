@@ -29,7 +29,7 @@
     "@angular/platform-browser": "^20.2.0",
     "@angular/router": "^20.2.0",
     "@tailwindcss/postcss": "^4.1.12",
-    "colibrihub-shared-components": "^0.0.9",
+    "colibrihub-shared-components": "0.0.15",
     "colibrihub-shared-dtos": "^0.0.4",
     "colibrihub-shared-services": "^0.0.6",
     "lucide-angular": "^0.542.0",
