@@ -1,26 +1,31 @@
-import { Component } from '@angular/core';
-import {ActivatedRoute, Router, RouterLink} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AuthService } from 'colibrihub-shared-services';
+import { SeoService } from '../../../core/services/seo.service';
+import { Footer } from '../../../shared/components/footer/footer';
 
 @Component({
   selector: 'app-logout',
   standalone: true,
-  imports: [
-    RouterLink
-  ],
+  imports: [RouterLink, Footer],
   templateUrl: './logout.html',
-  styleUrl: './logout.css'
+  styleUrl: './logout.css',
 })
-export class Logout {
+export class Logout implements OnInit {
+  ngOnInit(): void {
+    this.seoService.updateTitle('Cerrar sesión');
+  }
+
   constructor(
     private readonly authService: AuthService,
-    private readonly route: ActivatedRoute
+    private readonly route: ActivatedRoute,
+    private readonly seoService: SeoService
   ) {}
 
   protected logout(): void {
     this.authService.logout().subscribe({
-      next: (response) => {
-        this.route.queryParamMap.subscribe(params => {
+      next: () => {
+        this.route.queryParamMap.subscribe((params) => {
           const returnUrl = params.get('redirect');
 
           if (returnUrl) {
@@ -36,7 +41,7 @@ export class Logout {
       },
       error: (error) => {
         console.error(error);
-      }
+      },
     });
   }
 }
