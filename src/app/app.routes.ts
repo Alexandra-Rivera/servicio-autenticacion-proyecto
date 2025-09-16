@@ -8,4 +8,5 @@ export const routes: Routes = [
   { path: '', component: Home, pathMatch: 'full' },
   { path: 'login', component: Login, canMatch: [isLoggedOutGuard] },
   { path: 'logout', component: Logout, canMatch: [isLoggedInGuard] },
+  { path: '**', redirectTo: 'home' }
 ];
