@@ -7,7 +7,7 @@ import {
   Renderer2,
 } from '@angular/core';
 import { SeoService } from '../../core/services/seo.service';
-import { LucideAngularModule } from 'lucide-angular';
+import {Fan, FanIcon, GalleryVerticalEndIcon, LucideAngularModule, LucideMoveRight} from 'lucide-angular';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 import AOS from 'aos';
 import { RouterLink } from '@angular/router';
@@ -19,6 +19,10 @@ import { RouterLink } from '@angular/router';
   styleUrl: './home.css'
 })
 export class Home implements OnInit {
+  readonly fan = Fan;
+  readonly MoveRight = LucideMoveRight;
+  readonly galleryVerticalEnd = GalleryVerticalEndIcon;
+
   year: number;
   isDarkMode: boolean = false;
   private stickyClass = 'scroll-sticky';

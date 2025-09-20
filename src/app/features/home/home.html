@@ -1,354 +1,355 @@
-<div class="border border-b-red-600">
-  <header class="landing-navbar h-20 top-0 [&.scroll-sticky]:top-0 [&.scroll-sticky]:shadow-gray-200/50 [&.scroll-sticky]:shadow-lg [&.scroll-sticky]:bg-white dark:[&.scroll-sticky]:shadow-dark-850 dark:[&.scroll-sticky]:bg-dark-900">
-    <div class="container mx-auto px-4 flex items-center justify-between w-full gap-5">
-      <a routerLink="/" title="logo">
-        <img ngSrc="assets/images/main-logo.png" alt="" class="inline-block h-7 dark:hidden" height="221" width="1211">
-        <img ngSrc="assets/images/logo-white.png" alt="" class="hidden h-7 dark:inline-block" height="221" width="1211">
-      </a>
-      <div class="navbar-collapase ltr:mr-auto rtl:ml-auto" [ngClass]="{ 'hidden xl:flex': !isMenuOpen }">
-        <div class="flex flex-col xl:flex-row xl:items-center *:py-3 xl:py-0 xl:*:px-3 *:inline-block *:text-16 *:tracking-wide *:font-medium">
-          <a href="javascript:void(0);" (click)="scrollToSection('services')" [class.active]="currentSection === 'services'" class="leading-normal [&.active]:text-primary-500 hover:text-primary-500 transition duration-300 ease-linear">Service</a>
-          <a href="javascript:void(0);" (click)="scrollToSection('pricing')" [class.active]="currentSection === 'pricing'" class="leading-normal [&.active]:text-primary-500 hover:text-primary-500 transition duration-300 ease-linear">Pricing</a>
-          <a href="javascript:void(0);" (click)="scrollToSection('features')" [class.active]="currentSection === 'features'" class="leading-normal [&.active]:text-primary-500 hover:text-primary-500 transition duration-300 ease-linear">Features</a>
-          <a href="javascript:void(0);" (click)="scrollToSection('templates')" [class.active]="currentSection === 'templates'" class="leading-normal [&.active]:text-primary-500 hover:text-primary-500 transition duration-300 ease-linear">Templates</a>
-          <a href="javascript:void(0);" (click)="scrollToSection('faq')" [class.active]="currentSection === 'faq'" class="leading-normal [&.active]:text-primary-500 hover:text-primary-500 transition duration-300 ease-linear">FAQ's</a>
-          <a href="javascript:void(0);" (click)="scrollToSection('updates')" [class.active]="currentSection === 'updates'" class="leading-normal [&.active]:text-primary-500 hover:text-primary-500 transition duration-300 ease-linear">Updates</a>
+<section class="w-full">
+  <div>
+    <header class="landing-navbar h-20 top-0 [&.scroll-sticky]:top-0 [&.scroll-sticky]:shadow-gray-200/50 [&.scroll-sticky]:shadow-lg [&.scroll-sticky]:bg-white dark:[&.scroll-sticky]:shadow-dark-850 dark:[&.scroll-sticky]:bg-dark-900">
+      <div class="container mx-auto px-4 flex items-center justify-between w-full gap-5">
+        <a routerLink="/" title="logo">
+          <img src="assets/images/main-logo.png" alt="" class="inline-block h-7 dark:hidden">
+          <img src="assets/images/logo-white.png" alt="" class="hidden h-7 dark:inline-block">
+        </a>
+        <div class="navbar-collapase ltr:mr-auto rtl:ml-auto" [ngClass]="{ 'hidden xl:flex': !isMenuOpen }">
+          <div class="flex flex-col xl:flex-row xl:items-center *:py-3 xl:py-0 xl:*:px-3 *:inline-block *:text-16 *:tracking-wide *:font-medium">
+            <a href="javascript:void(0);" (click)="scrollToSection('services')" [class.active]="currentSection === 'services'" class="leading-normal [&.active]:text-primary-500 hover:text-primary-500 transition duration-300 ease-linear">Service</a>
+            <a href="javascript:void(0);" (click)="scrollToSection('pricing')" [class.active]="currentSection === 'pricing'" class="leading-normal [&.active]:text-primary-500 hover:text-primary-500 transition duration-300 ease-linear">Pricing</a>
+            <a href="javascript:void(0);" (click)="scrollToSection('features')" [class.active]="currentSection === 'features'" class="leading-normal [&.active]:text-primary-500 hover:text-primary-500 transition duration-300 ease-linear">Features</a>
+            <a href="javascript:void(0);" (click)="scrollToSection('templates')" [class.active]="currentSection === 'templates'" class="leading-normal [&.active]:text-primary-500 hover:text-primary-500 transition duration-300 ease-linear">Templates</a>
+            <a href="javascript:void(0);" (click)="scrollToSection('faq')" [class.active]="currentSection === 'faq'" class="leading-normal [&.active]:text-primary-500 hover:text-primary-500 transition duration-300 ease-linear">FAQ's</a>
+            <a href="javascript:void(0);" (click)="scrollToSection('updates')" [class.active]="currentSection === 'updates'" class="leading-normal [&.active]:text-primary-500 hover:text-primary-500 transition duration-300 ease-linear">Updates</a>
+          </div>
         </div>
-      </div>
-      <button (click)="toggleMenu()" type="button" class="rounded-full xl:ltr:ml-0 xl:rtl:mr-0 ltr:ml-auto rtl:mr-auto navbar-toggle btn btn-sub-sky btn-icon xl:!hidden">
-        <i [ngClass]="isMenuOpen ? 'ri-close-line' : 'ri-menu-2-line'" class="text-lg"></i>
-      </button>
-      <div>
-        <button routerLink="/auth-signin-basic" type="button" class="btn btn-active-gray">Sign In</button>
-        <button type="button" class="hidden btn btn-sub-primary md:inline-block">Get for free</button>
-      </div>
-    </div>
-  </header>
-</div>
-<section class="relative border border-blue-500 pt-40 pb-20 overflow-hidden xl:pb-48 2xl:pt-80">
-  <div class="container mx-auto px-4">
-    <div class="grid grid-cols-12 lg:gap-x-16">
-      <div class="col-span-12 xl:col-span-5" data-aos="fade-up" data-aos-duration="2000">
-        <h2 class="mb-2 font-semibold text-4xl leading-normal capitalize xl:leading-normal xl:text-5xl">Customers with the <span class="text-sky-500">#1</span> email marketing and automation.</h2>
-        <p class="mb-5 text-lg text-gray-500 dark:text-dark-500">With AI-powered threat defenses, enterprise-grade
-          security and privacy controls, and Google's security-by-design cloud infrastructure, Gmail helps keep your
-          data protected, confidential, and compliant.</p>
-        <div class="flex flex-wrap items-center gap-3">
-          <button type="button" class="btn btn-primary transition duration-[0.5s] bg-blue-500 text-white p-3 rounded-xl hover:bg-blue-600 cursor-pointer">Request Demo
-          </button>
-          <button type="button" class="border-gray-200 dark:border-dark-800 border p-3 rounded-xl border-outline-gray transition duration-1000 hover:bg-gray-500 hover:text-white cursor-pointer">Open in you
-            browser</button>
-        </div>
-      </div>
-      <div class="col-span-12 mt-8 xl:col-span-6 xl:col-start-7 md:mt-10 xl:mt-0">
+        <button (click)="toggleMenu()" type="button" class="rounded-full xl:ltr:ml-0 xl:rtl:mr-0 ltr:ml-auto rtl:mr-auto navbar-toggle btn btn-sub-sky btn-icon xl:!hidden">
+          <i [ngClass]="isMenuOpen ? 'ri-close-line' : 'ri-menu-2-line'" class="text-lg"></i>
+        </button>
         <div>
-          <img ngSrc="assets/images/email/email.png" alt="" class="relative dark:hidden xl:scale-[1.8] object-cover border border-gray-200 dark:border-dark-800 rounded-lg ltr:xl:-right-44 rtl:xl:-left-44 xl:top-16 2xl:top-auto"
-               height="742" width="1454">
-          <img ngSrc="assets/images/email/main.png" alt="" class="relative hidden dark:block xl:scale-[1.8] object-cover border border-gray-200 dark:border-dark-800 rounded-lg ltr:xl:-right-44 rtl:xl:-left-44 xl:top-16 2xl:top-auto"
-               height="737" width="1452">
+          <button routerLink="/auth-signin-basic" type="button" class="btn btn-active-gray">Sign In</button>
+          <button type="button" class="hidden btn btn-sub-primary md:inline-block">Get for free</button>
         </div>
       </div>
-    </div>
+    </header>
   </div>
-</section>
-
-<section class="relative py-12 md:py-24 bg-gray-50 dark:bg-dark-900/50" id="services">
-  <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space">
-      <div data-aos="fade-up" data-aos-duration="2000">
-        <div class="p-4 mb-4 bg-white rounded-lg text-primary-500 size-14 dark:bg-dark-900">
-          <lucide-angular name="fan" class="fill-primary-500/20"></lucide-angular>
-        </div>
-        <h5 class="mb-1">Stay Professional</h5>
-        <p class="mb-4 text-gray-500 dark:text-dark-500 text-16">To most people, acting like a professional means
-          working and behaving in such a way that others think of them as competent, reliable and respectful.</p>
-        <a href="javascript: void(0);" class="link link-primary text-16">Read More
-          <lucide-angular name="MoveRight" class="inline-block ml-1 size-4"></lucide-angular>
-        </a>
-      </div>
-      <div data-aos="fade-up" data-aos-duration="2000">
-        <div class="p-4 mb-4 bg-white rounded-lg text-primary-500 size-14 dark:bg-dark-900">
-          <lucide-angular name="gallery-vertical-end" class="fill-primary-500/20"></lucide-angular>
-        </div>
-        <h5 class="mb-1">Notes & Documents</h5>
-        <p class="mb-4 text-gray-500 dark:text-dark-500 text-16">A mortgage note document is a legally binding
-          instrument that outlines the terms of a loan agreement between a borrower and a lender, specifying.</p>
-        <a href="javascript: void(0);" class="link link-primary text-16">Read More
-          <lucide-angular name="MoveRight" class="inline-block ml-1 size-4"></lucide-angular>
-        </a>
-      </div>
-      <div data-aos="fade-up" data-aos-duration="2000">
-        <div class="p-4 mb-4 bg-white rounded-lg text-primary-500 size-14 dark:bg-dark-900">
-          <lucide-angular name="Gem" class="fill-primary-500/20"></lucide-angular>
-        </div>
-        <h5 class="mb-1">Automation</h5>
-        <p class="mb-4 text-gray-500 dark:text-dark-500 text-16">Automation is the application of technology, programs,
-          robotics or processes to achieve outcomes with minimal human input.</p>
-        <a href="javascript: void(0);" class="link link-primary text-16">Read More
-          <lucide-angular name="MoveRight" class="inline-block ml-1 size-4"></lucide-angular>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="relative py-12 md:py-24" id="pricing">
-  <div class="container mx-auto px-4">
-    <div class="max-w-3xl mx-auto mb-12 text-center">
-      <h2 class="mb-3 leading-normal capitalize">Choose the plan that suits you best</h2>
-      <p class="text-gray-500 dark:text-dark-500 text-16">A pricing strategy is a model or method used to establish the
-        best price for a product or service. It helps you choose prices to maximize profits and shareholder value while
-        considering.</p>
-    </div>
-
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-      <div class="relative overflow-hidden card" data-aos="fade-up" data-aos-duration="2000">
-        <div class="absolute border-[40px] border-gray-100 dark:border-dark-850 size-64 -bottom-16 -right-16 rounded-creative">
-        </div>
-        <div class="relative lg:p-8 card-body">
-          <div class="mb-8 text-center">
-            <h5 class="mb-1">Free</h5>
-            <p class="mb-6 text-gray-500 dark:text-dark-500">Explore domiex mail together, for the</p>
-            <h1>$0<sub class="text-sm text-gray-500 dark:text-dark-500">/month</sub></h1>
+  <section class="relative border border-blue-500 pt-40 pb-20 overflow-hidden xl:pb-48 2xl:pt-50">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-12 lg:gap-x-16">
+        <div class="col-span-12 xl:col-span-5" data-aos="fade-up" data-aos-duration="2000">
+          <h2 class="mb-2 font-semibold text-4xl leading-normal capitalize xl:leading-normal xl:text-5xl">Customers with the <span class="text-sky-500">#1</span> email marketing and automation.</h2>
+          <p class="mb-5 text-lg text-gray-500 dark:text-dark-500">With AI-powered threat defenses, enterprise-grade
+            security and privacy controls, and Google's security-by-design cloud infrastructure, Gmail helps keep your
+            data protected, confidential, and compliant.</p>
+          <div class="flex flex-wrap items-center gap-3">
+            <button type="button" class="btn btn-primary transition duration-[0.5s] bg-blue-500 text-white p-3 rounded-xl hover:bg-blue-600 cursor-pointer">Request Demo
+            </button>
+            <button type="button" class="border-gray-200 dark:border-dark-800 border p-3 rounded-xl border-outline-gray transition duration-1000 hover:bg-gray-500 hover:text-white cursor-pointer">Open in you
+              browser</button>
           </div>
-          <button type="button" class="w-full btn btn-sub-gray">Get Started for free</button>
-          <ul class="space-y-4 *:flex *:items-center *:gap-2 mt-7">
-            <li>
-              <lucide-angular name="CornerDownRight" class="inline-block text-green-500 fill-green-500/10 size-4">
-              </lucide-angular>
-              500
-              Emails
-            </li>
-            <li>
-              <lucide-angular name="" class="inline-block text-green-500 fill-green-500/10 size-4">
-              </lucide-angular>
-              5
-              Automation Action
-            </li>
-            <li>
-              <lucide-angular name="CornerDownRight" class="inline-block text-green-500 fill-green-500/10 size-4">
-              </lucide-angular>
-              1
-              Products & Projects
-            </li>
-            <li>
-              <lucide-angular name="x" class="inline-block text-gray-500 fill-gray-100 dark:text-dark-500 dark:fill-dark-850 size-4">
-              </lucide-angular>
-              Custom Permissions
-            </li>
-            <li>
-              <lucide-angular name="x" class="inline-block text-gray-500 fill-gray-100 dark:text-dark-500 dark:fill-dark-850 size-4">
-              </lucide-angular>
-              Some
-              Basic Integration
-            </li>
-            <li>
-              <lucide-angular name="x" class="inline-block text-gray-500 fill-gray-100 dark:text-dark-500 dark:fill-dark-850 size-4">
-              </lucide-angular>
-              Up to
-              5 Team Members
-            </li>
-            <li>
-              <lucide-angular name="x" class="inline-block text-gray-500 fill-gray-100 dark:text-dark-500 dark:fill-dark-850 size-4">
-              </lucide-angular>
-              24/7
-              Support
-            </li>
-          </ul>
         </div>
-      </div>
-      <div class="relative overflow-hidden card active group" data-aos="fade-up" data-aos-duration="2000">
-        <div class="absolute border-[40px] border-gray-100 dark:border-dark-850 size-64 -bottom-16 -right-16 rounded-creative">
-        </div>
-        <div class="relative lg:p-8 card-body">
-          <div class="absolute right-5 top-5 badge badge-pink">Popular Plan</div>
-          <div class="mb-8 text-center">
-            <h5 class="mb-1">Professional</h5>
-            <p class="mb-6 text-gray-500">For professionals & small teams</p>
-            <h1>$29.99<sub class="text-sm text-gray-500">/month</sub></h1>
-          </div>
-          <button type="button" class="w-full btn btn-primary">Get Started</button>
-          <ul class="space-y-4 *:flex *:items-center *:gap-2 mt-7">
-            <li>
-              <lucide-angular name="CornerDownRight" class="inline-block text-green-500 fill-green-500/10 size-4">
-              </lucide-angular>
-              2000 Emails
-            </li>
-            <li>
-              <lucide-angular name="" class="inline-block text-green-500 fill-green-500/10 size-4">
-              </lucide-angular>
-              20
-              Automation Action
-            </li>
-            <li>
-              <lucide-angular name="CornerDownRight" class="inline-block text-green-500 fill-green-500/10 size-4">
-              </lucide-angular>
-              1
-              Products & Projects
-            </li>
-            <li>
-              <lucide-angular name="CornerDownRight" class="inline-block text-green-500 fill-green-500/10 size-4">
-              </lucide-angular>
-              Custom Permissions
-            </li>
-            <li>
-              <lucide-angular name="x" class="inline-block text-gray-500 fill-gray-100 dark:text-dark-500 dark:fill-dark-850 size-4">
-              </lucide-angular>
-              Some
-              Basic Integration
-            </li>
-            <li>
-              <lucide-angular name="x" class="inline-block text-gray-500 fill-gray-100 dark:text-dark-500 dark:fill-dark-850 size-4">
-              </lucide-angular>
-              Up to
-              5 Team Members
-            </li>
-            <li>
-              <lucide-angular name="x" class="inline-block text-gray-500 fill-gray-100 dark:text-dark-500 dark:fill-dark-850 size-4">
-              </lucide-angular>
-              24/7
-              Support
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="relative overflow-hidden card" data-aos="fade-up" data-aos-duration="2000">
-        <div class="absolute border-[40px] border-gray-100 dark:border-dark-850 size-64 -bottom-16 -right-16 rounded-creative">
-        </div>
-        <div class="relative lg:p-8 card-body">
-          <div class="mb-8 text-center">
-            <h5 class="mb-1">Organization</h5>
-            <p class="mb-6 text-gray-500 dark:text-dark-500">Ideal for fastest growing businesses</p>
-            <h1>Lat's Chat</h1>
-          </div>
-          <button type="button" class="w-full btn btn-sub-gray">Contact Us</button>
-          <ul class="space-y-4 *:flex *:items-center *:gap-2 mt-7">
-            <li>
-              <lucide-angular name="CornerDownRight" class="inline-block text-green-500 fill-green-500/10 size-4">
-              </lucide-angular>
-              Unlimited Emails
-            </li>
-            <li>
-              <lucide-angular name="CornerDownRight" class="inline-block text-green-500 fill-green-500/10 size-4">
-              </lucide-angular>
-              Unlimited automation
-            </li>
-            <li>
-              <lucide-angular name="CornerDownRight" class="inline-block text-green-500 fill-green-500/10 size-4">
-              </lucide-angular>
-              1
-              Products & Projects
-            </li>
-            <li>
-              <lucide-angular name="CornerDownRight" class="inline-block text-green-500 fill-green-500/10 size-4">
-              </lucide-angular>
-              Access All Features
-            </li>
-            <li>
-              <lucide-angular name="CornerDownRight" class="inline-block text-green-500 fill-green-500/10 size-4">
-              </lucide-angular>
-              Flexible Contract
-            </li>
-            <li>
-              <lucide-angular name="CornerDownRight" class="inline-block text-green-500 fill-green-500/10 size-4">
-              </lucide-angular>
-              Advanced Integration
-            </li>
-            <li>
-              <lucide-angular name="CornerDownRight" class="inline-block text-green-500 fill-green-500/10 size-4">
-              </lucide-angular>
-              24/7 Support
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="relative md:pb-28" id="features">
-  <div class="container mx-auto px-4">
-    <div class="max-w-3xl mx-auto mb-12 text-center">
-      <h2 class="mb-3 leading-normal capitalize">Domiex Email Features</h2>
-      <p class="text-gray-500 dark:text-dark-500 text-16">Collaborate with your teammates using our real-time editor to
-        compose professional emails.</p>
-    </div>
-    <div class="grid grid-cols-12 gap-x-space">
-      <div class="col-span-12 row-span-2 text-center bg-gray-100 dark:bg-dark-900/40 md:col-span-3 card">
-        <div class="card-body">
-          <img ngSrc="assets/images/email/features-1.png" alt="" class="w-full rounded-md dark:hidden" height="596"
-               width="306">
-          <img ngSrc="assets/images/email/features-1-dark.png" alt="" class="w-full rounded-md hidden dark:block"
-               height="620" width="316">
-          <h6 class="mt-4">Easy to change Email Accounts</h6>
-        </div>
-      </div>
-      <div class="col-span-12 row-span-2 text-center bg-gray-100 dark:bg-dark-900/40 md:col-span-5 card">
-        <div class="card-body">
-          <img ngSrc="assets/images/email/features-2.png" alt="" class="w-full rounded-md dark:hidden" height="460"
-               width="428">
-          <img ngSrc="assets/images/email/features-2-dark.png" alt="" class="w-full hidden dark:block rounded-md"
-               height="482" width="444">
-          <h6 class="mt-4">Filter wise Email Lists</h6>
-        </div>
-      </div>
-      <div class="col-span-12 text-center bg-gray-100 dark:bg-dark-900/40 md:col-span-4 card">
-        <div class="space-y-8 card-body">
+        <div class="col-span-12 mt-8 xl:col-span-6 xl:col-start-7 md:mt-10 xl:mt-0">
           <div>
-            <img ngSrc="assets/images/email/features-3.png" alt="" class="w-full rounded-md dark:hidden" height="308"
-                 width="660">
-            <img ngSrc="assets/images/email/features-3-dark.png" alt="" class="w-full rounded-md hidden dark:block"
-                 height="308" width="660">
-            <h6 class="mt-4">Reply & New Added</h6>
-          </div>
-
-          <div>
-            <img ngSrc="assets/images/email/features-4.png" alt="" class="w-full rounded-md dark:hidden" height="506"
-                 width="660">
-            <img ngSrc="assets/images/email/features-4-dark.png" alt="" class="w-full rounded-md hidden dark:block"
-                 height="506" width="660">
-            <h6 class="mt-4">Email Reads</h6>
+            <img ngSrc="assets/images/email/email.png" alt="" class="relative dark:hidden xl:scale-[1.8] object-cover border border-gray-200 dark:border-dark-800 rounded-lg ltr:xl:-right-44 rtl:xl:-left-44 xl:top-16 2xl:top-auto"
+                 height="742" width="1454">
+            <img ngSrc="assets/images/email/main.png" alt="" class="relative hidden dark:block xl:scale-[1.8] object-cover border border-gray-200 dark:border-dark-800 rounded-lg ltr:xl:-right-44 rtl:xl:-left-44 xl:top-16 2xl:top-auto"
+                 height="737" width="1452">
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="relative lg:py-24 bg-primary-900" id="templates">
-  <div class="container mx-auto px-4">
-    <div class="lg:flex gap-x-16">
-      <div class="w-full py-12 text-white lg:w-3/5 lg:py-0">
-        <h2 class="mb-2 leading-normal capitalize xl:text-5xl">Customers with the <span class="text-primary-500">#1</span> email marketing and automation.</h2>
-        <p class="mb-5 text-lg text-white">Email automation helps you find your audience and engage your customers.
-          Unlike manual campaigns, automations run in the background while you tend to other valuable tasks. With
-          automation, you can send personalized individual.</p>
-        <div class="flex flex-wrap items-center gap-3">
-          <button type="button" class="btn btn-primary">Request Demo
-            <lucide-angular name="MoveRight" class="inline-block ml-1 size-4"></lucide-angular>
-          </button>
-          <button type="button" class="btn">Open in you browser
-            <lucide-angular name="MoveRight" class="inline-block ml-1 size-4"></lucide-angular>
-          </button>
+  <section class="relative py-12 md:py-24 bg-gray-50 dark:bg-dark-900/50" id="services">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space">
+        <div data-aos="fade-up" data-aos-duration="2000">
+          <div class="p-4 mb-4 bg-white rounded-lg text-primary-500 size-14 dark:bg-dark-900">
+            <lucide-angular [img]="fan" class="fill-primary-500/20"></lucide-angular>
+          </div>
+          <h5 class="mb-1">Stay Professional</h5>
+          <p class="mb-4 text-gray-500 dark:text-dark-500 text-16">To most people, acting like a professional means
+            working and behaving in such a way that others think of them as competent, reliable and respectful.</p>
+          <a href="javascript: void(0);" class="link link-primary text-16">Read More
+            <lucide-angular [img]="MoveRight" class="inline-block ml-1 size-4"></lucide-angular>
+          </a>
+        </div>
+        <div data-aos="fade-up" data-aos-duration="2000">
+          <div class="p-4 mb-4 bg-white rounded-lg text-primary-500 size-14 dark:bg-dark-900">
+            <lucide-angular [img]="galleryVerticalEnd" class="fill-primary-500/20"></lucide-angular>
+          </div>
+          <h5 class="mb-1">Notes & Documents</h5>
+          <p class="mb-4 text-gray-500 dark:text-dark-500 text-16">A mortgage note document is a legally binding
+            instrument that outlines the terms of a loan agreement between a borrower and a lender, specifying.</p>
+          <a href="javascript: void(0);" class="link link-primary text-16">Read More
+            <lucide-angular [img]="MoveRight" class="inline-block ml-1 size-4"></lucide-angular>
+          </a>
+        </div>
+        <div data-aos="fade-up" data-aos-duration="2000">
+          <div class="p-4 mb-4 bg-white rounded-lg text-primary-500 size-14 dark:bg-dark-900">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gem-icon lucide-gem"><path d="M10.5 3 8 9l4 13 4-13-2.5-6"/><path d="M17 3a2 2 0 0 1 1.6.8l3 4a2 2 0 0 1 .013 2.382l-7.99 10.986a2 2 0 0 1-3.247 0l-7.99-10.986A2 2 0 0 1 2.4 7.8l2.998-3.997A2 2 0 0 1 7 3z"/><path d="M2 9h20"/></svg>
+          </div>
+          <h5 class="mb-1">Automation</h5>
+          <p class="mb-4 text-gray-500 dark:text-dark-500 text-16">Automation is the application of technology, programs,
+            robotics or processes to achieve outcomes with minimal human input.</p>
+          <a href="javascript: void(0);" class="link link-primary text-16">Read More
+            <lucide-angular [img]="MoveRight" class="inline-block ml-1 size-4"></lucide-angular>
+          </a>
         </div>
       </div>
-      <div class="lg:w-2/5">
-        <img ngSrc="assets/images/email/cta.png" alt="" class="w-[300px] mx-auto xl:scale-150 xl:-mt-16 relative object-cover rounded-lg "
-             height="1430" width="1360">
+    </div>
+  </section>
+
+  <section class="relative py-12 md:py-24" id="pricing">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto mb-12 text-center">
+        <h2 class="mb-3 leading-normal capitalize">Choose the plan that suits you best</h2>
+        <p class="text-gray-500 dark:text-dark-500 text-16">A pricing strategy is a model or method used to establish the
+          best price for a product or service. It helps you choose prices to maximize profits and shareholder value while
+          considering.</p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div class="relative overflow-hidden card" data-aos="fade-up" data-aos-duration="2000">
+          <div class="absolute border-[40px] border-gray-100 dark:border-dark-850 size-64 -bottom-16 -right-16 rounded-creative">
+          </div>
+          <div class="relative lg:p-8 card-body">
+            <div class="mb-8 text-center">
+              <h5 class="mb-1">Free</h5>
+              <p class="mb-6 text-gray-500 dark:text-dark-500">Explore domiex mail together, for the</p>
+              <h1>$0<sub class="text-sm text-gray-500 dark:text-dark-500">/month</sub></h1>
+            </div>
+            <button type="button" class="w-full btn btn-sub-gray">Get Started for free</button>
+            <ul class="space-y-4 *:flex *:items-center *:gap-2 mt-7">
+              <li>
+                <lucide-angular name="CornerDownRight" class="inline-block text-green-500 fill-green-500/10 size-4">
+                </lucide-angular>
+                500
+                Emails
+              </li>
+              <li>
+                <lucide-angular name="" class="inline-block text-green-500 fill-green-500/10 size-4">
+                </lucide-angular>
+                5
+                Automation Action
+              </li>
+              <li>
+                <lucide-angular name="CornerDownRight" class="inline-block text-green-500 fill-green-500/10 size-4">
+                </lucide-angular>
+                1
+                Products & Projects
+              </li>
+              <li>
+                <lucide-angular name="x" class="inline-block text-gray-500 fill-gray-100 dark:text-dark-500 dark:fill-dark-850 size-4">
+                </lucide-angular>
+                Custom Permissions
+              </li>
+              <li>
+                <lucide-angular name="x" class="inline-block text-gray-500 fill-gray-100 dark:text-dark-500 dark:fill-dark-850 size-4">
+                </lucide-angular>
+                Some
+                Basic Integration
+              </li>
+              <li>
+                <lucide-angular name="x" class="inline-block text-gray-500 fill-gray-100 dark:text-dark-500 dark:fill-dark-850 size-4">
+                </lucide-angular>
+                Up to
+                5 Team Members
+              </li>
+              <li>
+                <lucide-angular name="x" class="inline-block text-gray-500 fill-gray-100 dark:text-dark-500 dark:fill-dark-850 size-4">
+                </lucide-angular>
+                24/7
+                Support
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="relative overflow-hidden card active group" data-aos="fade-up" data-aos-duration="2000">
+          <div class="absolute border-[40px] border-gray-100 dark:border-dark-850 size-64 -bottom-16 -right-16 rounded-creative">
+          </div>
+          <div class="relative lg:p-8 card-body">
+            <div class="absolute right-5 top-5 badge badge-pink">Popular Plan</div>
+            <div class="mb-8 text-center">
+              <h5 class="mb-1">Professional</h5>
+              <p class="mb-6 text-gray-500">For professionals & small teams</p>
+              <h1>$29.99<sub class="text-sm text-gray-500">/month</sub></h1>
+            </div>
+            <button type="button" class="w-full btn btn-primary">Get Started</button>
+            <ul class="space-y-4 *:flex *:items-center *:gap-2 mt-7">
+              <li>
+                <lucide-angular name="CornerDownRight" class="inline-block text-green-500 fill-green-500/10 size-4">
+                </lucide-angular>
+                2000 Emails
+              </li>
+              <li>
+                <lucide-angular name="" class="inline-block text-green-500 fill-green-500/10 size-4">
+                </lucide-angular>
+                20
+                Automation Action
+              </li>
+              <li>
+                <lucide-angular name="CornerDownRight" class="inline-block text-green-500 fill-green-500/10 size-4">
+                </lucide-angular>
+                1
+                Products & Projects
+              </li>
+              <li>
+                <lucide-angular name="CornerDownRight" class="inline-block text-green-500 fill-green-500/10 size-4">
+                </lucide-angular>
+                Custom Permissions
+              </li>
+              <li>
+                <lucide-angular name="x" class="inline-block text-gray-500 fill-gray-100 dark:text-dark-500 dark:fill-dark-850 size-4">
+                </lucide-angular>
+                Some
+                Basic Integration
+              </li>
+              <li>
+                <lucide-angular name="x" class="inline-block text-gray-500 fill-gray-100 dark:text-dark-500 dark:fill-dark-850 size-4">
+                </lucide-angular>
+                Up to
+                5 Team Members
+              </li>
+              <li>
+                <lucide-angular name="x" class="inline-block text-gray-500 fill-gray-100 dark:text-dark-500 dark:fill-dark-850 size-4">
+                </lucide-angular>
+                24/7
+                Support
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="relative overflow-hidden card" data-aos="fade-up" data-aos-duration="2000">
+          <div class="absolute border-[40px] border-gray-100 dark:border-dark-850 size-64 -bottom-16 -right-16 rounded-creative">
+          </div>
+          <div class="relative lg:p-8 card-body">
+            <div class="mb-8 text-center">
+              <h5 class="mb-1">Organization</h5>
+              <p class="mb-6 text-gray-500 dark:text-dark-500">Ideal for fastest growing businesses</p>
+              <h1>Lat's Chat</h1>
+            </div>
+            <button type="button" class="w-full btn btn-sub-gray">Contact Us</button>
+            <ul class="space-y-4 *:flex *:items-center *:gap-2 mt-7">
+              <li>
+                <lucide-angular name="CornerDownRight" class="inline-block text-green-500 fill-green-500/10 size-4">
+                </lucide-angular>
+                Unlimited Emails
+              </li>
+              <li>
+                <lucide-angular name="CornerDownRight" class="inline-block text-green-500 fill-green-500/10 size-4">
+                </lucide-angular>
+                Unlimited automation
+              </li>
+              <li>
+                <lucide-angular name="CornerDownRight" class="inline-block text-green-500 fill-green-500/10 size-4">
+                </lucide-angular>
+                1
+                Products & Projects
+              </li>
+              <li>
+                <lucide-angular name="CornerDownRight" class="inline-block text-green-500 fill-green-500/10 size-4">
+                </lucide-angular>
+                Access All Features
+              </li>
+              <li>
+                <lucide-angular name="CornerDownRight" class="inline-block text-green-500 fill-green-500/10 size-4">
+                </lucide-angular>
+                Flexible Contract
+              </li>
+              <li>
+                <lucide-angular name="CornerDownRight" class="inline-block text-green-500 fill-green-500/10 size-4">
+                </lucide-angular>
+                Advanced Integration
+              </li>
+              <li>
+                <lucide-angular name="CornerDownRight" class="inline-block text-green-500 fill-green-500/10 size-4">
+                </lucide-angular>
+                24/7 Support
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="relative py-12 md:py-24" id="faq">
-  <div class="container mx-auto px-4">
-    <div class="max-w-3xl mx-auto mb-12 text-center">
-      <h2 class="mb-3 leading-normal capitalize">Don't Just Take Our Word For It</h2>
-      <p class="text-gray-500 dark:text-dark-500 text-16">Frequently asked questions. <a href="javascript:void(0);" class="font-medium text-gray-800 dark:text-dark-100 underline">View All FAQs</a></p>
+  <section class="relative md:pb-28" id="features">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto mb-12 text-center">
+        <h2 class="mb-3 leading-normal capitalize">Domiex Email Features</h2>
+        <p class="text-gray-500 dark:text-dark-500 text-16">Collaborate with your teammates using our real-time editor to
+          compose professional emails.</p>
+      </div>
+      <div class="grid grid-cols-12 gap-x-space">
+        <div class="col-span-12 row-span-2 text-center bg-gray-100 dark:bg-dark-900/40 md:col-span-3 card">
+          <div class="card-body">
+            <img ngSrc="assets/images/email/features-1.png" alt="" class="w-full rounded-md dark:hidden" height="596"
+                 width="306">
+            <img ngSrc="assets/images/email/features-1-dark.png" alt="" class="w-full rounded-md hidden dark:block"
+                 height="620" width="316">
+            <h6 class="mt-4">Easy to change Email Accounts</h6>
+          </div>
+        </div>
+        <div class="col-span-12 row-span-2 text-center bg-gray-100 dark:bg-dark-900/40 md:col-span-5 card">
+          <div class="card-body">
+            <img ngSrc="assets/images/email/features-2.png" alt="" class="w-full rounded-md dark:hidden" height="460"
+                 width="428">
+            <img ngSrc="assets/images/email/features-2-dark.png" alt="" class="w-full hidden dark:block rounded-md"
+                 height="482" width="444">
+            <h6 class="mt-4">Filter wise Email Lists</h6>
+          </div>
+        </div>
+        <div class="col-span-12 text-center bg-gray-100 dark:bg-dark-900/40 md:col-span-4 card">
+          <div class="space-y-8 card-body">
+            <div>
+              <img ngSrc="assets/images/email/features-3.png" alt="" class="w-full rounded-md dark:hidden" height="308"
+                   width="660">
+              <img ngSrc="assets/images/email/features-3-dark.png" alt="" class="w-full rounded-md hidden dark:block"
+                   height="308" width="660">
+              <h6 class="mt-4">Reply & New Added</h6>
+            </div>
+
+            <div>
+              <img ngSrc="assets/images/email/features-4.png" alt="" class="w-full rounded-md dark:hidden" height="506"
+                   width="660">
+              <img ngSrc="assets/images/email/features-4-dark.png" alt="" class="w-full rounded-md hidden dark:block"
+                   height="506" width="660">
+              <h6 class="mt-4">Email Reads</h6>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="grid grid-cols-12">
-      <div class="col-span-12 lg:col-span-8 lg:col-start-3">
-        <>
+  </section>
+
+  <section class="relative lg:py-24 bg-primary-900" id="templates">
+    <div class="container mx-auto px-4">
+      <div class="lg:flex gap-x-16">
+        <div class="w-full py-12 text-white lg:w-3/5 lg:py-0">
+          <h2 class="mb-2 leading-normal capitalize xl:text-5xl">Customers with the <span class="text-primary-500">#1</span> email marketing and automation.</h2>
+          <p class="mb-5 text-lg text-white">Email automation helps you find your audience and engage your customers.
+            Unlike manual campaigns, automations run in the background while you tend to other valuable tasks. With
+            automation, you can send personalized individual.</p>
+          <div class="flex flex-wrap items-center gap-3">
+            <button type="button" class="btn btn-primary">Request Demo
+              <lucide-angular name="MoveRight" class="inline-block ml-1 size-4"></lucide-angular>
+            </button>
+            <button type="button" class="btn">Open in you browser
+              <lucide-angular name="MoveRight" class="inline-block ml-1 size-4"></lucide-angular>
+            </button>
+          </div>
+        </div>
+        <div class="lg:w-2/5">
+          <img ngSrc="assets/images/email/cta.png" alt="" class="w-[300px] mx-auto xl:scale-150 xl:-mt-16 relative object-cover rounded-lg "
+               height="1430" width="1360">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative py-12 md:py-24" id="faq">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto mb-12 text-center">
+        <h2 class="mb-3 leading-normal capitalize">Don't Just Take Our Word For It</h2>
+        <p class="text-gray-500 dark:text-dark-500 text-16">Frequently asked questions. <a href="javascript:void(0);" class="font-medium text-gray-800 dark:text-dark-100 underline">View All FAQs</a></p>
+      </div>
+      <div class="grid grid-cols-12">
+        <div class="col-span-12 lg:col-span-8 lg:col-start-3">
+          <>
           @for(item of accordionItems; track $index) {
             <div class="relative border-b border-gray-200 dark:border-dark-800 last:border-0">
               <!-- Accordion Header -->
@@ -391,112 +392,111 @@
               </div>
             </div>
           }
+        </div>
       </div>
-    </div>
 
-  </div>
-</section>
-
-<section class="relative pt-12 overflow-hidden md:pt-24 bg-gray-50 dark:bg-dark-900/50" id="updates">
-  <div class="container mx-auto px-4">
-    <div class="max-w-3xl mx-auto mb-10 text-center">
-      <h2 class="mb-3 leading-normal capitalize">Customers can easily receive new updates</h2>
-      <p class="text-gray-500 dark:text-dark-500 mb-7 text-16">Domiex enables seamless collaboration with clients and
-        team members.</p>
-      <div class="flex flex-wrap items-center justify-center gap-2">
-        <button type="button" class="btn btn-primary">
-          <lucide-angular name="apple" class="inline-block mb-0.5 mr-1 size-4"></lucide-angular>
-          Download For Mac
-        </button>
-        <button type="button" class="btn btn-sub-gray">Open Live Demos
-          <lucide-angular name="MoveRight" class="inline-block ml-1 mb-0.5 size-4"></lucide-angular>
-        </button>
-      </div>
     </div>
-    <div class="grid grid-cols-12">
-      <div class="col-span-12 lg:col-span-10 lg:col-start-2">
-        <img ngSrc="assets/images/email/email.png" alt="" class="relative border-2 border-gray-200 rounded-lg dark:border-dark-800 -bottom-5 dark:hidden" data-aos="fade-up" data-aos-duration="2000" data-aos-offset="300"
-             height="714" width="1406">
-        <img ngSrc="assets/images/email/email-dark.png" alt="" class="relative border-2 border-gray-200 rounded-lg dark:border-dark-800 -bottom-5 hidden dark:block" data-aos="fade-up" data-aos-duration="2000" data-aos-offset="300"
-             height="737" width="1452">
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<footer class="relative bg-gray-900 dark:bg-dark-900">
-  <div class="py-12 lg:py-20">
+  <section class="relative pt-12 overflow-hidden md:pt-24 bg-gray-50 dark:bg-dark-900/50" id="updates">
     <div class="container mx-auto px-4">
-      <div class="grid grid-cols-12 gap-6">
-        <div class="col-span-12 xl:col-span-6">
-          <div class="max-w-lg">
-            <a href="javascript:void(0);" routerLink="/" title="logo"><img ngSrc="assets/images/logo-white.png" alt="" class="cursor-pointer h-7"
-                                                                           height="221" width="1211"></a>
-            <p class="mt-4 mb-6 text-gray-500 dark:text-dark-500 text-16">This email and any attachments may contain
-              confidential information. If you are not the intended recipient, please notify the sender immediately and
-              delete this email. Unauthorized use, disclosure, or copying of the contents is strictly prohibited.</p>
-            <div class="flex items-center gap-5">
-              <a href="javascript: void(0);" title="facebook" class="relative flex items-center justify-center transition duration-300 ease-linear hover:-translate-y-1 after:absolute after:inset-0 after:rounded-lg after:-rotate-45 after:bg-gray-800/50 dark:after:bg-dark-800/50 size-10 text-primary-500">
-                <lucide-angular name="facebook" class="relative z-10 size-5"></lucide-angular>
-              </a>
-              <a href="javascript: void(0);" title="dribbble" class="relative flex items-center justify-center text-pink-500 transition duration-300 ease-linear hover:-translate-y-1 after:absolute after:inset-0 after:rounded-lg after:-rotate-45 after:bg-gray-800/50 dark:after:bg-dark-800/50 size-10">
-                <lucide-angular name="dribbble" class="relative z-10 size-5"></lucide-angular>
-              </a>
-              <a href="javascript: void(0);" title="twitter" class="relative flex items-center justify-center transition duration-300 ease-linear hover:-translate-y-1 text-sky-500 after:absolute after:inset-0 after:rounded-lg after:-rotate-45 after:bg-gray-800/50 dark:after:bg-dark-800/50 size-10">
-                <lucide-angular name="twitter" class="relative z-10 size-5"></lucide-angular>
-              </a>
-              <a href="javascript: void(0);" title="youtube" class="relative flex items-center justify-center text-red-500 transition duration-300 ease-linear hover:-translate-y-1 after:absolute after:inset-0 after:rounded-lg after:-rotate-45 after:bg-gray-800/50 dark:after:bg-dark-800/50 size-10">
-                <lucide-angular name="youtube" class="relative z-10 size-5"></lucide-angular>
-              </a>
+      <div class="max-w-3xl mx-auto mb-10 text-center">
+        <h2 class="mb-3 leading-normal capitalize">Customers can easily receive new updates</h2>
+        <p class="text-gray-500 dark:text-dark-500 mb-7 text-16">Domiex enables seamless collaboration with clients and
+          team members.</p>
+        <div class="flex flex-wrap items-center justify-center gap-2">
+          <button type="button" class="btn btn-primary">
+            <lucide-angular name="apple" class="inline-block mb-0.5 mr-1 size-4"></lucide-angular>
+            Download For Mac
+          </button>
+          <button type="button" class="btn btn-sub-gray">Open Live Demos
+            <lucide-angular name="MoveRight" class="inline-block ml-1 mb-0.5 size-4"></lucide-angular>
+          </button>
+        </div>
+      </div>
+      <div class="grid grid-cols-12">
+        <div class="col-span-12 lg:col-span-10 lg:col-start-2">
+          <img ngSrc="assets/images/email/email.png" alt="" class="relative border-2 border-gray-200 rounded-lg dark:border-dark-800 -bottom-5 dark:hidden" data-aos="fade-up" data-aos-duration="2000" data-aos-offset="300"
+               height="714" width="1406">
+          <img ngSrc="assets/images/email/email-dark.png" alt="" class="relative border-2 border-gray-200 rounded-lg dark:border-dark-800 -bottom-5 hidden dark:block" data-aos="fade-up" data-aos-duration="2000" data-aos-offset="300"
+               height="737" width="1452">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="relative bg-gray-900 dark:bg-dark-900">
+    <div class="py-12 lg:py-20">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-12 gap-6">
+          <div class="col-span-12 xl:col-span-6">
+            <div class="max-w-lg">
+              <a href="javascript:void(0);" routerLink="/" title="logo"><img ngSrc="assets/images/logo-white.png" alt="" class="cursor-pointer h-7"
+                                                                             height="221" width="1211"></a>
+              <p class="mt-4 mb-6 text-gray-500 dark:text-dark-500 text-16">This email and any attachments may contain
+                confidential information. If you are not the intended recipient, please notify the sender immediately and
+                delete this email. Unauthorized use, disclosure, or copying of the contents is strictly prohibited.</p>
+              <div class="flex items-center gap-5">
+                <a href="javascript: void(0);" title="facebook" class="relative flex items-center justify-center transition duration-300 ease-linear hover:-translate-y-1 after:absolute after:inset-0 after:rounded-lg after:-rotate-45 after:bg-gray-800/50 dark:after:bg-dark-800/50 size-10 text-primary-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook-icon lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>                </a>
+                <a href="javascript: void(0);" title="dribbble" class="relative flex items-center justify-center text-pink-500 transition duration-300 ease-linear hover:-translate-y-1 after:absolute after:inset-0 after:rounded-lg after:-rotate-45 after:bg-gray-800/50 dark:after:bg-dark-800/50 size-10">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dribbble-icon lucide-dribbble"><circle cx="12" cy="12" r="10"/><path d="M19.13 5.09C15.22 9.14 10 10.44 2.25 10.94"/><path d="M21.75 12.84c-6.62-1.41-12.14 1-16.38 6.32"/><path d="M8.56 2.75c4.37 6 6 9.42 8 17.72"/></svg>                </a>
+                <a href="javascript: void(0);" title="twitter" class="relative flex items-center justify-center transition duration-300 ease-linear hover:-translate-y-1 text-sky-500 after:absolute after:inset-0 after:rounded-lg after:-rotate-45 after:bg-gray-800/50 dark:after:bg-dark-800/50 size-10">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter-icon lucide-twitter"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>                </a>
+                <a href="javascript: void(0);" title="youtube" class="relative flex items-center justify-center text-red-500 transition duration-300 ease-linear hover:-translate-y-1 after:absolute after:inset-0 after:rounded-lg after:-rotate-45 after:bg-gray-800/50 dark:after:bg-dark-800/50 size-10">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-youtube-icon lucide-youtube"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+                </a>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="col-span-12 md:col-span-4 xl:col-span-2">
-          <h6 class="mb-4 text-gray-200 dark:text-dark-200 text-17">Features</h6>
-          <ul class="space-y-5 text-16">
-            <li><a href="javascript:void(0);" class="link link-primary">Modern Inbox</a></li>
-            <li><a href="javascript:void(0);" class="link link-primary">Search</a></li>
-            <li><a href="javascript:void(0);" class="link link-primary">Send Later</a></li>
-            <li><a href="javascript:void(0);" class="link link-primary">All Features</a></li>
-            <li><a href="javascript:void(0);" class="link link-primary">Dashboards</a></li>
-          </ul>
-        </div>
-        <div class="col-span-12 md:col-span-4 xl:col-span-2">
-          <h6 class="mb-4 text-gray-200 text-17">Resource</h6>
-          <ul class="space-y-5 text-16">
-            <li><a href="javascript:void(0);" class="link link-primary">Blog</a></li>
-            <li><a href="javascript:void(0);" class="link link-primary">Help Center</a></li>
-            <li><a href="javascript:void(0);" class="link link-primary">Community</a></li>
-            <li><a href="javascript:void(0);" class="link link-primary">Video</a></li>
-            <li><a href="javascript:void(0);" class="link link-primary">FAQ's</a></li>
-            <li><a href="javascript:void(0);" class="link link-primary">Systems Status</a></li>
-            <li><a href="javascript:void(0);" class="link link-primary">API</a></li>
-          </ul>
-        </div>
-        <div class="col-span-12 md:col-span-4 xl:col-span-2">
-          <h6 class="mb-4 text-gray-200 text-17">Company</h6>
-          <ul class="space-y-5 text-16">
-            <li><a href="javascript:void(0);" class="link link-primary">About</a></li>
-            <li><a href="javascript:void(0);" class="link link-primary">Careers</a></li>
-            <li><a href="javascript:void(0);" class="link link-primary">Feedback</a></li>
-            <li><a href="javascript:void(0);" class="link link-primary">Contact Us</a></li>
-            <li><a href="javascript:void(0);" class="link link-primary">News</a></li>
-            <li><a href="javascript:void(0);" class="link link-primary">Privacy Policy</a></li>
-          </ul>
+          <div class="col-span-12 md:col-span-4 xl:col-span-2">
+            <h6 class="mb-4 font-bold text-gray-200 dark:text-dark-200 text-17">Features</h6>
+            <ul class="space-y-5 text-16">
+              <li><a href="javascript:void(0);" class="link link-primary">Modern Inbox</a></li>
+              <li><a href="javascript:void(0);" class="link link-primary">Search</a></li>
+              <li><a href="javascript:void(0);" class="link link-primary">Send Later</a></li>
+              <li><a href="javascript:void(0);" class="link link-primary">All Features</a></li>
+              <li><a href="javascript:void(0);" class="link link-primary">Dashboards</a></li>
+            </ul>
+          </div>
+          <div class="col-span-12 md:col-span-4 xl:col-span-2">
+            <h6 class="mb-4 font-bold text-gray-200 text-17">Resource</h6>
+            <ul class="space-y-5 text-16">
+              <li><a href="javascript:void(0);" class="link link-primary">Blog</a></li>
+              <li><a href="javascript:void(0);" class="link link-primary">Help Center</a></li>
+              <li><a href="javascript:void(0);" class="link link-primary">Community</a></li>
+              <li><a href="javascript:void(0);" class="link link-primary">Video</a></li>
+              <li><a href="javascript:void(0);" class="link link-primary">FAQ's</a></li>
+              <li><a href="javascript:void(0);" class="link link-primary">Systems Status</a></li>
+              <li><a href="javascript:void(0);" class="link link-primary">API</a></li>
+            </ul>
+          </div>
+          <div class="col-span-12 md:col-span-4 xl:col-span-2">
+            <h6 class="mb-4 font-bold text-gray-200 text-17">Company</h6>
+            <ul class="space-y-5 text-16">
+              <li><a href="javascript:void(0);" class="link link-primary">About</a></li>
+              <li><a href="javascript:void(0);" class="link link-primary">Careers</a></li>
+              <li><a href="javascript:void(0);" class="link link-primary">Feedback</a></li>
+              <li><a href="javascript:void(0);" class="link link-primary">Contact Us</a></li>
+              <li><a href="javascript:void(0);" class="link link-primary">News</a></li>
+              <li><a href="javascript:void(0);" class="link link-primary">Privacy Policy</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="container mx-auto px-4">
-    <div class="py-6 text-gray-500 dark:text-dark-500 text-16">
-      <p>
-        &copy; <span>{{ currentYear }}</span> Domiex. Crafted & Design by <a href="javascript:void(0);" class="font-medium text-gray-200 dark:text-dark-200 link">SRBThemes</a>
-      </p>
+    <div class="container mx-auto px-4">
+      <div class="py-6 text-gray-500 dark:text-dark-500 text-16">
+        <p>
+          &copy; <span>{{ currentYear }}</span> Domiex. Crafted & Design by <a href="javascript:void(0);" class="font-medium text-gray-200 dark:text-dark-200 link">SRBThemes</a>
+        </p>
+      </div>
     </div>
-  </div>
-</footer>
-<button (click)="toggleMode()" class="fixed flex items-center justify-center text-white ltr:right-0 rtl:left-0 bg-primary-500 ltr:rounded-l-md rtl:rounded-r-md size-12 top-1/2">
-  <lucide-angular name="Moon" class="inline-block size-5 dark:hidden" [class.hidden]="isDarkMode"></lucide-angular>
-  <lucide-angular name="Sun" class="hidden size-5 dark:inline-block" [class.hidden]="!isDarkMode"></lucide-angular>
-</button>
+  </footer>
+  <button (click)="toggleMode()" class="fixed flex items-center justify-center text-white ltr:right-0 rtl:left-0 bg-primary-500 ltr:rounded-l-md rtl:rounded-r-md size-12 top-1/2">
+    <lucide-angular name="Moon" class="inline-block size-5 dark:hidden" [class.hidden]="isDarkMode"></lucide-angular>
+    <lucide-angular name="Sun" class="hidden size-5 dark:inline-block" [class.hidden]="!isDarkMode"></lucide-angular>
+  </button>
+</section>
+
