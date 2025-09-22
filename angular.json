@@ -30,9 +30,6 @@
             ],
             "styles": [
               "node_modules/aos/dist/aos.css",
-              "src/assets/css/plugins.css",
-              "src/assets/css/icons.css",
-              "src/assets/css/tailwind.css",
               "src/styles.css"
             ]
           },

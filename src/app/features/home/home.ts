@@ -7,7 +7,14 @@ import {
   Renderer2,
 } from '@angular/core';
 import { SeoService } from '../../core/services/seo.service';
-import {Fan, FanIcon, GalleryVerticalEndIcon, LucideAngularModule, LucideMoveRight} from 'lucide-angular';
+import {
+  Apple,
+  AppleIcon,
+  Fan,
+  GalleryVerticalEndIcon,
+  LucideAngularModule, LucideApple, LucideChevronDown, LucideChevronUp, LucideMoon,
+  LucideMoveRight, LucideSun
+} from 'lucide-angular';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 import AOS from 'aos';
 import { RouterLink } from '@angular/router';
@@ -22,6 +29,10 @@ export class Home implements OnInit {
   readonly fan = Fan;
   readonly MoveRight = LucideMoveRight;
   readonly galleryVerticalEnd = GalleryVerticalEndIcon;
+  readonly moon = LucideMoon;
+  readonly sun = LucideSun;
+  readonly chevronDown = LucideChevronDown;
+  readonly chevronUp = LucideChevronUp;
 
   year: number;
   isDarkMode: boolean = false;
