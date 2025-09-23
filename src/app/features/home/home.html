@@ -1,31 +1,4 @@
 <section class="w-full">
-  <div>
-    <header class="landing-navbar h-20 top-0 [&.scroll-sticky]:top-0 [&.scroll-sticky]:shadow-gray-200/50 [&.scroll-sticky]:shadow-lg [&.scroll-sticky]:bg-white dark:[&.scroll-sticky]:shadow-dark-850 dark:[&.scroll-sticky]:bg-dark-900">
-      <div class="container mx-auto px-4 flex items-center justify-between w-full gap-5">
-        <a routerLink="/" title="logo">
-          <img src="assets/images/main-logo.png" alt="" class="inline-block h-7 dark:hidden">
-          <img src="assets/images/logo-white.png" alt="" class="hidden h-7 dark:inline-block">
-        </a>
-        <div class="navbar-collapase ltr:mr-auto rtl:ml-auto" [ngClass]="{ 'hidden xl:flex': !isMenuOpen }">
-          <div class="flex flex-col xl:flex-row xl:items-center *:py-3 xl:py-0 xl:*:px-3 *:inline-block *:text-16 *:tracking-wide *:font-medium">
-            <a href="javascript:void(0);" (click)="scrollToSection('services')" [class.active]="currentSection === 'services'" class="leading-normal [&.active]:text-primary-500 hover:text-primary-500 transition duration-300 ease-linear">Service</a>
-            <a href="javascript:void(0);" (click)="scrollToSection('pricing')" [class.active]="currentSection === 'pricing'" class="leading-normal [&.active]:text-primary-500 hover:text-primary-500 transition duration-300 ease-linear">Pricing</a>
-            <a href="javascript:void(0);" (click)="scrollToSection('features')" [class.active]="currentSection === 'features'" class="leading-normal [&.active]:text-primary-500 hover:text-primary-500 transition duration-300 ease-linear">Features</a>
-            <a href="javascript:void(0);" (click)="scrollToSection('templates')" [class.active]="currentSection === 'templates'" class="leading-normal [&.active]:text-primary-500 hover:text-primary-500 transition duration-300 ease-linear">Templates</a>
-            <a href="javascript:void(0);" (click)="scrollToSection('faq')" [class.active]="currentSection === 'faq'" class="leading-normal [&.active]:text-primary-500 hover:text-primary-500 transition duration-300 ease-linear">FAQ's</a>
-            <a href="javascript:void(0);" (click)="scrollToSection('updates')" [class.active]="currentSection === 'updates'" class="leading-normal [&.active]:text-primary-500 hover:text-primary-500 transition duration-300 ease-linear">Updates</a>
-          </div>
-        </div>
-        <button (click)="toggleMenu()" type="button" class="rounded-full xl:ltr:ml-0 xl:rtl:mr-0 ltr:ml-auto rtl:mr-auto navbar-toggle btn btn-sub-sky btn-icon xl:!hidden">
-          <i [ngClass]="isMenuOpen ? 'ri-close-line' : 'ri-menu-2-line'" class="text-lg"></i>
-        </button>
-        <div>
-          <button routerLink="/auth-signin-basic" type="button" class="btn btn-active-gray">Sign In</button>
-          <button type="button" class="hidden btn btn-sub-primary md:inline-block">Get for free</button>
-        </div>
-      </div>
-    </header>
-  </div>
   <section class="relative pt-40 pb-20 overflow-hidden xl:pb-48 2xl:pt-50">
     <div class="container mx-auto px-4">
       <div class="grid grid-cols-12 lg:gap-x-16">
@@ -45,7 +18,7 @@
           <div>
             <img ngSrc="assets/images/email/email.png" alt="" class="relative dark:hidden xl:scale-[1.8] object-cover border border-gray-200 dark:border-dark-800 rounded-lg ltr:xl:-right-44 rtl:xl:-left-44 xl:top-16 2xl:top-auto"
                  height="742" width="1454">
-            <img ngSrc="assets/images/email/email-dark.png.png" alt="" class="relative hidden dark:block xl:scale-[1.8] object-cover border border-gray-200 dark:border-dark-800 rounded-lg ltr:xl:-right-44 rtl:xl:-left-44 xl:top-16 2xl:top-auto"
+            <img ngSrc="assets/images/email/email-dark.png" alt="" class="relative hidden dark:block xl:scale-[1.8] object-cover border border-gray-200 dark:border-dark-800 rounded-lg ltr:xl:-right-44 rtl:xl:-left-44 xl:top-16 2xl:top-auto"
                  height="737" width="1452">
           </div>
         </div>

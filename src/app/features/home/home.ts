@@ -3,17 +3,14 @@ import {
   inject,
   OnInit,
   ElementRef,
-  HostListener,
   Renderer2,
 } from '@angular/core';
 import { SeoService } from '../../core/services/seo.service';
 import {
-  Apple,
-  AppleIcon,
   Fan,
   GalleryVerticalEndIcon,
-  LucideAngularModule, LucideApple, LucideChevronDown, LucideChevronUp, LucideMoon,
-  LucideMoveRight, LucideSun
+  LucideAngularModule, LucideChevronDown, LucideChevronUp, LucideMoon,
+  LucideMoveRight, LucideSun, User
 } from 'lucide-angular';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 import AOS from 'aos';
@@ -36,10 +33,7 @@ export class Home implements OnInit {
 
   year: number;
   isDarkMode: boolean = false;
-  private stickyClass = 'scroll-sticky';
   currentYear: number = new Date().getFullYear();
-  private threshold = 100;
-  currentSection: string = 'services';
 
   constructor(
     private el: ElementRef,
@@ -51,7 +45,6 @@ export class Home implements OnInit {
   private seoService = inject(SeoService);
 
   ngOnInit(): void {
-    this.updateStickyClass();
     AOS.init({
       duration: 2000, // Set default duration or override with data attributes
       once: true, // Choose whether animation should happen only once
@@ -68,29 +61,9 @@ export class Home implements OnInit {
     });
   }
 
-  scrollToSection(section: string) {
-    const element = document.getElementById(section);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      this.currentSection = section;
-    }
-  }
 
-  private updateStickyClass(): void {
-    const offset = window.pageYOffset || document.documentElement.scrollTop;
-    if (offset > this.threshold) {
-      this.renderer.addClass(
-        this.el.nativeElement.querySelector('header'),
-        this.stickyClass
-      );
-    } else {
-      this.renderer.removeClass(
-        this.el.nativeElement.querySelector('header'),
-        this.stickyClass
-      );
-    }
-  }
 
+  /**Esto es lo del acordion de las preguntas FAQ**/
   selected: number | null = null;
 
   accordionItems = [
@@ -130,6 +103,7 @@ export class Home implements OnInit {
     this.selected = this.selected === index ? null : index;
   }
 
+  /**Se utiliza para cambiar de modo claro a modo oscuro**/
   toggleMode() {
     const modeElement = document.querySelector('[data-mode]');
     if (modeElement) {
@@ -155,37 +129,4 @@ export class Home implements OnInit {
   isArray(content: string | string[]): content is string[] {
     return Array.isArray(content);
   }
-  isMenuOpen = false;
-
-  toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
-  }
-  private detectCurrentSection(): void {
-    const sections = [
-      'services',
-      'pricing',
-      'features',
-      'templates',
-      'faq',
-      'updates',
-    ];
-    let currentSection = this.currentSection;
-
-    for (const section of sections) {
-      const element = document.getElementById(section);
-      if (element) {
-        const rect = element.getBoundingClientRect();
-        if (
-          rect.top <= window.innerHeight * 0.5 &&
-          rect.bottom >= window.innerHeight * 0.5
-        ) {
-          currentSection = section;
-          break;
-        }
-      }
-    }
-
-    this.currentSection = currentSection;
-  }
-
 }
