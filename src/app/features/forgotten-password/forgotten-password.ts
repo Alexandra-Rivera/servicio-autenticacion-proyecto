@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import {LucideAngularModule, LucideMoveRight} from 'lucide-angular';
+import {LucideAngularModule, LucideMoveRight, LucideUser} from 'lucide-angular';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Footer} from '../../shared/components/footer/footer';
 
@@ -13,4 +13,5 @@ import {Footer} from '../../shared/components/footer/footer';
 })
 export class ForgottenPassword {
   readonly moveRight = LucideMoveRight;
+  readonly user = LucideUser;
 }
