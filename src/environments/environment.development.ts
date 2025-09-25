@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-    SERVER_URL: "https://donpollo123.duckdns.org/api/auth",
+    SERVER_URL: "https://accounts.beckysflorist.site/api/auth",
 };
