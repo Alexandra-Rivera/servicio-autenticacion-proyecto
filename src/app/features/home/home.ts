@@ -58,6 +58,11 @@ export class Home implements OnInit {
         description: 'Bienvenido al módulo de autenticación y gestión de usuarios',
       }
     });
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   }
 
 
