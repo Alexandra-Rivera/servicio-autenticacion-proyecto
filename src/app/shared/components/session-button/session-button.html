@@ -1,6 +1,7 @@
 <button class="btn btn-icon">
     <auth>
-        <div valid>
+        <div valid routerLink="/logout" class="btn-icon">
+          <lucide-angular [img]="logOut"></lucide-angular>
             <span routerLink="/logout">Cerrar sesión</span>
         </div>
         <div invalid routerLink="/login" (click)="backToTop()" class="btn-icon">
@@ -8,9 +9,9 @@
             <span>Iniciar sesión</span>
         </div>
     </auth>
-    <!-- @if (isValid()) {
-        <span routerLink="/logout">Cerrar sesión</span>
-    } @else {
-        <span routerLink="/login">Iniciar sesión</span>
-    } -->
+<!--    @if (isValid()) {-->
+<!--        <span routerLink="/logout">Cerrar sesión</span>-->
+<!--    } @else {-->
+<!--        <span routerLink="/login">Iniciar sesión</span>-->
+<!--    } -->
 </button>
