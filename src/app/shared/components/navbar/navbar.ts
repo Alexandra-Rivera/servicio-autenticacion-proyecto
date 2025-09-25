@@ -1,5 +1,5 @@
 import {Component, ElementRef, HostListener, OnInit, Renderer2} from '@angular/core';
-import {NavigationEnd, Router, RouterLink} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router, RouterLink} from '@angular/router';
 import AOS from 'aos';
 import { SessionButton } from '../session-button/session-button';
 import {NgClass, NgOptimizedImage} from '@angular/common';
@@ -12,7 +12,7 @@ import {filter} from 'rxjs';
   styleUrl: './navbar.css'
 })
 export class Navbar implements OnInit {
-  isLoginRoute: boolean = false;
+  currentRoute: string = "/";
 
   currentSection: string = '';
   private threshold = 100;
@@ -31,11 +31,13 @@ export class Navbar implements OnInit {
       once: true, // Choose whether animation should happen only once
     });
 
+    // Suscribirse a los eventos del router
     this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd),
+      filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
-      this.isLoginRoute = event.urlAfterRedirects === '/login' || event.url === '/login';
-    })
+      // Verificar si la URL actual es la del "Home"
+      this.currentRoute = event.url;
+    });
   }
 
   @HostListener('window:scroll')

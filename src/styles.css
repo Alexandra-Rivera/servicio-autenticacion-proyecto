@@ -5,11 +5,11 @@
 @import "tailwindcss";
 
 @layer components {
-  .landing-navbar {
+  .light-navbar {
     @apply h-20 top-0 flex sticky z-50 bg-white shadow-lg shadow-gray-200/50 dark:shadow-dark-800 dark:bg-dark-900;
   }
 
-  .landing-navbar-login {
+  .dark-navbar {
     @apply h-20 top-0 flex sticky z-50 shadow-slate-900 bg-dark-900 px-5;
   }
   .link {

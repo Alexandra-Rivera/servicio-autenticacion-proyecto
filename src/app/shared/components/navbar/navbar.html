@@ -1,74 +1,60 @@
- <header [ngClass]="isLoginRoute ? 'landing-navbar-login': 'landing-navbar'">
-   @if(isLoginRoute) {
-     <div class="container mx-auto flex items-center justify-between">
-       <div class="flex items-center gap-5">
-         <a routerLink="/" title="logo">
-           <img ngSrc="assets/images/logo-white.png" alt="" class="object-contain h-7 inline-block w-full" height="221" width="1211">
-         </a>
-         <div class="navbar-collapase ltr:mr-auto rtl:ml-auto" [ngClass]="{ 'hidden xl:flex': !isMenuOpen }">
-<!--           <div class="flex flex-col xl:flex-row xl:items-center *:py-3 xl:py-0 xl:*:px-3 *:inline-block *:text-16 *:tracking-wide *:font-medium">-->
-<!--             <a href="javascript:void(0);" (click)="scrollToSection('services')" [class.active]="currentSection === 'services'" class="text-white [&.active]:text-purple-500 hover:text-purple-500 transition duration-300 ease-linear">Service</a>-->
-<!--             <a href="javascript:void(0);" (click)="scrollToSection('pricing')" [class.active]="currentSection === 'pricing'" class="text-white [&.active]:text-purple-500 hover:text-purple-500 transition duration-300 ease-linear">Pricing</a>-->
-<!--             <a href="javascript:void(0);" (click)="scrollToSection('features')" [class.active]="currentSection === 'features'" class="text-white [&.active]:text-purple-500 hover:text-purple-500 transition duration-300 ease-linear">Features</a>-->
-<!--             <a href="javascript:void(0);" (click)="scrollToSection('templates')" [class.active]="currentSection === 'templates'" class="text-white [&.active]:text-purple-500 hover:text-purple-500 transition duration-300 ease-linear">Templates</a>-->
-<!--             <a href="javascript:void(0);" (click)="scrollToSection('faq')" [class.active]="currentSection === 'faq'" class="text-white [&.active]:text-purple-500 hover:text-purple-500 transition duration-300 ease-linear">FAQ's</a>-->
-<!--             <a href="javascript:void(0);" (click)="scrollToSection('updates')" [class.active]="currentSection === 'updates'" class="text-white [&.active]:text-purple-500 hover:text-purple-500 transition duration-300 ease-linear">Updates</a>-->
-<!--           </div>-->
-         </div>
-         <button (click)="toggleMenu()" type="button" class="rounded-full xl:ltr:ml-0 xl:rtl:mr-0 ltr:ml-auto rtl:mr-auto navbar-toggle btn btn-sub-sky btn-icon xl:!hidden">
-           <i [ngClass]="isMenuOpen ? 'ri-close-line' : 'ri-menu-2-line'" class="text-lg"></i>
-         </button>
-       </div>
-       <div class="flex items-center gap-3">
-         <!--        <button routerLink="/auth-signin-basic" type="button" class="btn btn-active-gray">Sign In</button>-->
-<!--         <session-button class="btn-active-white"></session-button>-->
-         <p class="hidden text-white md:block">¿Aún no tienes una cuenta? </p>
-         <button type="button" class="hidden btn btn-sub-primary md:inline-block">Registrarme</button>
-         <button class="text-purple-300 focus:bg-purple-200 focus:text-purple-500 rounded-md md:hidden">Registrarme</button>
-       </div>
-     </div>
-   } @else {
-     <div class="container mx-auto flex items-center justify-between">
-       <div class="flex items-center gap-5">
-         <a routerLink="/" title="logo">
-           <img ngSrc="assets/images/main-logo.png" alt="" class="object-contain inline-block h-7 dark:hidden w-full"
-                height="221" width="1211">
-           <img ngSrc="assets/images/logo-white.png" alt="" class="object-contain hidden h-7 dark:inline-block w-full"
-                height="221" width="1211">
-         </a>
-         <div class="navbar-collapase ltr:mr-auto rtl:ml-auto" [ngClass]="{ 'hidden xl:flex': !isMenuOpen }">
-           <div
-             class="flex flex-col xl:flex-row xl:items-center *:py-3 xl:py-0 xl:*:px-3 *:inline-block *:text-16 *:tracking-wide *:font-medium">
-             <a href="javascript:void(0);" (click)="scrollToSection('services')"
-                [class.active]="currentSection === 'services'"
-                class="leading-normal [&.active]:text-purple-500 hover:text-purple-500 transition duration-300 ease-linear">Service</a>
-             <a href="javascript:void(0);" (click)="scrollToSection('pricing')"
-                [class.active]="currentSection === 'pricing'"
-                class="leading-normal [&.active]:text-purple-500 hover:text-purple-500 transition duration-300 ease-linear">Pricing</a>
-             <a href="javascript:void(0);" (click)="scrollToSection('features')"
-                [class.active]="currentSection === 'features'"
-                class="leading-normal [&.active]:text-purple-500 hover:text-purple-500 transition duration-300 ease-linear">Features</a>
-             <a href="javascript:void(0);" (click)="scrollToSection('templates')"
-                [class.active]="currentSection === 'templates'"
-                class="leading-normal [&.active]:text-purple-500 hover:text-purple-500 transition duration-300 ease-linear">Templates</a>
-             <a href="javascript:void(0);" (click)="scrollToSection('faq')" [class.active]="currentSection === 'faq'"
-                class="leading-normal [&.active]:text-purple-500 hover:text-purple-500 transition duration-300 ease-linear">FAQ's</a>
-             <a href="javascript:void(0);" (click)="scrollToSection('updates')"
-                [class.active]="currentSection === 'updates'"
-                class="leading-normal [&.active]:text-purple-500 hover:text-purple-500 transition duration-300 ease-linear">Updates</a>
-           </div>
-         </div>
-         <button (click)="toggleMenu()" type="button"
-                 class="rounded-full xl:ltr:ml-0 xl:rtl:mr-0 ltr:ml-auto rtl:mr-auto navbar-toggle btn btn-sub-sky btn-icon xl:!hidden">
-           <i [ngClass]="isMenuOpen ? 'ri-close-line' : 'ri-menu-2-line'" class="text-lg"></i>
-         </button>
-       </div>
+<header [ngClass]="currentRoute === '/' ? 'light-navbar' : 'dark-navbar'">
+  @if(currentRoute === "/") {
+    <div class="container mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a routerLink="/" title="logo">
+          <img ngSrc="assets/images/main-logo.png" alt="" class="object-contain inline-block h-7 dark:hidden w-full"
+               height="221" width="1211">
+          <img ngSrc="assets/images/logo-white.png" alt="" class="object-contain hidden h-7 dark:inline-block w-full"
+               height="221" width="1211">
+        </a>
+        <div class="navbar-collapase ltr:mr-auto rtl:ml-auto" [ngClass]="{ 'hidden xl:flex': !isMenuOpen }">
+          <div
+            class="flex flex-col xl:flex-row xl:items-center *:py-3 xl:py-0 xl:*:px-3 *:inline-block *:text-16 *:tracking-wide *:font-medium">
+            <a href="javascript:void(0);" (click)="scrollToSection('services')"
+               [class.active]="currentSection === 'services'"
+               class="leading-normal [&.active]:text-purple-500 hover:text-purple-500 transition duration-300 ease-linear">Service</a>
+            <a href="javascript:void(0);" (click)="scrollToSection('pricing')"
+               [class.active]="currentSection === 'pricing'"
+               class="leading-normal [&.active]:text-purple-500 hover:text-purple-500 transition duration-300 ease-linear">Pricing</a>
+            <a href="javascript:void(0);" (click)="scrollToSection('features')"
+               [class.active]="currentSection === 'features'"
+               class="leading-normal [&.active]:text-purple-500 hover:text-purple-500 transition duration-300 ease-linear">Features</a>
+            <a href="javascript:void(0);" (click)="scrollToSection('templates')"
+               [class.active]="currentSection === 'templates'"
+               class="leading-normal [&.active]:text-purple-500 hover:text-purple-500 transition duration-300 ease-linear">Templates</a>
+            <a href="javascript:void(0);" (click)="scrollToSection('faq')" [class.active]="currentSection === 'faq'"
+               class="leading-normal [&.active]:text-purple-500 hover:text-purple-500 transition duration-300 ease-linear">FAQ's</a>
+            <a href="javascript:void(0);" (click)="scrollToSection('updates')"
+               [class.active]="currentSection === 'updates'"
+               class="leading-normal [&.active]:text-purple-500 hover:text-purple-500 transition duration-300 ease-linear">Updates</a>
+          </div>
+        </div>
+        <button (click)="toggleMenu()" type="button"
+                class="rounded-full xl:ltr:ml-0 xl:rtl:mr-0 ltr:ml-auto rtl:mr-auto navbar-toggle btn btn-sub-sky btn-icon xl:!hidden">
+          <i [ngClass]="isMenuOpen ? 'ri-close-line' : 'ri-menu-2-line'" class="text-lg"></i>
+        </button>
+      </div>
 
-       <div class="flex gap-3">
-         <!--        <button routerLink="/auth-signin-basic" type="button" class="btn btn-active-gray">Sign In</button>-->
-         <session-button class="btn-active-gray"></session-button>
-         <button type="button" class="hidden btn btn-sub-primary md:inline-block">Registrarme</button>
-       </div>
-     </div>
-   }
-  </header>
+      <div class="flex gap-3">
+        <!--        <button routerLink="/auth-signin-basic" type="button" class="btn btn-active-gray">Sign In</button>-->
+        <session-button class="btn-active-gray"></session-button>
+        <button type="button" class="hidden btn btn-sub-primary md:inline-block">Registrarme</button>
+      </div>
+    </div>
+
+  } @else {
+    <div class="container mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a routerLink="/" title="logo">
+          <img ngSrc="assets/images/logo-white.png" alt="" class="object-contain h-7 inline-block w-full" height="221" width="1211">
+        </a>
+      </div>
+      <div [ngClass]="currentRoute !== '/login' ? 'hidden': 'flex items-center gap-3'">
+        <p class="hidden text-white md:block">¿Aún no tienes una cuenta? </p>
+        <button type="button" class="hidden btn btn-sub-primary md:inline-block">Registrarme</button>
+        <button class="text-purple-300 focus:bg-purple-200 focus:text-purple-500 rounded-md md:hidden">Registrarme</button>
+      </div>
+    </div>
+  }
+</header>

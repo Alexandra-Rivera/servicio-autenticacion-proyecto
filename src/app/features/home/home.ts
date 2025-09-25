@@ -26,18 +26,12 @@ export class Home implements OnInit {
   readonly fan = Fan;
   readonly MoveRight = LucideMoveRight;
   readonly galleryVerticalEnd = GalleryVerticalEndIcon;
-  readonly moon = LucideMoon;
-  readonly sun = LucideSun;
   readonly chevronDown = LucideChevronDown;
   readonly chevronUp = LucideChevronUp;
 
   year: number;
-  isDarkMode: boolean = false;
 
-  constructor(
-    private el: ElementRef,
-    private renderer: Renderer2
-  ) {
+  constructor() {
     this.year = new Date().getFullYear();
   }
 
@@ -65,9 +59,7 @@ export class Home implements OnInit {
     });
   }
 
-
-
-  /**Esto es lo del acordion de las preguntas FAQ**/
+  /*Esto es lo del acordion de las preguntas FAQ*/
   selected: number | null = null;
 
   accordionItems = [
@@ -105,28 +97,6 @@ export class Home implements OnInit {
 
   toggleItem(index: number): void {
     this.selected = this.selected === index ? null : index;
-  }
-
-  /**Se utiliza para cambiar de modo claro a modo oscuro**/
-  toggleMode() {
-    const modeElement = document.querySelector('[data-mode]');
-    if (modeElement) {
-      const currentMode = modeElement.getAttribute('data-mode');
-      const newMode = currentMode === 'light' ? 'dark' : 'light';
-
-      // Set the new mode in the data attribute
-      modeElement.setAttribute('data-mode', newMode);
-
-      // Update the isDarkMode property
-      this.isDarkMode = newMode === 'dark';
-
-      // Optionally toggle a class on the body
-      if (this.isDarkMode) {
-        this.renderer.addClass(document.body, 'dark');
-      } else {
-        this.renderer.removeClass(document.body, 'dark');
-      }
-    }
   }
 
   // Helper method to ensure content is an array for ngFor

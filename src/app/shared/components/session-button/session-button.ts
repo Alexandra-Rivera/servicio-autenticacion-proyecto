@@ -1,10 +1,8 @@
 import { ChangeDetectorRef, Component, inject, OnInit, signal } from '@angular/core';
-import {NavigationEnd, Router, RouterLink} from '@angular/router';
+import {RouterLink} from '@angular/router';
 import { Auth } from 'colibrihub-shared-components';
 import { ValidationService } from 'colibrihub-shared-services';
-import {LucideAngularModule, LucideCircleUserRound, User} from 'lucide-angular';
-import {filter} from 'rxjs';
-import {NgClass} from '@angular/common';
+import {LucideAngularModule, LucideCircleUserRound, LucideLogOut, User} from 'lucide-angular';
 
 @Component({
   selector: 'session-button',
@@ -14,13 +12,11 @@ import {NgClass} from '@angular/common';
 })
 export class SessionButton implements OnInit {
   readonly user = LucideCircleUserRound;
+  readonly logOut = LucideLogOut;
 
   private readonly validateService = inject(ValidationService);
   private readonly cdr = inject(ChangeDetectorRef);
   protected isValid = signal(false);
-
-  constructor(private router: Router) {
-  }
 
   ngOnInit(): void {
     this.validateService.validate().subscribe({
