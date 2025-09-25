@@ -10,7 +10,7 @@
   }
 
   .landing-navbar-login {
-    @apply h-20 top-0 flex sticky z-50 shadow-slate-900 bg-dark-900;
+    @apply h-20 top-0 flex sticky z-50 shadow-slate-900 bg-dark-900 px-5;
   }
   .link {
     @apply text-gray-500;
