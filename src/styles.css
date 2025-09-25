@@ -1,2 +1,226 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
 @import "tailwindcss";
+
+@layer components {
+  .landing-navbar {
+    @apply h-20 top-0 flex sticky z-50 bg-white shadow-lg shadow-gray-200/50 dark:shadow-dark-800 dark:bg-dark-900;
+  }
+
+  .landing-navbar-login {
+    @apply h-20 top-0 flex sticky z-50 shadow-slate-900 bg-dark-900;
+  }
+  .link {
+    @apply text-gray-500;
+  }
+  .link-primary {
+    @apply hover:text-purple-500 transition duration-[0.5s] ease-in-out;
+  }
+
+  .card {
+    @apply border border-gray-500/20 p-5 rounded-lg shadow-lg/8;
+  }
+
+  .btn {
+    @apply inline-block cursor-pointer py-[0.5625rem] px-6 text-center border rounded-md border-transparent bg-transparent text-sm transition-all duration-200 ease-linear;
+
+    &[disabled] {
+      @apply cursor-default;
+    }
+  }
+  .btn-icon {
+    @apply flex items-center justify-center gap-1;
+  }
+  .btn-primary {
+    @apply bg-purple-500 hover:bg-purple-600 text-white rounded-md;
+  }
+  .btn-sub-primary {
+    @apply font-heading bg-purple-100 text-purple-700 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110;
+  }
+
+  .btn-active-gray {
+    @apply text-gray-500 hover:border hover:border-gray-500 hover:bg-gray-200 transition duration-[0.3s] rounded-md;
+  }
+
+  .btn-active-white {
+    @apply text-white border border-gray-500 hover:bg-gray-500 rounded-md;
+  }
+
+  .btn-sub-gray {
+    @apply rounded-lg bg-gray-100 text-gray-500 hover:bg-gray-500/20;
+  }
+
+  .btn-outline-gray {
+    @apply hover:bg-gray-800 hover:text-white transition duration-[0.3s];
+  }
+
+  .badge {
+    @apply rounded-md text-11 p-1 font-sans h-[1.6rem] w-[5rem] flex items-center justify-center;
+  }
+
+  .badge-pink {
+    @apply bg-pink-100 text-pink-500 border border-pink-300;
+  }
+
+  .lucide-corner-down-right {
+    @apply inline-block text-green-500 fill-green-500/10 size-4;
+  }
+
+  .lucide-x {
+    @apply inline-block text-gray-500 fill-gray-100 dark:text-dark-500 dark:fill-dark-850 size-4;
+  }
+}
+
+@layer base {
+  body {
+    @apply text-base font-body bg-body group-data-[layout=boxed]:m-8 group-data-[layout=boxed]:bg-sky-500 dark:bg-dark-950 dark:text-dark-100;
+  }
+
+  :is(h1, h2, h3, h4, h5, h6) {
+    @apply font-heading;
+    font-weight: var(--font-weight-semibold);
+  }
+
+  h1 {
+    @apply text-4xl;
+  }
+
+  h2 {
+    @apply text-3xl;
+  }
+
+  h3 {
+    @apply text-2xl;
+  }
+
+  h4 {
+    @apply text-xl;
+  }
+
+  h5 {
+    @apply text-lg;
+  }
+
+  h6 {
+    @apply text-base;
+  }
+}
+
+@theme {
+  /* //font-family */
+  --font-sans:                    "Inter", sans-serif;
+  --font-body:                    "Inter", sans-serif;
+  --font-heading:                 "Inter", sans-serif;
+  --font-remix:                   remixicon;
+  --font-roboto-slab:             "Roboto Slab", sans-serif;
+  /* //spacing */
+  --spacing-sidebar:              15rem;
+  --spacing-sidebar-medium:       10rem;
+  --spacing-sidebar-small:        4.6875rem;
+  --spacing-sidebar-boxed:        2rem;
+  --spacing-topbar:               4.6875rem;
+  --spacing-sidebar-icon:         4.375rem;
+  --spacing-38:                   2.375rem;
+  --spacing-42:                   2.625rem;
+  /* // --spacing-5.5:               1.4063rem; */
+  --spacing-btn-icon:             2.5rem;
+  --spacing-space:                1.25rem;
+  /* //font-size */
+  --text-11:                      0.6875rem;
+  --text-13:                      0.8125rem;
+  --text-14:                      0.875rem;
+  --text-15:                      0.9375rem;
+  --text-base:                    0.9063rem;
+  --text-16:                      1rem;
+  --text-17:                      1.0625rem;
+  --text-card-title:              0.9375rem;
+  /* //colors */
+  --color-body-invoice:           oklch(12.29% 0.0611 278.48);
+  --color-muted-invoice:          oklch(58.87% 0.0549 293.56);
+  --color-body:                   var(--color-white);
+  --color-primary-50:             oklch(97.17% 0.0144 244.71);
+  --color-primary-100:            oklch(93.75% 0.0317 246.7);
+  --color-primary-200:            oklch(89.16% 0.0566 245.22);
+  --color-primary-300:            oklch(82.52% 0.0944 244.01);
+  --color-primary-400:            oklch(74.02% 0.1408 248.22);
+  --color-primary-500:            oklch(65.26% 0.1828 255.54);
+  --color-primary-600:            oklch(59.52% 0.1981 259.78);
+  --color-primary-700:            oklch(51.28% 0.213 262.22);
+  --color-primary-800:            oklch(44.5% 0.1777 262.99);
+  --color-primary-900:            oklch(39.34% 0.1351 262.6);
+  --color-primary-950:            oklch(29.24% 0.0856 263.87);
+  /* //dark mode colors */
+  --color-dark-50:                var(--color-slate-50);
+  --color-dark-100:               var(--color-slate-100);
+  --color-dark-200:               var(--color-slate-200);
+  --color-dark-300:               var(--color-slate-300);
+  --color-dark-400:               var(--color-slate-400);
+  --color-dark-500:               var(--color-slate-500);
+  --color-dark-600:               var(--color-slate-600);
+  --color-dark-700:               var(--color-slate-700);
+  --color-dark-800:               var(--color-slate-800);
+  --color-dark-850:               oklch(23.13% 0.0399 270.37);
+  --color-dark-900:               var(--color-slate-900);
+  --color-dark-950:               var(--color-slate-950);
+
+  /* //border-radius */
+  --radius-modern:                30% 70% 70% 30% / 30% 30% 70% 70%;
+  --radius-creative:              47% 53% 70% 30% / 49% 63% 37% 51%;
+
+  --ease-effect:                  cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* animation */
+  --animate-shimmer: shimmer 3s ease-out infinite;
+  --animate-jvm-line: jvm-line 10s linear forwards infinite;
+  --animate-marquee: marquee 15s linear forwards infinite;
+  --animate-float: float 5s ease-in-out infinite;
+  --animate-slide-up: slideUp 0.5s ease-out;
+
+  @keyframes shimmer {
+    100% {
+      transform: translate(0);
+      opacity: 0;
+    }
+  }
+
+  @keyframes jvm-line {
+    from {
+      stroke-dashoffset: 250;
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes slideUp {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+}
+

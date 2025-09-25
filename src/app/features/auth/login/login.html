@@ -10,13 +10,7 @@
         <div class="md:p-10 card-body">
           <h4 class="mb-2 leading-relaxed text-xl font-bold text-center text-white">Bienvenid@!</h4>
           <p class="mb-5 text-center text-white/75">
-            ¿Aún no tienes una cuenta?
-            <a
-              href="javascript:void(0);"
-              routerLink="/auth-signup-modern"
-              class="cursor-pointer transform transition duration-500 hover:scale-125 underline hover:text-green-500 hover:font-bold font-medium text-white"
-              >Sign Up</a
-            >
+            Ingresar a Sistema de Facturación
           </p>
           <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
             <!-- Alert Section -->
@@ -39,7 +33,7 @@
                     type="text"
                     id="username"
                     formControlName="username"
-                    class="text-white border-none outline-none p-2 rounded-md w-full form-input bg-white/10 placeholder:text-white/75 focus:bg-pink-600/10 focus:border-pink-500 focus:ring-1 focus:ring-pink-500"
+                    class="text-white border-none outline-none p-2 rounded-md w-full form-input bg-white/10 placeholder:text-white/75 focus:bg-purple-600/10 focus:border-purple-500 focus:ring-1 focus:ring-purple-500"
                     placeholder="Ingresa tu username"
                   />
                 </div>
@@ -53,7 +47,7 @@
                       [type]="showPassword ? 'text' : 'password'"
                       id="password"
                       formControlName="password"
-                      class="text-white border-none outline-none p-2 rounded-md w-full form-input bg-white/10 placeholder:text-white/75 focus:bg-pink-600/10 focus:border-pink-500 focus:ring-1 focus:ring-pink-500"
+                      class="text-white border-none outline-none p-2 rounded-md w-full form-input bg-white/10 placeholder:text-white/75 focus:bg-purple-600/10 focus:border-purple-500 focus:ring-1 focus:ring-purple-500"
                       placeholder="Ingresa tu password"
                     />
                     <button
@@ -84,7 +78,7 @@
               <div class="col-span-12">
                 <button
                   type="submit"
-                  class="w-full bg-linear-65 from-purple-500 to-pink-500 hover:bg-pink-300 text-white p-2 rounded-md cursor-pointer transition duration-300 ease-linear btn font-medium"
+                  class="w-full btn-icon bg-linear-65 bg-purple-500 text-white p-2 rounded-md cursor-pointer transition duration-300 ease-linear btn font-medium"
                 >
                   Sign In
                 </button>
