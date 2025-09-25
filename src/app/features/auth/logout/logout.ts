@@ -22,7 +22,7 @@ export class Logout implements OnInit {
     private readonly seoService: SeoService
   ) {}
 
-  protected logout(): void {
+  logout(): void {
     this.authService.logout().subscribe({
       next: () => {
         this.route.queryParamMap.subscribe((params) => {

@@ -14,11 +14,11 @@ import {
 } from 'lucide-angular';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 import AOS from 'aos';
-import { RouterLink } from '@angular/router';
+import {Footer} from '../../shared/components/footer/footer';
 
 @Component({
   selector: 'app-home',
-  imports: [LucideAngularModule, CommonModule, RouterLink, NgOptimizedImage],
+  imports: [LucideAngularModule, CommonModule, NgOptimizedImage, Footer],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
@@ -33,7 +33,6 @@ export class Home implements OnInit {
 
   year: number;
   isDarkMode: boolean = false;
-  currentYear: number = new Date().getFullYear();
 
   constructor(
     private el: ElementRef,

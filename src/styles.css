@@ -1,15 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+@import "tailwindcss";
 
 @layer components {
+  .landing-navbar {
+    @apply h-20 top-0 flex sticky z-50 bg-white shadow-lg shadow-gray-200/50 dark:shadow-dark-800 dark:bg-dark-900;
+  }
+
+  .landing-navbar-login {
+    @apply h-20 top-0 flex sticky z-50 shadow-slate-900 bg-dark-900;
+  }
   .link {
     @apply text-gray-500;
   }
   .link-primary {
-    @apply hover:text-blue-500 transition duration-[0.5s] ease-in-out;
+    @apply hover:text-purple-500 transition duration-[0.5s] ease-in-out;
   }
 
   .card {
@@ -23,9 +30,24 @@
       @apply cursor-default;
     }
   }
-  .btn-primary {
-    @apply bg-blue-500 hover:bg-blue-600 text-white rounded-md;
+  .btn-icon {
+    @apply flex items-center justify-center gap-1;
   }
+  .btn-primary {
+    @apply bg-purple-500 hover:bg-purple-600 text-white rounded-md;
+  }
+  .btn-sub-primary {
+    @apply font-heading bg-purple-100 text-purple-700 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110;
+  }
+
+  .btn-active-gray {
+    @apply text-gray-500 border border-gray-500 hover:bg-gray-200 rounded-md;
+  }
+
+  .btn-active-white {
+    @apply text-white border border-gray-500 hover:bg-gray-500 rounded-md;
+  }
+
   .btn-sub-gray {
     @apply rounded-lg bg-gray-100 text-gray-500 hover:bg-gray-500/20;
   }
@@ -142,18 +164,6 @@
   --color-dark-850:               oklch(23.13% 0.0399 270.37);
   --color-dark-900:               var(--color-slate-900);
   --color-dark-950:               var(--color-slate-950);
-
-  --color-sidebar:                var(--color-white);
-  --color-sidebar-border:         var(--color-gray-200);
-  --color-menu-title:             var(--color-gray-600);
-  --color-sidebar-text:           var(--color-gray-500);
-  --color-sidebar-bg:             var(--color-primary-500);
-  --color-sidebar-text-hover:     var(--color-primary-500);
-  --color-sidebar-bg-hover:       var(--color-primary-500);
-  --color-sidebar-text-active:    var(--color-primary-500);
-  --color-sidebar-bg-active:      var(--color-primary-500);
-  --color-effect:                 var(--color-gray-100);
-  --color-topbar:                 var(--color-gray-500);
 
   /* //border-radius */
   --radius-modern:                30% 70% 70% 30% / 30% 30% 70% 70%;
