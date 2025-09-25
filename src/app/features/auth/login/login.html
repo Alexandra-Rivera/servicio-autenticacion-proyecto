@@ -10,13 +10,7 @@
         <div class="md:p-10 card-body">
           <h4 class="mb-2 leading-relaxed text-xl font-bold text-center text-white">Bienvenid@!</h4>
           <p class="mb-5 text-center text-white/75">
-            ¿Aún no tienes una cuenta?
-            <a
-              href="javascript:void(0);"
-              routerLink="/auth-signup-modern"
-              class="cursor-pointer transform transition duration-500 hover:scale-125 underline hover:text-green-500 hover:font-bold font-medium text-white"
-              >Sign Up</a
-            >
+            Ingresar a Sistema de Facturación
           </p>
           <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
             <!-- Alert Section -->
@@ -84,7 +78,7 @@
               <div class="col-span-12">
                 <button
                   type="submit"
-                  class="w-full bg-linear-65 bg-purple-500 text-white p-2 rounded-md cursor-pointer transition duration-300 ease-linear btn font-medium"
+                  class="w-full btn-icon bg-linear-65 bg-purple-500 text-white p-2 rounded-md cursor-pointer transition duration-300 ease-linear btn font-medium"
                 >
                   Sign In
                 </button>

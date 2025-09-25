@@ -3,9 +3,9 @@
         <div valid>
             <span routerLink="/logout">Cerrar sesión</span>
         </div>
-        <div invalid class="btn-icon">
+        <div invalid routerLink="/login" (click)="backToTop()" class="btn-icon">
             <lucide-angular [img]="user"></lucide-angular>
-            <span routerLink="/login">Iniciar sesión</span>
+            <span>Iniciar sesión</span>
         </div>
     </auth>
     <!-- @if (isValid()) {

@@ -25,11 +25,18 @@ export class SessionButton implements OnInit {
   ngOnInit(): void {
     this.validateService.validate().subscribe({
       next: (res) => {
-        this.isValid.set(true)
+        this.isValid.set(true);
       },
       error: () => {
         this.isValid.set(false);
       },
+    });
+  }
+
+  backToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
     });
   }
 }
