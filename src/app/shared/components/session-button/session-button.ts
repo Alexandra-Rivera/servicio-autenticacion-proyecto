@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, inject, OnInit, signal } from '@angular/c
 import {RouterLink} from '@angular/router';
 import { Auth } from 'colibrihub-shared-components';
 import { ValidationService } from 'colibrihub-shared-services';
-import {LucideAngularModule, LucideCircleUserRound, LucideLogOut, User} from 'lucide-angular';
+import {LucideAngularModule, LucideCircleUserRound, LucideLogOut} from 'lucide-angular';
 
 @Component({
   selector: 'session-button',
@@ -26,13 +26,6 @@ export class SessionButton implements OnInit {
       error: () => {
         this.isValid.set(false);
       },
-    });
-  }
-
-  backToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
     });
   }
 }
