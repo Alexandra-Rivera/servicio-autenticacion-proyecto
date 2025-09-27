@@ -10,7 +10,6 @@ import {
   Validators
 } from '@angular/forms';
 import {LucideAngularModule, LucideEye, LucideEyeOff} from 'lucide-angular';
-import {RouterLink} from '@angular/router';
 import {ScrollService} from '../../../core/services/scroll-service';
 
 @Component({
