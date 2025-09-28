@@ -10,10 +10,10 @@ export class ScrollService {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
       }
     )
   }
