@@ -1,3 +1,3 @@
 export const environment = {
-    SERVER_URL: "https://accounts.beckysflorist.site/api/auth",
+    SERVER_URL: "https://accounts.beckysflorist.site/api",
 };

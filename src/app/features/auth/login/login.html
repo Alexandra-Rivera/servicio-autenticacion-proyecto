@@ -28,7 +28,7 @@
             <div class="grid grid-cols-12 gap-5 mt-5">
               <div class="col-span-12">
                 <div class="flex flex-col gap-2">
-                  <label for="username" class="form-label text-white">Username</label
+                  <label for="username" class="form-label">Username</label
                   ><input
                     type="text"
                     id="username"
@@ -41,7 +41,7 @@
 
               <div class="col-span-12">
                 <div class="flex flex-col gap-2">
-                  <label for="password" class="form-label text-white">Password</label>
+                  <label for="password" class="form-label">Password</label>
                   <div class="relative">
                     <input
                       [type]="showPassword ? 'text' : 'password'"
@@ -69,8 +69,8 @@
                 <div class="flex items-center justify-end">
                   <a
                     routerLink="/forgotten-password"
-                    class="cursor-pointer block text-sm hover:text-violet-400 font-medium text-right underline transition duration-300 ease-linear shrink-0 text-white/75"
-                    >Forgot Password?</a
+                    class="cursor-pointer text-sm font-medium text-right text-white/75 hover:text-white"
+                    >¿Se te olvidó tu contraseña?</a
                   >
                 </div>
               </div>
@@ -78,7 +78,7 @@
               <div class="col-span-12">
                 <button
                   type="submit"
-                  class="w-full btn-icon bg-linear-65 bg-purple-500 text-white p-2 rounded-md cursor-pointer transition duration-300 ease-linear btn font-medium"
+                  class="w-full btn btn-primary"
                 >
                   Log In
                 </button>

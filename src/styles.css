@@ -64,6 +64,9 @@
     @apply bg-pink-100 text-pink-500 border border-pink-300;
   }
 
+  .form-label {
+    @apply text-white;
+  }
   .lucide-corner-down-right {
     @apply inline-block text-green-500 fill-green-500/10 size-4;
   }

@@ -3,9 +3,7 @@
     <div class="container mx-auto flex items-center justify-between">
       <div class="flex items-center gap-5">
         <a routerLink="/" title="logo">
-          <img ngSrc="assets/images/main-logo.png" alt="" class="object-contain inline-block h-7 dark:hidden w-full"
-               height="221" width="1211">
-          <img ngSrc="assets/images/logo-white.png" alt="" class="object-contain hidden h-7 dark:inline-block w-full"
+          <img ngSrc="assets/images/main-logo.png" alt="" class="object-contain inline-block h-7 w-full"
                height="221" width="1211">
         </a>
         <div class="navbar-collapase ltr:mr-auto rtl:ml-auto" [ngClass]="{ 'hidden xl:flex': !isMenuOpen }">
@@ -39,7 +37,7 @@
       <div class="flex gap-3">
         <!--        <button routerLink="/auth-signin-basic" type="button" class="btn btn-active-gray">Sign In</button>-->
         <session-button class="btn-active-gray"></session-button>
-        <button type="button" class="hidden btn btn-sub-primary md:inline-block">Registrarme</button>
+        <button type="button" routerLink="/signup" class="hidden btn btn-sub-primary md:inline-block">Registrarme</button>
       </div>
     </div>
 
@@ -51,9 +49,12 @@
         </a>
       </div>
       <div [ngClass]="currentRoute !== '/login' ? 'hidden': 'flex items-center gap-3'">
-        <p class="hidden text-white md:block">¿Aún no tienes una cuenta? </p>
-        <button type="button" class="hidden btn btn-sub-primary md:inline-block">Registrarme</button>
-        <button class="text-purple-300 focus:bg-purple-200 focus:text-purple-500 rounded-md md:hidden">Registrarme</button>
+        <p class="hidden text-white/75 md:block">¿Aún no tienes una cuenta? </p>
+        <button type="button" routerLink="/signup" class="btn btn-sub-primary font-medium">Registrarme</button>
+      </div>
+      <div [ngClass]="currentRoute !== '/signup' ? 'hidden': 'flex items-center gap-3'">
+        <p class="hidden text-white/75 md:block">¿Ya tienes una cuenta?</p>
+        <button type="button" routerLink="/login" class="btn btn-sub-primary font-medium">Iniciar Sesión</button>
       </div>
     </div>
   }
