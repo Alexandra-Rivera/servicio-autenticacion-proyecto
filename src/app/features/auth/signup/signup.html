@@ -4,7 +4,7 @@
       <div class="col-span-12 mb-0 border-none shadow-none md:col-span-10 lg:col-span-6 xl:col-span-4 md:col-start-2 lg:col-start-4 xl:col-start-5 card bg-white/10 backdrop-blur-md">
         <div class="py-4 md:p-5 card-body">
           <h4 class="mb-2 leading-relaxed text-center text-white">Crea una Nueva Cuenta</h4>
-
+          <p class="w-full text-center text-white/75">Bienvenido al Sistema de Facturación</p>
           <form [formGroup]="signUpForm">
 
             <div class="grid grid-cols-12 gap-5 mt-5">
@@ -83,6 +83,12 @@
               </div>
               <div class="col-span-12">
                 <button type="submit" (click)="onSubmit()" class="w-full btn btn-primary">Sign Up</button>
+
+                <div class="w-full flex justify-center items-center mt-5 gap-2">
+                  <p class="text-white/75 text-right">¿Ya tienes una cuenta?
+                  </p>
+                  <a type="button" routerLink="/login" class="btn-icon font-medium text-purple-400 hover:text-purple-200"><lucide-angular [img]="user"></lucide-angular>Iniciar Sesión</a>
+                </div>
               </div>
             </div>
           </form>

@@ -9,8 +9,9 @@ import {
   ValidatorFn,
   Validators
 } from '@angular/forms';
-import {LucideAngularModule, LucideEye, LucideEyeOff} from 'lucide-angular';
+import {LucideAngularModule, LucideEye, LucideEyeOff, User} from 'lucide-angular';
 import {ScrollService} from '../../../core/services/scroll.service';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -19,7 +20,8 @@ import {ScrollService} from '../../../core/services/scroll.service';
     FormsModule,
     LucideAngularModule,
     ReactiveFormsModule,
-    Footer
+    Footer,
+    RouterLink
   ],
   templateUrl: './signup.html',
   styleUrl: './signup.css'
@@ -28,6 +30,7 @@ export class Signup {
   //icons
   readonly eye = LucideEye;
   readonly eyeOff = LucideEyeOff;
+  readonly user = User;
 
   signUpForm: FormGroup;
   showPassword = false;
