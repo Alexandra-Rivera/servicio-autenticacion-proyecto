@@ -48,14 +48,6 @@
           <img ngSrc="assets/images/logo-white.png" alt="" class="object-contain h-7 inline-block w-full" height="221" width="1211">
         </a>
       </div>
-      <div [ngClass]="currentRoute !== '/login' ? 'hidden': 'flex items-center gap-3'">
-        <p class="hidden text-white/75 md:block">¿Aún no tienes una cuenta? </p>
-        <button type="button" routerLink="/signup" class="btn btn-sub-primary font-medium">Registrarme</button>
-      </div>
-<!--      <div [ngClass]="currentRoute !== '/signup' ? 'hidden': 'flex items-center gap-3'">-->
-<!--        <p class="hidden text-white/75 md:block">¿Ya tienes una cuenta?</p>-->
-<!--        <button type="button" routerLink="/login" class="btn btn-sub-primary font-medium">Iniciar Sesión</button>-->
-<!--      </div>-->
     </div>
   }
 </header>
