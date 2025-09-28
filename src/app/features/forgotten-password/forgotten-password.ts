@@ -9,7 +9,6 @@ import {EmailDto} from '../../models/email-dto';
 @Component({
   selector: 'app-forgotten-password',
   imports: [RouterLink, LucideAngularModule, FormsModule, ReactiveFormsModule, Footer],
-
   templateUrl: './forgotten-password.html',
   styleUrl: './forgotten-password.css'
 })
