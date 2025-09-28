@@ -10,7 +10,7 @@ import {
   Validators
 } from '@angular/forms';
 import {LucideAngularModule, LucideEye, LucideEyeOff} from 'lucide-angular';
-import {ScrollService} from '../../../core/services/scroll-service';
+import {ScrollService} from '../../../core/services/scroll.service';
 
 @Component({
   selector: 'app-signup',

@@ -7,7 +7,7 @@ import { LoginDto } from 'colibrihub-shared-dtos';
 import { AuthService } from 'colibrihub-shared-services';
 import { SeoService } from '../../../core/services/seo.service';
 import { Footer } from '../../../shared/components/footer/footer';
-import {ScrollService} from '../../../core/services/scroll-service';
+import {ScrollService} from '../../../core/services/scroll.service';
 
 @Component({
   selector: 'app-login',
