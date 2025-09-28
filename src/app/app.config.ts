@@ -16,6 +16,6 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     provideRouter(routes),
     provideHttpClient(),
-    { provide: AUTH_SERVICE_URL, useValue: environment.SERVER_URL },
+    { provide: AUTH_SERVICE_URL, useValue: environment.SERVER_URL + '/auth' },
   ],
 };
