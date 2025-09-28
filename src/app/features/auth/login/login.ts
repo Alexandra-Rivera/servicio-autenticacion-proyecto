@@ -1,7 +1,7 @@
 import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { LucideAngularModule, Eye, EyeOff } from 'lucide-angular';
+import {LucideAngularModule, Eye, EyeOff, User} from 'lucide-angular';
 import { CommonModule } from '@angular/common';
 import { LoginDto } from 'colibrihub-shared-dtos';
 import { AuthService } from 'colibrihub-shared-services';
@@ -115,4 +115,6 @@ export class Login implements OnInit {
       this.alert.message = 'Debe colocar su nombre y contraseña para ingresar.';
     }
   }
+
+  protected readonly user = User;
 }

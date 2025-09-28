@@ -4,14 +4,18 @@ import AOS from 'aos';
 import { SessionButton } from '../session-button/session-button';
 import {NgClass, NgOptimizedImage} from '@angular/common';
 import {filter} from 'rxjs';
+import {LucideAngularModule, Menu, User} from 'lucide-angular';
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink, SessionButton, NgOptimizedImage, NgClass],
+  imports: [RouterLink, SessionButton, NgOptimizedImage, NgClass, LucideAngularModule],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css'
 })
 export class Navbar implements OnInit {
+  //Icons
+  readonly menu = Menu;
+
   currentRoute: string = "/";
 
   currentSection: string = '';
