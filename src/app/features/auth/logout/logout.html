@@ -1,20 +1,20 @@
 <section
-  class="h-full bg-linear-65 from-blue-500 to-purple-500 flex flex-col items-center justify-center min-h-screen py-12 bg-center bg-cover bg-[url('assets/images/others/auth.jpg')]"
+  class="h-full backdrop-sepia-0 px-5 flex flex-col items-center justify-center min-h-screen py-12 bg-center bg-cover bg-[url('assets/images/others/auth.jpg')]"
 >
   <div
-    class="p-15 col-span-12 md:col-span-10 lg:col-span-6 xl:col-span-4 md:col-start-2 lg:col-start-4 xl:col-start-5 mb-0 border-none shadow-none card bg-white/10 backdrop-blur-md"
+    class="p-10 col-span-12 md:col-span-10 lg:col-span-6 xl:col-span-4 md:col-start-2 lg:col-start-4 xl:col-start-5 mb-0 border-none shadow-none card bg-white/10 backdrop-blur-md"
   >
-    <h4 class="text-lg text-white/65">¿Estás seguro de querer cerrar sesión?</h4>
+    <h4 class="text-lg text-center text-white/65">¿Estás seguro de querer cerrar sesión?</h4>
     <div class="flex flex-row gap-4 mt-4">
       <button
         (click)="logout()"
-        class="w-full bg-linear-65 bg-purple-500 text-white p-2 rounded-md cursor-pointer transition duration-300 ease-linear btn font-medium"
+        class="w-full btn btn-primary"
       >
         Sí
       </button>
       <button
         routerLink="/"
-        class="w-full bg-linear-65 bg-purple-500 text-white p-2 rounded-md cursor-pointer transition duration-300 ease-linear btn font-medium"
+        class="w-full btn btn-primary"
       >
         No
       </button>
