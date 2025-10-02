@@ -10,7 +10,7 @@
             </div>
           </div>
           <h4 class="mb-2 leading-relaxed text-center text-white">Verificación de Correo Electrónico</h4>
-          <p class="mb-5 text-center text-white/75">Hemos envíado un código al correo</p>
+          <p class="mb-5 text-center text-white/75">Hemos envíado un código al correo <b class="font-bold text-purple-300">{{ emailDto.email }}</b></p>
           <form [formGroup]="otpForm" (ngSubmit)="onSubmit()">
             <div class="flex flex-wrap items-center justify-center gap-3">
               <input type="text" class="text-2xl font-extrabold text-center text-white border border-transparent rounded-sm outline-hidden appearance-none size-9 sm:size-12 md:size-13 bg-white/10 focus:bg-white/10" formControlName="otp1" maxlength="1" (input)="moveFocus($event, 1)" />
