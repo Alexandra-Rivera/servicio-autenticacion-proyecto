@@ -107,6 +107,10 @@ export class Signup {
     return '';
   }
 
+  clearFormFields(): void {
+    this.signUpForm.reset();
+  }
+
   onSubmit(): void {
     if (this.signUpForm.valid) {
       if (this.isLoading()) return;
@@ -128,6 +132,7 @@ export class Signup {
           next: (res) => {
             this.toast.success(res.message);
             this.isLoading.set(false);
+            this.clearFormFields();
           },
           error: err => {
             this.toast.error(`${err.error.message} :(`);
