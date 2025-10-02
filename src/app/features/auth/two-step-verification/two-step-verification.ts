@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -6,18 +6,25 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { LucideAngularModule } from 'lucide-angular';
-import { Router } from '@angular/router';
+import {LucideAngularModule, LucideLoaderCircle, LucideMailOpen} from 'lucide-angular';
+import {NgClass} from '@angular/common';
 @Component({
   selector: 'app-two-step-verification',
-  imports: [ReactiveFormsModule, LucideAngularModule],
+  imports: [ReactiveFormsModule, LucideAngularModule, NgClass],
   templateUrl: './two-step-verification.html',
   styleUrl: './two-step-verification.css'
 })
 export class TwoStepVerification implements OnInit{
+  //Icons
+  readonly mailOpen = LucideMailOpen;
+  isLoading = signal(false);
+
   otpForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+  ) {
+  };
 
   ngOnInit(): void {
     this.otpForm = this.fb.group({
@@ -39,8 +46,17 @@ export class TwoStepVerification implements OnInit{
 
   onSubmit(): void {
     if (this.otpForm.valid) {
-      // Navigate to the reset password page
-      this.router.navigate(['/auth-reset-password-modern']);
+      if (this.isLoading()) return;
+
+      this.isLoading.set(true);
+
+      setTimeout(() => {
+        this.isLoading.set(false);
+        window.alert("It works!");
+      }, 2000)
+
     }
   }
+
+  protected readonly loaderCircle = LucideLoaderCircle;
 }
