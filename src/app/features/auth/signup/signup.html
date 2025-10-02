@@ -82,7 +82,9 @@
                 </div>
               </div>
               <div class="col-span-12">
-                <button type="submit" (click)="onSubmit()" class="w-full btn btn-primary">Sign Up</button>
+
+                <button type="submit" (click)="onSubmit()" class="w-full btn btn-primary btn-icon"><lucide-angular [img]="loaderCircle" [ngClass]="isLoading() ? 'animate-spin': 'hidden'"></lucide-angular><span [textContent]="isLoading ? 'Loading...' : 'Sign Up'"></span>
+                </button>
 
                 <div class="w-full flex justify-center items-center mt-6 gap-2">
                   <p class="text-white/75 text-right">¿Ya tienes una cuenta?
