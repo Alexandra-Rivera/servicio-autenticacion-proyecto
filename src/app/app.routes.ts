@@ -6,6 +6,7 @@ import { Home } from './features/home/home';
 import {ForgottenPassword} from './features/forgotten-password/forgotten-password';
 import {Signup} from './features/auth/signup/signup';
 import {TwoStepVerification} from './features/auth/two-step-verification/two-step-verification';
+import {AuthSuccessfulMessage} from './features/auth-successful-message/auth-successful-message';
 
 export const routes: Routes = [
   { path: '', component: Home, pathMatch: 'full' },
@@ -14,5 +15,6 @@ export const routes: Routes = [
   { path: 'signup', component: Signup},
   { path: 'forgotten-password', component: ForgottenPassword},
   { path: 'two-step-verification', component: TwoStepVerification },
+  { path: 'auth-successful', component: AuthSuccessfulMessage },
   { path: '**', redirectTo: 'home' }
 ];
