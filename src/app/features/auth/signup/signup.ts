@@ -48,7 +48,6 @@ export class Signup {
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', [Validators.required]],
-        terms: [false, Validators.requiredTrue],
       },
       { validators: this.passwordsMatchValidator }
     );
@@ -62,12 +61,18 @@ export class Signup {
   ): { [key: string]: boolean } | null => {
     const password = control.get('password');
     const confirmPassword = control.get('confirmPassword');
-    if (
-      password &&
-      confirmPassword &&
-      password.value !== confirmPassword.value
-    ) {
+
+    if (!password || !confirmPassword) {
+      return null;
+    }
+
+    if (password.value !== confirmPassword.value) {
+      confirmPassword.setErrors({ mismatch: true });
       return { mismatch: true };
+    } else {
+      if (confirmPassword.hasError('mismatch')) {
+        confirmPassword.setErrors(null);
+      }
     }
     return null;
   };
