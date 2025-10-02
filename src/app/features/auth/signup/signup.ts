@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal} from '@angular/core';
 import {Footer} from '../../../shared/components/footer/footer';
 import {
   AbstractControl,
@@ -9,9 +9,13 @@ import {
   ValidatorFn,
   Validators
 } from '@angular/forms';
-import {LucideAngularModule, LucideEye, LucideEyeOff, User} from 'lucide-angular';
+import {LucideAngularModule, LucideEye, LucideEyeOff, LucideLoaderCircle, User} from 'lucide-angular';
 import {ScrollService} from '../../../core/services/scroll.service';
 import {RouterLink} from '@angular/router';
+import {AccountService} from '../../../core/services/account.service';
+import {HotToastService} from '@ngxpert/hot-toast';
+import {NgClass} from '@angular/common';
+import {RegisterUserDto} from '../../../models/register-user-dto';
 
 @Component({
   selector: 'app-signup',
@@ -21,7 +25,8 @@ import {RouterLink} from '@angular/router';
     LucideAngularModule,
     ReactiveFormsModule,
     Footer,
-    RouterLink
+    RouterLink,
+    NgClass,
   ],
   templateUrl: './signup.html',
   styleUrl: './signup.css'
@@ -31,14 +36,19 @@ export class Signup {
   readonly eye = LucideEye;
   readonly eyeOff = LucideEyeOff;
   readonly user = User;
+  readonly loaderCircle = LucideLoaderCircle;
 
   signUpForm: FormGroup;
   showPassword = false;
   showConfirmPassword = false;
 
+  isLoading = signal(false);
+
   constructor(
     private fb: FormBuilder,
-    private scrollService: ScrollService
+    private scrollService: ScrollService,
+    private accountService: AccountService,
+    private toast: HotToastService
   ) {
     this.signUpForm = this.fb.group(
       {
@@ -48,13 +58,10 @@ export class Signup {
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', [Validators.required]],
-        terms: [false, Validators.requiredTrue],
       },
       { validators: this.passwordsMatchValidator }
     );
   }
-
-  ngOnInit(): void {}
 
   // Custom validator for matching passwords
   passwordsMatchValidator: ValidatorFn = (
@@ -62,12 +69,18 @@ export class Signup {
   ): { [key: string]: boolean } | null => {
     const password = control.get('password');
     const confirmPassword = control.get('confirmPassword');
-    if (
-      password &&
-      confirmPassword &&
-      password.value !== confirmPassword.value
-    ) {
+
+    if (!password || !confirmPassword) {
+      return null;
+    }
+
+    if (password.value !== confirmPassword.value) {
+      confirmPassword.setErrors({ mismatch: true });
       return { mismatch: true };
+    } else {
+      if (confirmPassword.hasError('mismatch')) {
+        confirmPassword.setErrors(null);
+      }
     }
     return null;
   };
@@ -94,11 +107,39 @@ export class Signup {
     return '';
   }
 
+  clearFormFields(): void {
+    this.signUpForm.reset();
+  }
+
   onSubmit(): void {
     if (this.signUpForm.valid) {
-      // Handle form submission logic here
-      // console.log('Form Submitted', this.signUpForm.value);
-      window.alert(`It works!, ${this.signUpForm.value}`);
+      if (this.isLoading()) return;
+
+      this.isLoading.set(true);
+
+      console.log("isLoading:", this.isLoading());
+      const registerUserDto: RegisterUserDto = {
+        id: 0,
+        username: this.signUpForm.get('userName')?.value,
+        firstName: this.signUpForm.get('firstName')?.value,
+        lastName: this.signUpForm.get('lastName')?.value,
+        email: this.signUpForm.get('email')?.value,
+        password: this.signUpForm.get('password')?.value,
+      }
+
+      this.accountService.register(registerUserDto).subscribe(
+        {
+          next: (res) => {
+            this.toast.success(res.message);
+            this.isLoading.set(false);
+            this.clearFormFields();
+          },
+          error: err => {
+            this.toast.error(`${err.error.message} :(`);
+            this.isLoading.set(false);
+          }
+        }
+      )
     } else {
       // Mark all fields as touched to trigger validation
       this.signUpForm.markAllAsTouched();

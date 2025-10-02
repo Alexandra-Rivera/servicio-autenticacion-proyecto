@@ -29,6 +29,7 @@
               }
             ],
             "styles": [
+              "@ngxpert/hot-toast/styles.css",
               "node_modules/aos/dist/aos.css",
               "src/styles.css"
             ]
