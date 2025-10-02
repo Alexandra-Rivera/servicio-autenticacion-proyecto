@@ -16,16 +16,16 @@ export class AccountService {
 
   /** Registrar un nuevo usuario **/
   register(userDto: UserDto): Observable<MessageDto> {
-    return this.http.post<MessageDto>(`${this.server_url}/users/register`, userDto);
+    return this.http.post<MessageDto>(`${this.server_url}/verification/users/register`, userDto);
   }
 
   /** Guardar datos de usuario permanentemente en la base de datos **/
   saveUser(confirmAccountDto: ConfirmAccountDto): Observable<MessageDto> {
-    return this.http.post<MessageDto>(`${this.server_url}/users/persist`, confirmAccountDto);
+    return this.http.post<MessageDto>(`${this.server_url}/verification/users/persist`, confirmAccountDto);
   }
 
   /** Solicitar código de verificación que será enviado al email del usuario **/
   sendVerificationCode(emailDto: EmailDto): Observable<MessageDto> {
-    return this.http.post<MessageDto>(`${this.server_url}/users/verificationCode`, emailDto);
+    return this.http.post<MessageDto>(`${this.server_url}/verification/users/verificationCode`, emailDto);
   }
 }
