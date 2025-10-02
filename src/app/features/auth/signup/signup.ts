@@ -1,5 +1,4 @@
 import { Component, signal} from '@angular/core';
-import {Footer} from '../../../shared/components/footer/footer';
 import {
   AbstractControl,
   FormBuilder,
@@ -20,11 +19,9 @@ import {RegisterUserDto} from '../../../models/register-user-dto';
 @Component({
   selector: 'app-signup',
   imports: [
-    Footer,
     FormsModule,
     LucideAngularModule,
     ReactiveFormsModule,
-    Footer,
     RouterLink,
     NgClass,
   ],
