@@ -9,6 +9,7 @@ import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { AUTH_SERVICE_URL } from 'colibrihub-shared-services';
+import { provideHotToastConfig } from '@ngxpert/hot-toast';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,6 +17,7 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     provideRouter(routes),
     provideHttpClient(),
+    provideHotToastConfig(),
     { provide: AUTH_SERVICE_URL, useValue: environment.SERVER_URL + '/auth' },
   ],
 };

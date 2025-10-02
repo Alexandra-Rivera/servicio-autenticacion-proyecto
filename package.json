@@ -28,6 +28,8 @@
     "@angular/forms": "^20.2.0",
     "@angular/platform-browser": "^20.2.0",
     "@angular/router": "^20.2.0",
+    "@ngneat/overview": "6.1.1",
+    "@ngxpert/hot-toast": "^5.1.1",
     "@tailwindcss/postcss": "^4.1.12",
     "aos": "^2.3.4",
     "colibrihub-shared-components": "0.0.15",
