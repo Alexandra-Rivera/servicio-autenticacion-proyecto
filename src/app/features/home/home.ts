@@ -2,23 +2,19 @@ import {
   Component,
   inject,
   OnInit,
-  ElementRef,
-  Renderer2,
 } from '@angular/core';
 import { SeoService } from '../../core/services/seo.service';
 import {
   Fan,
   GalleryVerticalEndIcon,
-  LucideAngularModule, LucideChevronDown, LucideChevronUp, LucideMoon,
-  LucideMoveRight, LucideSun, User
+  LucideAngularModule, LucideChevronDown, LucideChevronUp,
+  LucideMoveRight
 } from 'lucide-angular';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 import AOS from 'aos';
-import {Footer} from '../../shared/components/footer/footer';
-
 @Component({
   selector: 'app-home',
-  imports: [LucideAngularModule, CommonModule, NgOptimizedImage, Footer],
+  imports: [LucideAngularModule, CommonModule, NgOptimizedImage],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
