@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, signal} from '@angular/core';
+import { Component, signal} from '@angular/core';
 import {Footer} from '../../../shared/components/footer/footer';
 import {
   AbstractControl,
@@ -13,9 +13,9 @@ import {LucideAngularModule, LucideEye, LucideEyeOff, LucideLoaderCircle, User} 
 import {ScrollService} from '../../../core/services/scroll.service';
 import {RouterLink} from '@angular/router';
 import {AccountService} from '../../../core/services/account.service';
-import {UserDto} from 'colibrihub-shared-dtos';
 import {HotToastService} from '@ngxpert/hot-toast';
 import {NgClass} from '@angular/common';
+import {RegisterUserDto} from '../../../models/register-user-dto';
 
 @Component({
   selector: 'app-signup',
@@ -48,7 +48,6 @@ export class Signup {
     private fb: FormBuilder,
     private scrollService: ScrollService,
     private accountService: AccountService,
-    private changeDetectorRef: ChangeDetectorRef,
     private toast: HotToastService
   ) {
     this.signUpForm = this.fb.group(
@@ -63,8 +62,6 @@ export class Signup {
       { validators: this.passwordsMatchValidator }
     );
   }
-
-  ngOnInit(): void {}
 
   // Custom validator for matching passwords
   passwordsMatchValidator: ValidatorFn = (
@@ -116,28 +113,28 @@ export class Signup {
 
       this.isLoading.set(true);
 
-      const userDto: UserDto = {
+      console.log("isLoading:", this.isLoading());
+      const registerUserDto: RegisterUserDto = {
         id: 0,
         username: this.signUpForm.get('userName')?.value,
         firstName: this.signUpForm.get('firstName')?.value,
         lastName: this.signUpForm.get('lastName')?.value,
         email: this.signUpForm.get('email')?.value,
+        password: this.signUpForm.get('password')?.value,
       }
 
-      this.accountService.register(userDto).subscribe(
+      this.accountService.register(registerUserDto).subscribe(
         {
           next: (res) => {
-            console.log(res);
-            this.toast.success('El usuario ha sido creado éxitosamente');
+            this.toast.success(res.message);
+            this.isLoading.set(false);
           },
           error: err => {
-            console.error(err);
-            this.toast.error('¡Algo ha fallado! No se pudo crear el usuario');
+            this.toast.error(`${err.error.message} :(`);
+            this.isLoading.set(false);
           }
         }
       )
-
-      this.isLoading.set(false);
     } else {
       // Mark all fields as touched to trigger validation
       this.signUpForm.markAllAsTouched();
