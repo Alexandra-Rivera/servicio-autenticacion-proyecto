@@ -8,7 +8,14 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import {LucideAngularModule, LucideEye, LucideEyeOff, LucideMoveRight} from 'lucide-angular';
+import {
+  LucideAngularModule,
+  LucideEye,
+  LucideEyeOff,
+  LucideMoveRight,
+  LucideUserLock,
+  LucideUserPen
+} from 'lucide-angular';
 import {CommonModule} from '@angular/common';
 @Component({
   selector: 'app-reset-password',
@@ -25,6 +32,7 @@ export class ResetPassword {
   readonly eye = LucideEye;
   readonly eyeOff = LucideEyeOff;
   readonly moveRight = LucideMoveRight;
+  readonly userPen = LucideUserPen;
 
   passwordForm: FormGroup;
   showPassword: boolean = false;
