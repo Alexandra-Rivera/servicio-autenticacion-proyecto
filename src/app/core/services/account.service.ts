@@ -45,6 +45,6 @@ export class AccountService {
 
   /** Solicitar código de verificación que será enviado al email del usuario **/
   sendVerificationCode(emailDto: EmailDto): Observable<MessageDto> {
-    return this.http.post<MessageDto>(`${this.server_url}/register/users/verificationCode`, emailDto);
+    return this.http.post<MessageDto>(`${this.server_url}/register/codes/create`, emailDto);
   }
 }

@@ -1,7 +1,15 @@
-import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import {LucideAngularModule, Eye, EyeOff, User} from 'lucide-angular';
+import {
+  LucideAngularModule,
+  Eye,
+  EyeOff,
+  User,
+  LucideLoaderCircle,
+  LucideMoveRight,
+  LucideUsers
+} from 'lucide-angular';
 import { CommonModule } from '@angular/common';
 import { LoginDto } from 'colibrihub-shared-dtos';
 import { AuthService } from 'colibrihub-shared-services';
@@ -18,12 +26,16 @@ export class Login implements OnInit {
   //icons
   readonly Eye = Eye;
   readonly EyeOff = EyeOff;
+  readonly user = User;
+  readonly loaderCircle = LucideLoaderCircle;
+  readonly moveRight = LucideMoveRight;
+  readonly users = LucideUsers;
 
   // Declaramos la variable del formulario
   protected signInForm: FormGroup;
 
-  // Variable para mostrar/ocultar la contraseña
   showPassword = false;
+  isLoading = signal(false);
 
   // Variable para manejar las alertas
   alert = {
@@ -43,7 +55,6 @@ export class Login implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private seoService: SeoService,
-    private changeDetectorRef: ChangeDetectorRef,
     private scrollService: ScrollService,
   ) {
     this.signInForm = this.fb.group({
@@ -63,6 +74,10 @@ export class Login implements OnInit {
     const password = this.signInForm.get('password')?.value;
 
     if (this.signInForm.valid) {
+      if (this.isLoading()) return;
+
+      this.isLoading.set(true);
+
       const credentials: LoginDto = {
         domain: '',
         username: username || '',
@@ -79,31 +94,30 @@ export class Login implements OnInit {
             this.alert.type =
               'relative py-3 text-sm rounded-md ltr:pl-5 rtl:pr-5 ltr:pr-7 rtl:pl-7 bg-green-100 text-green-500';
             this.alert.message = 'Login successful! Redirecting...';
+            this.isLoading.set(false);
 
-            // Deteccion de cambios manual
-            this.changeDetectorRef.detectChanges();
+            setTimeout(() => {
+              // Redirect to the return URL or default to home
+              const params = new URLSearchParams(window.location.search);
+              const redirect: string | null = params.get('redirect');
 
-            // Redirect to the return URL or default to home
-            const params = new URLSearchParams(window.location.search);
-            const redirect: string | null = params.get('redirect');
+              if (redirect) {
+                if (redirect.includes('localhost')) {
+                  window.location.href = `http://${redirect}`;
+                } else window.location.href = `https://${redirect}`;
+              } else {
+                window.location.href = '/';
+              }
 
-            if (redirect) {
-              if (redirect.includes('localhost')) {
-                window.location.href = `http://${redirect}`;
-              } else window.location.href = `https://${redirect}`;
-            } else {
-              window.location.href = '/';
-            }
+            }, 2000)
           },
           error: () => {
+            this.isLoading.set(false);
             // Show an error alert
             this.alert.isVisible = true;
             this.alert.type =
               'relative py-3 text-sm rounded-md ltr:pl-5 rtl:pr-5 ltr:pr-7 rtl:pl-7 bg-red-100 text-red-500';
             this.alert.message = 'Contraseña o nombre de usuario inválido. Intente de nuevo.';
-
-            // Deteccion de cambios manual
-            this.changeDetectorRef.detectChanges();
           },
         });
     } else {
@@ -114,6 +128,4 @@ export class Login implements OnInit {
       this.alert.message = 'Debe colocar su nombre y contraseña para ingresar.';
     }
   }
-
-  protected readonly user = User;
 }

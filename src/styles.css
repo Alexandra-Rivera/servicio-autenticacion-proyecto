@@ -74,6 +74,10 @@
   .lucide-x {
     @apply inline-block text-gray-500 fill-gray-100 dark:text-dark-500 dark:fill-dark-850 size-4;
   }
+
+  .icon-style {
+    @apply stroke-1 text-purple-300/75 size-10 fill-purple-300/20;
+  }
 }
 
 @layer base {

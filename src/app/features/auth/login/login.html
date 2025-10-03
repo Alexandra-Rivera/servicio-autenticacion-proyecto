@@ -8,12 +8,15 @@
         class="col-span-12 md:col-span-10 lg:col-span-6 xl:col-span-4 md:col-start-2 lg:col-start-4 xl:col-start-5 mb-0 border-none shadow-none card bg-white/10 backdrop-blur-md"
       >
         <div class="py-4 md:p-5 card-body">
-          <h4 class="mb-2 leading-relaxed text-md lg:text-xl font-bold text-center text-white">Bienvenid@!</h4>
+          <div class="flex items-center justify-center mx-auto size-14">
+            <lucide-angular [img]="users" class="icon-style"></lucide-angular>
+          </div>
+          <h4 class="mb-2 leading-relaxed text-md lg:text-2xl font-bold text-center text-white">Bienvenid@!</h4>
           <p class="text-center text-white/75">
             Ingresar a Sistema de Facturación
           </p>
           <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
-            <!-- Alert Section -->
+<!--             Alert Section-->
             @if (alert.isVisible) {
               <div
                 [ngClass]="alert.type"
@@ -76,16 +79,13 @@
               </div>
 
               <div class="col-span-12">
-                <button
-                  type="submit"
-                  class="w-full btn btn-primary"
-                >
-                  Log In
+                <button type="submit" (click)="onSubmit()" class="w-full btn btn-primary btn-icon"><lucide-angular [img]="loaderCircle" [ngClass]="isLoading() ? 'animate-spin': 'hidden'"></lucide-angular><span [textContent]="isLoading() ? 'Loading...' : 'Iniciar Sesión'"></span>
                 </button>
                 <div class="w-full flex justify-center items-center mt-5 gap-2">
                   <p class="text-white/75">¿Aún no tienes una cuenta?
                   </p>
-                  <a type="button" routerLink="/signup" class="font-medium text-purple-400 hover:text-purple-200">Registrarme</a>
+                  <a type="button" routerLink="/signup" class="font-medium text-purple-400 hover:text-purple-200">Registrarme               <lucide-angular [img]="moveRight" class="inline-block size-4 ml-0.5"></lucide-angular>
+                  </a>
                 </div>
               </div>
             </div>

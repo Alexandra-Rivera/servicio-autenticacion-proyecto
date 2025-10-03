@@ -11,6 +11,8 @@ import {NgClass} from '@angular/common';
 import {EmailDto} from '../../../models/email-dto';
 import {AccountService} from '../../../core/services/account.service';
 import {Router} from '@angular/router';
+import {ConfirmAccountDto} from '../../../models/confirm-account-dto';
+import {HotToastService} from '@ngxpert/hot-toast';
 @Component({
   selector: 'app-two-step-verification',
   imports: [ReactiveFormsModule, LucideAngularModule, NgClass],
@@ -29,6 +31,7 @@ export class TwoStepVerification implements OnInit{
     private fb: FormBuilder,
     private accountService: AccountService,
     private router: Router,
+    private toast: HotToastService
   ) {
   };
 
@@ -46,6 +49,7 @@ export class TwoStepVerification implements OnInit{
       email: this.accountService.getCurrentEmail(),
     };
 
+    this.accountService.sendVerificationCode(this.emailDto).subscribe();
   }
 
   moveFocus(event: Event, index: number): void {
@@ -61,9 +65,24 @@ export class TwoStepVerification implements OnInit{
 
       this.isLoading.set(true);
 
+      const valoresOTP: string[] = Object.values(this.otpForm.value) as string[];
+      const verificationCode: string = valoresOTP.join('');
+
+      const confirmAccountDto: ConfirmAccountDto = {
+        email: this.emailDto.email,
+        code: verificationCode,
+      }
+
       setTimeout(() => {
         this.isLoading.set(false);
-        this.router.navigate(['/auth-successful']);
+        this.accountService.saveUser(confirmAccountDto).subscribe(
+          {
+            next: () => {
+              this.toast.success("Cuenta verificada con éxito, inicia sesión para usar las funciones del sistema")
+              this.router.navigate(['/auth-successful']);
+            }
+          }
+        )
       }, 2000)
 
     }
