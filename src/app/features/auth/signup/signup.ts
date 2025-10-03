@@ -126,7 +126,6 @@ export class Signup {
           next: (res) => {
             this.toast.success(res.message);
             this.isLoading.set(false);
-            // this.clearFormFields();
             this.accountService.setEmail(registerUserDto.email);
             this.router.navigate(['/two-step-verification']).then(() => {});
           },
