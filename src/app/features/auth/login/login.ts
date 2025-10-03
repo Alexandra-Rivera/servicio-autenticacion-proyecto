@@ -1,7 +1,15 @@
 import {Component, OnInit, signal} from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import {LucideAngularModule, Eye, EyeOff, User, LucideLoaderCircle, LucideMoveRight} from 'lucide-angular';
+import {
+  LucideAngularModule,
+  Eye,
+  EyeOff,
+  User,
+  LucideLoaderCircle,
+  LucideMoveRight,
+  LucideUserPen, LucideUsers
+} from 'lucide-angular';
 import { CommonModule } from '@angular/common';
 import { LoginDto } from 'colibrihub-shared-dtos';
 import { AuthService } from 'colibrihub-shared-services';
@@ -21,6 +29,7 @@ export class Login implements OnInit {
   readonly user = User;
   readonly loaderCircle = LucideLoaderCircle;
   readonly moveRight = LucideMoveRight;
+  readonly users = LucideUsers;
 
   // Declaramos la variable del formulario
   protected signInForm: FormGroup;
