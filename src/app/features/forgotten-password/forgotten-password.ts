@@ -1,6 +1,6 @@
 import {Component, signal} from '@angular/core';
 import {Router, RouterLink} from '@angular/router';
-import {LucideAngularModule, LucideLoaderCircle, LucideMoveRight, LucideUser, LucideUserLock} from 'lucide-angular';
+import {LucideAngularModule, LucideLoaderCircle, LucideUser, LucideUserLock} from 'lucide-angular';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {PasswordService} from '../../core/services/password.service';
 import {EmailDto} from '../../models/email-dto';

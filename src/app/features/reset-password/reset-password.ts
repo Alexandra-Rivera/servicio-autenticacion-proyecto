@@ -13,7 +13,6 @@ import {
   LucideEye,
   LucideEyeOff,
   LucideMoveRight,
-  LucideUserLock,
   LucideUserPen
 } from 'lucide-angular';
 import {CommonModule} from '@angular/common';

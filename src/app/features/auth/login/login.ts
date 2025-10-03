@@ -8,7 +8,7 @@ import {
   User,
   LucideLoaderCircle,
   LucideMoveRight,
-  LucideUserPen, LucideUsers
+  LucideUsers
 } from 'lucide-angular';
 import { CommonModule } from '@angular/common';
 import { LoginDto } from 'colibrihub-shared-dtos';
