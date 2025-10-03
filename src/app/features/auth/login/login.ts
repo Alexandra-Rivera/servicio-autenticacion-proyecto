@@ -1,17 +1,16 @@
 import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import {LucideAngularModule, Eye, EyeOff, User} from 'lucide-angular';
 import { CommonModule } from '@angular/common';
 import { LoginDto } from 'colibrihub-shared-dtos';
 import { AuthService } from 'colibrihub-shared-services';
 import { SeoService } from '../../../core/services/seo.service';
-import { Footer } from '../../../shared/components/footer/footer';
 import {ScrollService} from '../../../core/services/scroll.service';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, CommonModule, LucideAngularModule, RouterLink, Footer],
+  imports: [ReactiveFormsModule, CommonModule, LucideAngularModule, RouterLink],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -74,7 +73,7 @@ export class Login implements OnInit {
         .login(credentials)
         .pipe()
         .subscribe({
-          next: (response) => {
+          next: () => {
             // Successful login
             this.alert.isVisible = true;
             this.alert.type =
@@ -96,7 +95,7 @@ export class Login implements OnInit {
               window.location.href = '/';
             }
           },
-          error: (error) => {
+          error: () => {
             // Show an error alert
             this.alert.isVisible = true;
             this.alert.type =

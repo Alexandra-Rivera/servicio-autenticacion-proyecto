@@ -1,5 +1,4 @@
 import { Component, signal} from '@angular/core';
-import {Footer} from '../../../shared/components/footer/footer';
 import {
   AbstractControl,
   FormBuilder,
@@ -11,7 +10,7 @@ import {
 } from '@angular/forms';
 import {LucideAngularModule, LucideEye, LucideEyeOff, LucideLoaderCircle, User} from 'lucide-angular';
 import {ScrollService} from '../../../core/services/scroll.service';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {AccountService} from '../../../core/services/account.service';
 import {HotToastService} from '@ngxpert/hot-toast';
 import {NgClass} from '@angular/common';
@@ -20,11 +19,9 @@ import {RegisterUserDto} from '../../../models/register-user-dto';
 @Component({
   selector: 'app-signup',
   imports: [
-    Footer,
     FormsModule,
     LucideAngularModule,
     ReactiveFormsModule,
-    Footer,
     RouterLink,
     NgClass,
   ],
@@ -48,7 +45,8 @@ export class Signup {
     private fb: FormBuilder,
     private scrollService: ScrollService,
     private accountService: AccountService,
-    private toast: HotToastService
+    private toast: HotToastService,
+    private router: Router,
   ) {
     this.signUpForm = this.fb.group(
       {
@@ -107,10 +105,6 @@ export class Signup {
     return '';
   }
 
-  clearFormFields(): void {
-    this.signUpForm.reset();
-  }
-
   onSubmit(): void {
     if (this.signUpForm.valid) {
       if (this.isLoading()) return;
@@ -132,7 +126,9 @@ export class Signup {
           next: (res) => {
             this.toast.success(res.message);
             this.isLoading.set(false);
-            this.clearFormFields();
+            // this.clearFormFields();
+            this.accountService.setEmail(registerUserDto.email);
+            this.router.navigate(['/two-step-verification']).then(() => {});
           },
           error: err => {
             this.toast.error(`${err.error.message} :(`);

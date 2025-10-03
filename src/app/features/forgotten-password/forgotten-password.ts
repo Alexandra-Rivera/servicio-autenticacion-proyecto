@@ -2,13 +2,12 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {LucideAngularModule, LucideMoveRight, LucideUser} from 'lucide-angular';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import {Footer} from '../../shared/components/footer/footer';
 import {PasswordService} from '../../core/services/password.service';
 import {EmailDto} from '../../models/email-dto';
 
 @Component({
   selector: 'app-forgotten-password',
-  imports: [RouterLink, LucideAngularModule, FormsModule, ReactiveFormsModule, Footer],
+  imports: [RouterLink, LucideAngularModule, FormsModule, ReactiveFormsModule],
   templateUrl: './forgotten-password.html',
   styleUrl: './forgotten-password.css'
 })
