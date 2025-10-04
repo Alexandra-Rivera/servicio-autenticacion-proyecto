@@ -8,7 +8,7 @@ on:
 env:
   BUILD_DIR: dist/servicio-autenticacion-proyecto/browser
   REMOTE_PATH: /var/www/html
-  REMOTE_BROWSER_PATH: /var/www/html
+  REMOTE_BROWSER_PATH: /var/www/html/browser
 
 jobs:
   build-and-deploy:
