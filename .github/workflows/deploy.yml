@@ -1,0 +1,59 @@
+name: Deploy web app
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+env:
+  BUILD_DIR: dist/servicio-autenticacion-proyecto/browser
+  REMOTE_PATH: /var/www/html
+  REMOTE_BROWSER_PATH: /var/www/html
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Construir aplicación
+        run: npm run build
+
+      - name: Verificar carpeta de build
+        run: |
+          if [ ! -d "$BUILD_DIR" ]; then
+            echo "No se encontró la carpeta de build en $BUILD_DIR"
+            exit 1
+          fi
+          echo "Contenido de $BUILD_DIR:"
+          ls -la "$BUILD_DIR"
+
+      - name: Preparar clave SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          printf "Host *\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+
+      - name: Crear carpeta destino en el servidor
+        run: |
+          ssh ${{ secrets.DEPLOY_SSH_USER }}@${{ secrets.DEPLOY_SSH_HOST }} "mkdir -p '${{ env.REMOTE_BROWSER_PATH }}'"
+
+      - name: Desplegar solo la carpeta 'browser' (con rsync)
+        run: |
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no" \
+            "${{ env.BUILD_DIR }}/" \
+            "${{ secrets.DEPLOY_SSH_USER }}@${{ secrets.DEPLOY_SSH_HOST }}:${{ env.REMOTE_BROWSER_PATH }}/"
