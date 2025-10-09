@@ -11,7 +11,6 @@ import {
   LucideAngularModule,
   LucideEye,
   LucideEyeOff, LucideLoaderCircle,
-  LucideMoveRight,
   LucideUserPen
 } from 'lucide-angular';
 import {CommonModule} from '@angular/common';

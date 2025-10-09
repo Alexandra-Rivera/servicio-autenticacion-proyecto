@@ -5,7 +5,6 @@ import { isLoggedInGuard, isLoggedOutGuard } from 'colibrihub-shared-components'
 import { Home } from './features/home/home';
 import {Signup} from './features/auth/signup/signup';
 import {TwoStepVerification} from './features/auth/email-verification/two-step-verification/two-step-verification';
-import {ResetPassword} from './features/password-recovery/reset-password/reset-password';
 import {AuthSuccessfulMessage} from './features/auth/email-verification/auth-successful-message/auth-successful-message';
 
 export const routes: Routes = [
