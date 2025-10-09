@@ -1,13 +1,11 @@
 import {Component, OnInit, signal} from '@angular/core';
 import {
   LucideAngularModule,
-  LucideCircleCheckBig,
   LucideLoaderCircle,
-  LucideMailOpen,
-  LucideMoveRight, LucideRectangleEllipsis, RectangleEllipsis, ShieldEllipsis
+  ShieldEllipsis
 } from 'lucide-angular';
-import {Router, RouterLink} from '@angular/router';
-import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {EmailDto} from '../../../models/email-dto';
 import {AccountService} from '../../../core/services/account.service';
 import {HotToastService} from '@ngxpert/hot-toast';
