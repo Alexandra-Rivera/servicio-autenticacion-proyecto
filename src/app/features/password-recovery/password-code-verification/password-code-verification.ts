@@ -9,8 +9,8 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {EmailDto} from '../../../models/email-dto';
 import {AccountService} from '../../../core/services/account.service';
 import {HotToastService} from '@ngxpert/hot-toast';
-import {ConfirmAccountDto} from '../../../models/confirm-account-dto';
 import {NgClass} from '@angular/common';
+import {CodeVerificationService} from '../../../shared/services/code-verification.service';
 
 @Component({
   selector: 'app-password-code-verification',
@@ -31,6 +31,7 @@ export class PasswordCodeVerification implements OnInit {
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,
+    private codeVerificationService: CodeVerificationService,
     private router: Router,
     private toast: HotToastService
   ) {
@@ -71,24 +72,11 @@ export class PasswordCodeVerification implements OnInit {
       const valoresOTP: string[] = Object.values(this.otpForm.value) as string[];
       const verificationCode: string = valoresOTP.join('');
 
-      const confirmAccountDto: ConfirmAccountDto = {
-        email: this.emailDto.email,
-        code: verificationCode,
-      }
+      this.codeVerificationService.setPasswordVerificationCode(verificationCode);
 
       setTimeout(() => {
         this.isLoading.set(false);
-
         this.router.navigate(['forgotten-password/reset-password']);
-        // this.accountService.saveUser(confirmAccountDto).subscribe(
-        //   {
-        //     next: () => {
-        //       this.toast.success("Cuenta verificada con éxito, inicia sesión para usar las funciones del sistema")
-        //
-        //       this.router.navigate(['/auth-successful']);
-        //     }
-        //   }
-        // )
       }, 2000)
 
     }
