@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-
-import { Router, RouterLink } from '@angular/router';
+import {Component, signal} from '@angular/core';
+import { Router } from '@angular/router';
 import {
   FormBuilder,
   FormGroup,
@@ -11,7 +10,7 @@ import {
 import {
   LucideAngularModule,
   LucideEye,
-  LucideEyeOff,
+  LucideEyeOff, LucideLoaderCircle,
   LucideMoveRight,
   LucideUserPen
 } from 'lucide-angular';
@@ -23,15 +22,16 @@ import {CommonModule} from '@angular/common';
     FormsModule,
     CommonModule,
     LucideAngularModule,
-    RouterLink,
   ],  templateUrl: './reset-password.html',
   styleUrl: './reset-password.css'
 })
 export class ResetPassword {
   readonly eye = LucideEye;
   readonly eyeOff = LucideEyeOff;
-  readonly moveRight = LucideMoveRight;
   readonly userPen = LucideUserPen;
+  readonly loaderCircle = LucideLoaderCircle;
+
+  isLoading = signal(false);
 
   passwordForm: FormGroup;
   showPassword: boolean = false;
@@ -79,9 +79,14 @@ export class ResetPassword {
     if (this.passwordForm.valid) {
       // Handle password setting logic here (e.g., API call)
       // On success, navigate to the desired route
-      this.router
-        .navigate(['/auth-successful-password-modern'])
-        .catch((err) => console.error('Navigation error:', err));
+      if (this.isLoading()) return;
+
+      this.isLoading.set(true);
+
+      setTimeout(() => {
+        this.isLoading.set(false);
+        this.router.navigate(['forgotten-password/success']);
+      }, 2000)
     } else {
       this.passwordForm.markAllAsTouched();
     }

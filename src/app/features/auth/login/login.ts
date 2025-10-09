@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 import { LoginDto } from 'colibrihub-shared-dtos';
 import { AuthService } from 'colibrihub-shared-services';
 import { SeoService } from '../../../core/services/seo.service';
-import {ScrollService} from '../../../core/services/scroll.service';
+import {ScrollService} from '../../../shared/services/scroll.service';
 
 @Component({
   selector: 'app-login',

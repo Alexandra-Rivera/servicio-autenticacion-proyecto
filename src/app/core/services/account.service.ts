@@ -6,6 +6,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {ConfirmAccountDto} from '../../models/confirm-account-dto';
 import {EmailDto} from '../../models/email-dto';
 import {RegisterUserDto} from '../../models/register-user-dto';
+import {UpdatePasswordDto} from '../../models/update-password-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -46,5 +47,15 @@ export class AccountService {
   /** Solicitar código de verificación que será enviado al email del usuario **/
   sendVerificationCode(emailDto: EmailDto): Observable<MessageDto> {
     return this.http.post<MessageDto>(`${this.server_url}/register/codes/create`, emailDto);
+  }
+
+  /** Solicitar codigo de recuperación **/
+  recoverPassword(emailDto: EmailDto): Observable<MessageDto> {
+    return this.http.post<MessageDto>(`${this.server_url}/forgot/code/send`, emailDto);
+  }
+
+  /** Actualizar contraseña de la cuenta **/
+  updatePassword(updatePasswordDto: UpdatePasswordDto): Observable<MessageDto> {
+    return this.http.post<MessageDto>(`${this.server_url}/forgot/code/update`, updatePasswordDto);
   }
 }

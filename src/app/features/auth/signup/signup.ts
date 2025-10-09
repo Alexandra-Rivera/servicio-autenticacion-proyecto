@@ -15,7 +15,7 @@ import {
   LucideLoaderCircle,
   User
 } from 'lucide-angular';
-import {ScrollService} from '../../../core/services/scroll.service';
+import {ScrollService} from '../../../shared/services/scroll.service';
 import {Router, RouterLink} from '@angular/router';
 import {AccountService} from '../../../core/services/account.service';
 import {HotToastService} from '@ngxpert/hot-toast';

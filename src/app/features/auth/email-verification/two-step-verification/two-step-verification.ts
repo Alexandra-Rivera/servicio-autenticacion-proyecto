@@ -8,10 +8,10 @@ import {
 
 import {LucideAngularModule, LucideLoaderCircle, LucideMailOpen} from 'lucide-angular';
 import {NgClass} from '@angular/common';
-import {EmailDto} from '../../../models/email-dto';
-import {AccountService} from '../../../core/services/account.service';
+import {EmailDto} from '../../../../models/email-dto';
+import {AccountService} from '../../../../core/services/account.service';
 import {Router} from '@angular/router';
-import {ConfirmAccountDto} from '../../../models/confirm-account-dto';
+import {ConfirmAccountDto} from '../../../../models/confirm-account-dto';
 import {HotToastService} from '@ngxpert/hot-toast';
 @Component({
   selector: 'app-two-step-verification',
@@ -22,6 +22,7 @@ import {HotToastService} from '@ngxpert/hot-toast';
 export class TwoStepVerification implements OnInit{
   //Icons
   readonly mailOpen = LucideMailOpen;
+  readonly loaderCircle = LucideLoaderCircle;
   isLoading = signal(false);
 
   otpForm!: FormGroup;
@@ -87,6 +88,4 @@ export class TwoStepVerification implements OnInit{
 
     }
   }
-
-  protected readonly loaderCircle = LucideLoaderCircle;
 }
