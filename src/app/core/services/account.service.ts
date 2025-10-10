@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {MessageDto} from 'colibrihub-shared-dtos';
-import {BehaviorSubject, Observable} from 'rxjs';
 import {ConfirmAccountDto} from '../../models/confirm-account-dto';
 import {EmailDto} from '../../models/email-dto';
 import {RegisterUserDto} from '../../models/register-user-dto';
 import {UpdatePasswordDto} from '../../models/update-password-dto';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

@@ -18,6 +18,7 @@ import {CodeVerificationService} from '../../../shared/services/code-verificatio
 import {UpdatePasswordDto} from '../../../models/update-password-dto';
 import {AccountService} from '../../../core/services/account.service';
 import {HotToastService} from '@ngxpert/hot-toast';
+import {MessageDto} from 'colibrihub-shared-dtos';
 @Component({
   selector: 'app-reset-password',
   imports: [
@@ -107,14 +108,14 @@ export class ResetPassword implements OnInit {
 
       this.accountService.updatePassword(data).subscribe(
         {
-          next: success => {
+          next: () => {
             setTimeout(() => {
               this.isLoading.set(false);
               this.router.navigate(['forgotten-password/success']);
             }, 2000)
           },
-          error: error => {
-            this.toast.error(error.error.message);
+          error: (error: MessageDto) => {
+            this.toast.error(error.message);
           }
         }
       )
