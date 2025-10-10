@@ -13,6 +13,7 @@ import {AccountService} from '../../../../core/services/account.service';
 import {Router} from '@angular/router';
 import {ConfirmAccountDto} from '../../../../models/confirm-account-dto';
 import {HotToastService} from '@ngxpert/hot-toast';
+import {EmailValueService} from '../../../../shared/services/email-value.service';
 @Component({
   selector: 'app-two-step-verification',
   imports: [ReactiveFormsModule, LucideAngularModule, NgClass],
@@ -31,6 +32,7 @@ export class TwoStepVerification implements OnInit{
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,
+    private emailValueService: EmailValueService,
     private router: Router,
     private toast: HotToastService
   ) {
@@ -47,7 +49,7 @@ export class TwoStepVerification implements OnInit{
     });
 
     this.emailDto = {
-      email: this.accountService.getCurrentEmail(),
+      email: this.emailValueService.getCurrentEmail(),
     };
 
     this.accountService.sendVerificationCode(this.emailDto).subscribe();
@@ -58,6 +60,17 @@ export class TwoStepVerification implements OnInit{
     if (input.value.length === 1 && index < 6) {
       (document.querySelectorAll('input')[index] as HTMLInputElement).focus();
     }
+  }
+
+  sendVerificationCode() {
+    this.accountService.sendVerificationCode(this.emailDto).subscribe({
+      next: (res) => {
+        this.toast.success(res.message);
+      },
+      error: (err) => {
+        this.toast.error(err.error.message);
+      }
+    });
   }
 
   onSubmit(): void {

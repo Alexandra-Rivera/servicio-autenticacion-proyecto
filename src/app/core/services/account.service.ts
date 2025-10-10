@@ -12,26 +12,8 @@ import {UpdatePasswordDto} from '../../models/update-password-dto';
   providedIn: 'root'
 })
 export class AccountService {
-  //Variable que obtiene el valor de email temporalmente
-  private registroEmailSource = new BehaviorSubject<string>("");
-
-  // public registroEmail$: Observable<string | null> = this.registroEmailSource.asObservable();
-
   private server_url = environment.SERVER_URL;
   constructor(private http: HttpClient) {
-  }
-
-  //Metodo que actualiza el correo almacenado temporalmente
-  setEmail(email: string) {
-    this.registroEmailSource.next(email);
-  }
-
-  getCurrentEmail(): string {
-    return this.registroEmailSource.getValue();
-  }
-
-  clearEmail(): void {
-    this.registroEmailSource.next("");
   }
 
   /** Registrar un nuevo usuario **/

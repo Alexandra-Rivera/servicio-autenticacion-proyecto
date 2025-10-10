@@ -10,4 +10,8 @@ export class CodeVerificationService {
   setPasswordVerificationCode(code: string) {
     this.passwordVerificationCode.next(code);
   }
+
+  getPasswordVerificationCode() {
+    return this.passwordVerificationCode.getValue();
+  }
 }

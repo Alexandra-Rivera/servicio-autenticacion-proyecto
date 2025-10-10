@@ -1,4 +1,4 @@
-import {Component, signal} from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import { Router } from '@angular/router';
 import {
   FormBuilder,
@@ -14,6 +14,10 @@ import {
   LucideUserPen
 } from 'lucide-angular';
 import {CommonModule} from '@angular/common';
+import {CodeVerificationService} from '../../../shared/services/code-verification.service';
+import {UpdatePasswordDto} from '../../../models/update-password-dto';
+import {AccountService} from '../../../core/services/account.service';
+import {HotToastService} from '@ngxpert/hot-toast';
 @Component({
   selector: 'app-reset-password',
   imports: [
@@ -24,7 +28,7 @@ import {CommonModule} from '@angular/common';
   ],  templateUrl: './reset-password.html',
   styleUrl: './reset-password.css'
 })
-export class ResetPassword {
+export class ResetPassword implements OnInit {
   readonly eye = LucideEye;
   readonly eyeOff = LucideEyeOff;
   readonly userPen = LucideUserPen;
@@ -36,12 +40,25 @@ export class ResetPassword {
   showPassword: boolean = false;
   showConfirmPassword: boolean = false;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  private passwordVerificationCode: string = "";
+  protected email: string = "";
+
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private accountService: AccountService,
+    private codeVerificationService: CodeVerificationService,
+    private toast: HotToastService,
+  ) {
     this.passwordForm = this.fb.group({
         password: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', [Validators.required]],
       },
       { validators: this.passwordMatchValidator });
+  }
+
+  ngOnInit() {
+    this.passwordVerificationCode = this.codeVerificationService.getPasswordVerificationCode();
   }
 
   togglePasswordVisibility() {
@@ -82,10 +99,25 @@ export class ResetPassword {
 
       this.isLoading.set(true);
 
-      setTimeout(() => {
-        this.isLoading.set(false);
-        this.router.navigate(['forgotten-password/success']);
-      }, 2000)
+      const data: UpdatePasswordDto = {
+        email: this.email,
+        code: this.passwordVerificationCode,
+        password: this.passwordForm.value.password,
+      }
+
+      this.accountService.updatePassword(data).subscribe(
+        {
+          next: success => {
+            setTimeout(() => {
+              this.isLoading.set(false);
+              this.router.navigate(['forgotten-password/success']);
+            }, 2000)
+          },
+          error: error => {
+            this.toast.error(error.error.message);
+          }
+        }
+      )
     } else {
       this.passwordForm.markAllAsTouched();
     }

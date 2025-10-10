@@ -6,6 +6,7 @@ import {EmailDto} from '../../../models/email-dto';
 import {HotToastService} from '@ngxpert/hot-toast';
 import {NgClass} from '@angular/common';
 import {AccountService} from '../../../core/services/account.service';
+import {EmailValueService} from '../../../shared/services/email-value.service';
 
 @Component({
   selector: 'app-forgotten-password',
@@ -27,6 +28,7 @@ export class ForgottenPassword {
     private fb: FormBuilder,
     private toast: HotToastService,
     private router: Router,
+    private emailValueService: EmailValueService,
   ) {
     this.email = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -43,7 +45,8 @@ export class ForgottenPassword {
       this.accountService.recoverPassword(emailDto).pipe().subscribe({
         next: () => {
           this.isLoading.set(false);
-          this.toast.success("Código generado con éxito, revise su correo");
+
+          this.emailValueService.setEmail(this.email.value);
           this.router.navigate(['/forgotten-password/two-step-verification']);
         },
         error: error => {
