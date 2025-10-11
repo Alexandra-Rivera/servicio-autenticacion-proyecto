@@ -14,7 +14,7 @@
                 <label for="firstNameInput" class="form-label mb-3">Nombre</label>
                 <input type="text" id="firstNameInput" class="text-white border-none outline-none p-2 rounded-md w-full form-input bg-white/10 placeholder:text-white/75 focus:bg-purple-600/10 focus:border-purple-500 focus:ring-1 focus:ring-purple-500" placeholder="Ingresa tu primer nombre" formControlName="firstName">
                 @if (validateField('firstName')) {
-                  <p class="text-sm text-red-500">{{ getErrorMessage('firstName') }}
+                  <p class="text-sm text-red-500 mt-2">{{ getErrorMessage('firstName') }}
                   </p>
                 }
               </div>
@@ -23,21 +23,21 @@
                 <label for="lastNameInput" class="form-label">Apellido</label>
                 <input type="text" id="lastNameInput" class="text-white border-none outline-none p-2 rounded-md w-full form-input bg-white/10 placeholder:text-white/75 focus:bg-purple-600/10 focus:border-purple-500 focus:ring-1 focus:ring-purple-500" placeholder="Ingresa tu primer apellido" formControlName="lastName">
                 @if (validateField('lastName')) {
-                  <p class="text-sm text-red-500">{{ getErrorMessage('lastName') }}</p>
+                  <p class="text-sm text-red-500 mt-2">{{ getErrorMessage('lastName') }}</p>
                 }
               </div>
               <div class="col-span-12 md:col-span-6">
                 <label for="userNameInput" class="form-label">Username</label>
                 <input type="text" id="userNameInput" class="text-white border-none outline-none p-2 rounded-md w-full form-input bg-white/10 placeholder:text-white/75 focus:bg-purple-600/10 focus:border-purple-500 focus:ring-1 focus:ring-purple-500" placeholder="Ingresa tu username" formControlName="userName">
                 @if (validateField('userName')) {
-                  <p class="text-sm text-red-500">{{ getErrorMessage('userName') }}</p>
+                  <p class="text-sm text-red-500 mt-2">{{ getErrorMessage('userName') }}</p>
                 }
               </div>
               <div class="col-span-12 md:col-span-6">
                 <label for="emailInput" class="form-label">Email</label>
                 <input type="email" id="emailInput" class="text-white border-none outline-none p-2 rounded-md w-full form-input bg-white/10 placeholder:text-white/75 focus:bg-purple-600/10 focus:border-purple-500 focus:ring-1 focus:ring-purple-500" placeholder="Ingresa tu email" formControlName="email">
                 @if (validateField('email')) {
-                  <p class="text-sm text-red-500">{{ getErrorMessage('email') }}</p>
+                  <p class="text-sm text-red-500 mt-2">{{ getErrorMessage('email') }}</p>
                 }
               </div>
 
@@ -56,7 +56,7 @@
                     </button>
                   </div>
                   @if (validateField('password')) {
-                    <p class="text-sm text-red-500">{{ getErrorMessage('password') }}
+                    <p class="text-sm text-red-500 mt-2">{{ getErrorMessage('password') }}
                     </p>
                   }
                 </div>
@@ -78,7 +78,7 @@
                     </button>
                   </div>
                   @if (validateField('confirmPassword')) {
-                    <p class="text-sm text-red-500">
+                    <p class="text-sm text-red-500 mt-2">
                       {{ getErrorMessage('confirmPassword') }}</p>
                   }
                 </div>
