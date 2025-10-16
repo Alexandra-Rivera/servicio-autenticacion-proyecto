@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 import { LoginDto } from 'colibrihub-shared-dtos';
 import { AuthService } from 'colibrihub-shared-services';
 import { SeoService } from '../../../core/services/seo.service';
-import {ScrollService} from '../../../core/services/scroll.service';
+import {DomainResolverService} from '../../../core/services/domain-resolver.service';
 
 @Component({
   selector: 'app-login',
@@ -53,9 +53,9 @@ export class Login implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService,
-    private seoService: SeoService,
-    private scrollService: ScrollService,
+    private readonly authService: AuthService,
+    private readonly seoService: SeoService,
+    private readonly domainResolver: DomainResolverService
   ) {
     this.signInForm = this.fb.group({
       username: ['', Validators.required],
@@ -78,8 +78,10 @@ export class Login implements OnInit {
 
       this.isLoading.set(true);
 
+      const domainOnly = this.domainResolver.resolveDomain();
+
       const credentials: LoginDto = {
-        domain: '',
+        domain: domainOnly,
         username: username || '',
         password: password || '',
       };
@@ -97,35 +99,22 @@ export class Login implements OnInit {
             this.isLoading.set(false);
 
             setTimeout(() => {
-              // Redirect to the return URL or default to home
-              const params = new URLSearchParams(window.location.search);
-              const redirect: string | null = params.get('redirect');
-
-              if (redirect) {
-                if (redirect.includes('localhost')) {
-                  window.location.href = `http://${redirect}`;
-                } else window.location.href = `https://${redirect}`;
+              const target = this.domainResolver.buildRedirectUrl()
+              if (target) {
+                window.location.href = target;
               } else {
                 window.location.href = '/';
               }
-
-            }, 2000)
+            }, 300);
           },
           error: () => {
             this.isLoading.set(false);
-            // Show an error alert
             this.alert.isVisible = true;
             this.alert.type =
               'relative py-3 text-sm rounded-md ltr:pl-5 rtl:pr-5 ltr:pr-7 rtl:pl-7 bg-red-100 text-red-500';
-            this.alert.message = 'Contraseña o nombre de usuario inválido. Intente de nuevo.';
+            this.alert.message = 'Ocurrió un error al iniciar sesión.';
           },
         });
-    } else {
-      // Show an error alert if form is not valid
-      this.alert.isVisible = true;
-      this.alert.type =
-        'relative py-3 text-sm rounded-md ltr:pl-5 rtl:pr-5 ltr:pr-7 rtl:pl-7 bg-red-100 text-red-500';
-      this.alert.message = 'Debe colocar su nombre y contraseña para ingresar.';
     }
   }
 }
