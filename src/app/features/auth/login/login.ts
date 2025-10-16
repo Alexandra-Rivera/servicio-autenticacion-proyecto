@@ -14,7 +14,6 @@ import { CommonModule } from '@angular/common';
 import { LoginDto } from 'colibrihub-shared-dtos';
 import { AuthService } from 'colibrihub-shared-services';
 import { SeoService } from '../../../core/services/seo.service';
-import {ScrollService} from '../../../core/services/scroll.service';
 import {DomainResolverService} from '../../../core/services/domain-resolver.service';
 
 @Component({
@@ -106,7 +105,7 @@ export class Login implements OnInit {
               } else {
                 window.location.href = '/';
               }
-            }, 2000);
+            }, 300);
           },
           error: () => {
             this.isLoading.set(false);
