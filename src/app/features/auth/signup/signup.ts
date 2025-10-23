@@ -15,12 +15,13 @@ import {
   LucideLoaderCircle,
   User
 } from 'lucide-angular';
-import {ScrollService} from '../../../core/services/scroll.service';
+import {ScrollService} from '../../../shared/services/scroll.service';
 import {Router, RouterLink} from '@angular/router';
 import {AccountService} from '../../../core/services/account.service';
 import {HotToastService} from '@ngxpert/hot-toast';
 import {NgClass} from '@angular/common';
 import {RegisterUserDto} from '../../../models/register-user-dto';
+import {EmailValueService} from '../../../shared/services/email-value.service';
 
 @Component({
   selector: 'app-signup',
@@ -51,6 +52,7 @@ export class Signup {
     private fb: FormBuilder,
     private scrollService: ScrollService,
     private accountService: AccountService,
+    private emailValueService: EmailValueService,
     private toast: HotToastService,
     private router: Router,
   ) {
@@ -135,7 +137,7 @@ export class Signup {
           next: (res) => {
             this.toast.success(res.message);
             this.isLoading.set(false);
-            this.accountService.setEmail(registerUserDto.email);
+            this.emailValueService.setEmail(registerUserDto.email);
             this.router.navigate(['/two-step-verification']).then(() => {});
           },
           error: err => {

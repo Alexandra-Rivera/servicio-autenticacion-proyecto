@@ -2,10 +2,11 @@ import {Component, signal} from '@angular/core';
 import {Router, RouterLink} from '@angular/router';
 import {LucideAngularModule, LucideLoaderCircle, LucideUser, LucideUserLock} from 'lucide-angular';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import {PasswordService} from '../../core/services/password.service';
-import {EmailDto} from '../../models/email-dto';
+import {EmailDto} from '../../../models/email-dto';
 import {HotToastService} from '@ngxpert/hot-toast';
 import {NgClass} from '@angular/common';
+import {AccountService} from '../../../core/services/account.service';
+import {EmailValueService} from '../../../shared/services/email-value.service';
 
 @Component({
   selector: 'app-forgotten-password',
@@ -23,10 +24,11 @@ export class ForgottenPassword {
   isLoading = signal(false);
 
   constructor(
-    private passwordService: PasswordService,
+    private accountService: AccountService,
     private fb: FormBuilder,
     private toast: HotToastService,
     private router: Router,
+    private emailValueService: EmailValueService,
   ) {
     this.email = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -40,11 +42,14 @@ export class ForgottenPassword {
       this.isLoading.set(true);
       const emailDto: EmailDto = this.email.value;
 
-      this.passwordService.passwordRecovery(emailDto).pipe().subscribe({
+      this.accountService.recoverPassword(emailDto).pipe().subscribe({
         next: () => {
           this.isLoading.set(false);
-          this.toast.success("Código generado con éxito, revise su correo");
-          this.router.navigate(['/two-step-verification']);
+
+          this.emailValueService.clearEmail();
+          const email = this.email.get('email')?.value as string;
+          this.emailValueService.setEmail(email);
+          this.router.navigate(['/forgotten-password/two-step-verification']);
         },
         error: error => {
           this.isLoading.set(false);
