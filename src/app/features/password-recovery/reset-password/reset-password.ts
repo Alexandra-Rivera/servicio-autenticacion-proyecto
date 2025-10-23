@@ -19,6 +19,7 @@ import {UpdatePasswordDto} from '../../../models/update-password-dto';
 import {AccountService} from '../../../core/services/account.service';
 import {HotToastService} from '@ngxpert/hot-toast';
 import {MessageDto} from 'colibrihub-shared-dtos';
+import {EmailValueService} from '../../../shared/services/email-value.service';
 @Component({
   selector: 'app-reset-password',
   imports: [
@@ -42,12 +43,13 @@ export class ResetPassword implements OnInit {
   showConfirmPassword: boolean = false;
 
   private passwordVerificationCode: string = "";
-  protected email: string = "";
+  private email: string = "Alexandra.rivera1102@gmail.com";
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private accountService: AccountService,
+    private emailValueService: EmailValueService,
     private codeVerificationService: CodeVerificationService,
     private toast: HotToastService,
   ) {
@@ -60,6 +62,7 @@ export class ResetPassword implements OnInit {
 
   ngOnInit() {
     this.passwordVerificationCode = this.codeVerificationService.getPasswordVerificationCode();
+    this.email = this.emailValueService.getCurrentEmail();
   }
 
   togglePasswordVisibility() {
@@ -94,8 +97,6 @@ export class ResetPassword implements OnInit {
 
   onSubmit() {
     if (this.passwordForm.valid) {
-      // Handle password setting logic here (e.g., API call)
-      // On success, navigate to the desired route
       if (this.isLoading()) return;
 
       this.isLoading.set(true);
@@ -106,6 +107,7 @@ export class ResetPassword implements OnInit {
         password: this.passwordForm.value.password,
       }
 
+      console.log("data:", data);
       this.accountService.updatePassword(data).subscribe(
         {
           next: () => {
@@ -115,6 +117,8 @@ export class ResetPassword implements OnInit {
             }, 2000)
           },
           error: (error: MessageDto) => {
+            this.isLoading.set(false);
+            console.error(error);
             this.toast.error(error.message);
           }
         }

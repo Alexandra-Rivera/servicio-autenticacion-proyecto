@@ -27,7 +27,9 @@ export class PasswordCodeVerification implements OnInit {
   isLoading = signal(false);
 
   otpForm!: FormGroup;
-  emailDto!: EmailDto;
+  emailDto: EmailDto = {
+    email: '',
+  };
 
   constructor(
     private fb: FormBuilder,
@@ -39,9 +41,6 @@ export class PasswordCodeVerification implements OnInit {
   ) {
   };
 
-  getEmailValue() {
-    this.emailValueService.getCurrentEmail();
-  }
   ngOnInit() {
     this.otpForm = this.fb.group({
       otp1: ['', [Validators.required, Validators.pattern('\\d')]],
@@ -53,21 +52,8 @@ export class PasswordCodeVerification implements OnInit {
     });
 
     this.emailDto = {
-      email: this.emailValueService.getCurrentEmail(),
+      email: this.emailValueService.getCurrentEmail()
     };
-
-    this.accountService.recoverPassword(this.emailDto).subscribe(
-      {
-        next: (res) => {
-          console.log(res);
-          this.toast.success(res.message);
-        },
-        error: (err) => {
-          console.error(err);
-          this.toast.error(err.error.message);
-        }
-      }
-    );
   }
 
   moveFocus(event: Event, index: number): void {
@@ -83,6 +69,7 @@ export class PasswordCodeVerification implements OnInit {
         this.toast.success(res.message);
       },
       error: (err) => {
+        console.error(err);
         this.toast.error(err.error.message);
       }
     });

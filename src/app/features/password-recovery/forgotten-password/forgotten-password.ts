@@ -46,7 +46,9 @@ export class ForgottenPassword {
         next: () => {
           this.isLoading.set(false);
 
-          this.emailValueService.setEmail(this.email.value);
+          this.emailValueService.clearEmail();
+          const email = this.email.get('email')?.value as string;
+          this.emailValueService.setEmail(email);
           this.router.navigate(['/forgotten-password/two-step-verification']);
         },
         error: error => {

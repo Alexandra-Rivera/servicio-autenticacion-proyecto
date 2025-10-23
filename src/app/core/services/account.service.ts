@@ -38,6 +38,6 @@ export class AccountService {
 
   /** Actualizar contraseña de la cuenta **/
   updatePassword(updatePasswordDto: UpdatePasswordDto): Observable<MessageDto> {
-    return this.http.post<MessageDto>(`${this.server_url}/forgot/code/update`, updatePasswordDto);
+    return this.http.post<MessageDto>(`${this.server_url}/forgot/user/update`,updatePasswordDto);
   }
 }
