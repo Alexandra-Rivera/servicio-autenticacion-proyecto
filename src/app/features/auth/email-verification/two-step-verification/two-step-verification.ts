@@ -1,4 +1,4 @@
-import {Component, OnInit, signal} from '@angular/core';
+import {Component, ElementRef, OnInit, QueryList, signal, ViewChildren} from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -20,7 +20,7 @@ import {EmailValueService} from '../../../../shared/services/email-value.service
   templateUrl: './two-step-verification.html',
   styleUrl: './two-step-verification.css'
 })
-export class TwoStepVerification implements OnInit{
+export class TwoStepVerification implements OnInit {
   //Icons
   readonly mailOpen = LucideMailOpen;
   readonly loaderCircle = LucideLoaderCircle;
@@ -37,6 +37,25 @@ export class TwoStepVerification implements OnInit{
     private toast: HotToastService
   ) {
   };
+
+  @ViewChildren(`input1, input2, input3, input4, input5, input6`, { read: ElementRef })
+  otpInputs!: QueryList<ElementRef>;
+
+  moveFocusOnBackspace(event: KeyboardEvent, index: number): void
+  {
+    const inputElement = event.target as HTMLInputElement;
+
+    if (event.key === 'Backspace' && inputElement.value.length === 0) {
+      if (index > 1) {
+        const inputs = this.otpInputs.toArray();
+        const previousInputIndex = index - 2;
+
+        if (inputs[previousInputIndex]) {
+          inputs[previousInputIndex].nativeElement.focus();
+        }
+      }
+    }
+  }
 
   ngOnInit(): void {
     this.otpForm = this.fb.group({

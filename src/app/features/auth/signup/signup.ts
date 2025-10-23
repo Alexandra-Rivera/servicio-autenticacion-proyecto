@@ -62,7 +62,7 @@ export class Signup {
         lastName: ['', Validators.required],
         userName: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(6)]],
+        password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/[0-9]/), Validators.pattern(/[!@#$%^&*()_+{}:;"'|\\<,>.?/-]/)]],
         confirmPassword: ['', [Validators.required]],
       },
       { validators: this.passwordsMatchValidator }
@@ -105,7 +105,10 @@ export class Signup {
       return 'Ingresa una dirección válida de email';
     }
     if (field?.hasError('minlength')) {
-      return 'La contraseña debe de tener al menos 6 caracteres';
+      return 'La contraseña debe de tener al menos 8 caracteres';
+    }
+    if (field?.hasError('pattern')) {
+      return 'La contraseña debe contener números y símbolos';
     }
     if (fieldName === 'confirmPassword' && field?.hasError('mismatch')) {
       return 'Las contraseñas no concuerdan';
