@@ -1,4 +1,4 @@
-import {Component, OnInit, signal} from '@angular/core';
+import {Component, ElementRef, OnInit, QueryList, signal, ViewChildren} from '@angular/core';
 import {
   LucideAngularModule,
   LucideLoaderCircle,
@@ -56,10 +56,29 @@ export class PasswordCodeVerification implements OnInit {
     };
   }
 
+
   moveFocus(event: Event, index: number): void {
     const input = event.target as HTMLInputElement;
     if (input.value.length === 1 && index < 6) {
       (document.querySelectorAll('input')[index] as HTMLInputElement).focus();
+    }
+  }
+
+  @ViewChildren(`input1, input2, input3, input4, input5, input6`, { read: ElementRef })
+  otpInputs!: QueryList<ElementRef>;
+
+  moveFocusOnBackspace(event: KeyboardEvent, index: number): void {
+    const inputElement = event.target as HTMLInputElement;
+
+    if (event.key === 'Backspace' && inputElement.value.length === 0) {
+      if (index > 1) {
+        const inputs = this.otpInputs.toArray();
+        const previousInputIndex = index - 2;
+
+        if (inputs[previousInputIndex]) {
+          inputs[previousInputIndex].nativeElement.focus();
+        }
+      }
     }
   }
 
