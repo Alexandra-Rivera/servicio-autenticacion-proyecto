@@ -1,18 +1,17 @@
 import { Component } from '@angular/core';
-import {RouterLink} from "@angular/router";
-import {LucideAngularModule, LucideHandCoins} from 'lucide-angular';
+import {LucideAngularModule} from 'lucide-angular';
+import {AppTitle} from '../app-title/app-title';
 
 @Component({
   selector: 'app-footer',
   imports: [
-    RouterLink,
-    LucideAngularModule
+    LucideAngularModule,
+    AppTitle
   ],
   templateUrl: './footer.html',
   styleUrl: './footer.css'
 })
 export class Footer {
-  readonly handCoins = LucideHandCoins;
   year: number;
   currentYear: number = new Date().getFullYear();
 

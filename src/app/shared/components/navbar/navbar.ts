@@ -6,10 +6,11 @@ import {NgClass} from '@angular/common';
 import {filter} from 'rxjs';
 import {LucideAngularModule, LucideHandCoins, LucideX, Menu} from 'lucide-angular';
 import {LinkContent} from '../link-content/link-content';
+import {AppTitle} from '../app-title/app-title';
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink, SessionButton, NgClass, LucideAngularModule, LinkContent],
+  imports: [RouterLink, SessionButton, NgClass, LucideAngularModule, LinkContent, AppTitle],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css'
 })
