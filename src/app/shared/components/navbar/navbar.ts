@@ -2,24 +2,26 @@ import {Component, OnInit} from '@angular/core';
 import {NavigationEnd, Router, RouterLink} from '@angular/router';
 import AOS from 'aos';
 import { SessionButton } from '../session-button/session-button';
-import {NgClass, NgOptimizedImage} from '@angular/common';
+import {NgClass} from '@angular/common';
 import {filter} from 'rxjs';
-import {LucideAngularModule, LucideX, Menu} from 'lucide-angular';
+import {LucideAngularModule, LucideHandCoins, LucideX, Menu} from 'lucide-angular';
 import {LinkContent} from '../link-content/link-content';
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink, SessionButton, NgOptimizedImage, NgClass, LucideAngularModule, LinkContent],
+  imports: [RouterLink, SessionButton, NgClass, LucideAngularModule, LinkContent],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css'
 })
 export class Navbar implements OnInit {
   //Icons
-  menu = Menu;
-  x = LucideX;
+  readonly menu = Menu;
+  readonly x = LucideX;
+  readonly handCoins = LucideHandCoins;
 
-  currentRoute: string = "/";
+  currentRoute = "/";
   isMenuOpen = false;
+  appTitle = "Colibrihub Systems";
 
   constructor(
     private router: Router,

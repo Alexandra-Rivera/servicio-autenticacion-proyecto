@@ -1,12 +1,12 @@
-<header>
+<header class="sticky top-0 z-50">
   <nav [ngClass]="currentRoute === '/' ? 'light-navbar' : 'dark-navbar'">
     @if (currentRoute === "/") {
 
-      <div class="container mx-auto flex flex-col lg:flex-row lg:items-center">
-        <div class="w-full lg:w-auto flex max-lg:justify-between gap-5 px-3">
-          <a routerLink="/" title="logo">
-            <img ngSrc="assets/images/main-logo.png" alt="" class="object-contain inline-block h-7 w-full"
-                 height="221" width="1211">
+      <div class="container mx-auto flex flex-col justify-center items-center lg:flex-row">
+        <div class="w-full lg:w-auto flex items-center max-lg:justify-between gap-5 px-3">
+          <a routerLink="/" class="flex items-center gap-2 bg-white w-50">
+            <img src="./assets/images/colibrihub.jpeg" alt="Colibrihub-Systems" class="w-10 h-10">
+            <p class="text-black font-bold">{{ appTitle }}</p>
           </a>
           <!--Hamburguer button-->
           <button (click)="toggleMenu()" type="button" class="btn btn-icon lg:hidden">
@@ -17,6 +17,7 @@
             }
           </button>
         </div>
+
         <div class="border border-gray-300 backdrop-blur bg-white/70 dark:bg-dark-800/70 shadow-lg lg:border-none lg:shadow-none lg:bg-[inherit] rounded-md w-full p-2 ltr:mr-auto rtl:ml-auto" [ngClass]="{ 'hidden lg:flex': !isMenuOpen }">
           <app-link-content></app-link-content>
         </div>
@@ -29,12 +30,14 @@
       </div>
     } @else {
       <div class="container mx-auto flex items-center justify-between">
+        <a routerLink="/" title="logo" class="text-purple-300 font-bold">
         <div class="flex items-center gap-5">
-          <a routerLink="/" title="logo">
-            <img ngSrc="assets/images/logo-white.png" alt="" class="object-contain h-7 inline-block w-full" height="221"
-                 width="1211">
+          <a routerLink="/" class="flex items-center gap-2 w-50">
+            <img src="./assets/images/colibrihub.jpeg" alt="Colibrihub-Systems" class="w-10 h-10 rounded-md">
+            <p class="text-purple-300 font-bold">{{ appTitle }}</p>
           </a>
         </div>
+        </a>
       </div>
     }
   </nav>
