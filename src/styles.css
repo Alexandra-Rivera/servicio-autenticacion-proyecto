@@ -6,7 +6,7 @@
 
 @layer components {
   .light-navbar {
-    @apply h-20 top-0 flex sticky z-50 bg-white shadow-lg shadow-gray-200/50 dark:shadow-dark-800 dark:bg-dark-900;
+    @apply h-20 top-0 flex sticky z-50 backdrop-blur bg-white/70 shadow-lg shadow-gray-200/50 dark:shadow-dark-800 dark:bg-dark-900;
   }
 
   .dark-navbar {
@@ -16,7 +16,7 @@
     @apply text-gray-500;
   }
   .link-primary {
-    @apply hover:text-purple-500 transition duration-[0.5s] ease-in-out;
+    @apply text-purple-300 hover:text-black hover:bg-white hover:p-2 hover:rounded-full;
   }
 
   .card {

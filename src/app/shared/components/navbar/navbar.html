@@ -1,7 +1,6 @@
 <header class="sticky top-0 z-50">
   <nav [ngClass]="currentRoute === '/' ? 'light-navbar' : 'dark-navbar'">
     @if (currentRoute === "/") {
-
       <div class="container mx-auto flex flex-col justify-center items-center lg:flex-row">
         <div class="w-full lg:w-auto flex items-center max-lg:justify-between gap-5 px-3">
           <a routerLink="/" class="flex items-center gap-2 w-50">
@@ -18,7 +17,7 @@
           </button>
         </div>
 
-        <div class="border border-gray-300 backdrop-blur bg-white/70 dark:bg-dark-800/70 shadow-lg lg:border-none lg:shadow-none lg:bg-[inherit] rounded-md w-full p-2 ltr:mr-auto rtl:ml-auto" [ngClass]="{ 'hidden lg:flex': !isMenuOpen }">
+        <div class=" dark:bg-dark-800/70 shadow-lg lg:border-none lg:shadow-none lg:bg-[inherit] rounded-md w-full p-2 ltr:mr-auto rtl:ml-auto" [ngClass]="{ 'hidden lg:flex': !isMenuOpen }">
           <app-link-content></app-link-content>
         </div>
         <!--      Session Button-->
