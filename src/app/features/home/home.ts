@@ -5,9 +5,7 @@ import {
 } from '@angular/core';
 import { SeoService } from '../../core/services/seo.service';
 import {
-  Fan,
-  GalleryVerticalEndIcon,
-  LucideAngularModule, LucideChevronDown, LucideChevronUp,
+  LucideAngularModule, LucideChevronDown, LucideChevronUp, LucideFan, LucideGalleryVerticalEnd, LucideGem,
   LucideMoveRight
 } from 'lucide-angular';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
@@ -19,11 +17,11 @@ import AOS from 'aos';
   styleUrl: './home.css'
 })
 export class Home implements OnInit {
-  readonly fan = Fan;
-  readonly MoveRight = LucideMoveRight;
-  readonly galleryVerticalEnd = GalleryVerticalEndIcon;
   readonly chevronDown = LucideChevronDown;
   readonly chevronUp = LucideChevronUp;
+  readonly fan = LucideFan;
+  readonly galleryVerticalEnd = LucideGalleryVerticalEnd;
+  readonly gem = LucideGem;
 
   year: number;
 
