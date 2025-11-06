@@ -58,34 +58,34 @@ export class Home implements OnInit {
 
   accordionItems = [
     {
-      title: 'What are the features of email?',
+      title: '¿Qué significa la modularización?',
       contentType: 'text',
-      content: `Emails are automatically date and time stamped. Signatures can be attached. Files, graphics, and sound can be sent as attachments in compressed formats. Features include webmail and mobile email.`
+      content: `Significa que cada módulo del sistema está dividido y a diferencia de otras aplicaciones cada módulo es independiente del otro. Es como si cada parte de la aplicación fuera una aplicación independiente en sí misma.`
     },
     {
-      title: 'How do you use email features?',
+      title: '¿Cómo puedo crear una cuenta?',
       contentType: 'list',
-      header: 'Change smart features & personalization settings',
+      header: 'Aquí tienes los pasos para crear una cuenta en Colibrihub System:',
       content: [
-        'On your Android phone or tablet, open Gmail.',
-        'Tap Menu > Settings > the account you want to change.',
-        'Scroll to the "General" section.'
+        'Da click al botón de Registrarme ubicado en la barra de navegación.',
+        'Ingresa tus datos en el formulario de registro > Ingresa el código de verificación que te caerá a tu correo electrónico > Si todo ha ido bien, te aparecerá un mensaje de éxito en pantalla.',
+        '¡Y listo! Ya tienes una cuenta para ingresar a los demás módulos de Colibrihub System.'
       ]
     },
     {
-      title: 'What is the main use of email?',
+      title: '¿Cómo puedo ingresar a otros módulos?',
       contentType: 'text',
-      content: `Email is a convenient way to communicate with individuals or small groups. It enables users to send and receive documents, images, links, and other files. It provides flexibility to communicate on one's schedule, with notifications, reminders, and follow-ups.`
+      content: `Puedes hacerlo mediante los links ubicados en el pie de página de esta sección o también con los links ubicados en la sección de Módulos de la Aplicación`
     },
     {
-      title: 'How email really works?',
+      title: '¿Por qué tengo que autenticarme cada vez que quiero entrar a un módulo?',
       contentType: 'text',
-      content: `The email client (web, mobile, or desktop) connects to the Outgoing SMTP server using the email account. It hands over the email in MIME format to the SMTP server, which validates the sender's details and processes the message for sending.`
+      content: `Aunque cada módulo funciona como una aplicación en sí misma, siempre necesitas autenticarte, es una capa de seguridad que ofrece el sistema para que ningún usuario no autorizado tenga acceso.`
     },
     {
-      title: 'What are emails used for?',
+      title: '¿Es posible recuperar mi contraseña?',
       contentType: 'text',
-      content: `Email is used for various purposes, including contacting friends, communicating with supervisors, requesting information, and applying for jobs, internships, and scholarships.`
+      content: `Sí, sólo tienes que dar click al botón de Iniciar de Sesión y en el formulario verás un link que permitirá ingresar tu correo electrónico para seguir con el proceso de recuperación de contraseña.`
     }
   ];
 
