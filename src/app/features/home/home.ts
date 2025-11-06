@@ -5,7 +5,9 @@ import {
 } from '@angular/core';
 import { SeoService } from '../../core/services/seo.service';
 import {
-  LucideAngularModule, LucideChevronDown, LucideChevronUp, LucideFan, LucideGalleryVerticalEnd, LucideGem,
+  LucideAngularModule, LucideArrowUp, LucideArrowUpNarrowWide,
+  LucideCalendarSync, LucideCheckLine, LucideChevronDown, LucideChevronUp, LucideFan,
+  LucideImageUpscale,
   LucideMoveRight
 } from 'lucide-angular';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
@@ -19,9 +21,9 @@ import AOS from 'aos';
 export class Home implements OnInit {
   readonly chevronDown = LucideChevronDown;
   readonly chevronUp = LucideChevronUp;
-  readonly fan = LucideFan;
-  readonly galleryVerticalEnd = LucideGalleryVerticalEnd;
-  readonly gem = LucideGem;
+  readonly checkLine = LucideCheckLine;
+  readonly arrowUp = LucideArrowUpNarrowWide;
+  readonly calendarSync = LucideCalendarSync;
 
   year: number;
 
