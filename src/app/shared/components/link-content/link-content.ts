@@ -42,12 +42,10 @@ export class LinkContent {
 
   private detectCurrentSection(): void {
     const sections = [
-      'services',
+      'pros',
       'pricing',
-      'features',
-      'templates',
-      'faq',
-      'updates',
+      'modulos',
+      'faqs',
     ];
     let currentSection = this.currentSection;
 
