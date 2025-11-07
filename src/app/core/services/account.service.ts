@@ -18,7 +18,7 @@ export class AccountService {
 
   /** Registrar un nuevo usuario **/
   register(registerUserDto: RegisterUserDto): Observable<MessageDto> {
-    return this.http.post<MessageDto>(`${this.server_url}/register/users/register`, registerUserDto);
+    return this.http.post<MessageDto>(`${this.server_url}/verification/users/register`, registerUserDto);
   }
 
   /** Guardar datos de usuario permanentemente en la base de datos **/
