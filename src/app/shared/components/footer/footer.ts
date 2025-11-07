@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import {NgOptimizedImage} from "@angular/common";
-import {RouterLink} from "@angular/router";
+import {LucideAngularModule} from 'lucide-angular';
+import {AppTitle} from '../app-title/app-title';
 
 @Component({
   selector: 'app-footer',
-    imports: [
-        NgOptimizedImage,
-        RouterLink
-    ],
+  imports: [
+    LucideAngularModule,
+    AppTitle
+  ],
   templateUrl: './footer.html',
   styleUrl: './footer.css'
 })
@@ -18,4 +18,6 @@ export class Footer {
   constructor() {
     this.year = new Date().getFullYear();
   }
+
+  title = "Colibrihub Systems";
 }

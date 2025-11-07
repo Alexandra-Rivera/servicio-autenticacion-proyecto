@@ -10,10 +10,10 @@ import {AuthSuccessfulMessage} from './features/auth/email-verification/auth-suc
 export const routes: Routes = [
   { path: '', component: Home, pathMatch: 'full' },
   { path: 'login', component: Login, canMatch: [isLoggedOutGuard] },
-  { path: 'logout', component: Logout, canMatch: [isLoggedInGuard] },
-  { path: 'signup', component: Signup},
+  { path: 'logout', component: Logout, canMatch: [isLoggedInGuard], title:"Cerrar Sesión" },
+  { path: 'signup', component: Signup, title:"Registro" },
   { path: 'forgotten-password', loadChildren: () => import('../app/features/password-recovery/password-recovery.routes').then(c => c.PasswordRecoveryRoutes) },
-  { path: 'two-step-verification', component: TwoStepVerification },
-  { path: 'auth-successful', component: AuthSuccessfulMessage },
+  { path: 'two-step-verification', component: TwoStepVerification, title:"Verificar Email" },
+  { path: 'auth-successful', component: AuthSuccessfulMessage, title:"Verificar Email" },
   { path: '**', redirectTo: 'home' }
 ];

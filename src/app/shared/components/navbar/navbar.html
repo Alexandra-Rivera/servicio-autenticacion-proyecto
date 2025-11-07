@@ -1,13 +1,14 @@
-<header>
+<header class="sticky top-0 z-50">
   <nav [ngClass]="currentRoute === '/' ? 'light-navbar' : 'dark-navbar'">
-    @if (currentRoute === "/") {
+    @if (currentRoute === '/') {
+      <div class="container mx-auto flex flex-col justify-center items-center lg:flex-row">
+        <div class="w-full lg:w-auto flex items-center max-lg:justify-between gap-5 px-3">
+            <div class="flex items-center gap-2 w-50">
+              <img ngSrc="./assets/images/colibrihub.jpeg" alt="Colibrihub-Systems" class="w-10 h-10 rounded-md"
+                   height="600" width="600">
+              <p class="text-purple-700 font-bold">{{ appTitle }}</p>
+            </div>
 
-      <div class="container mx-auto flex flex-col lg:flex-row lg:items-center">
-        <div class="w-full lg:w-auto flex max-lg:justify-between gap-5 px-3">
-          <a routerLink="/" title="logo">
-            <img ngSrc="assets/images/main-logo.png" alt="" class="object-contain inline-block h-7 w-full"
-                 height="221" width="1211">
-          </a>
           <!--Hamburguer button-->
           <button (click)="toggleMenu()" type="button" class="btn btn-icon lg:hidden">
             @if (isMenuOpen) {
@@ -17,7 +18,7 @@
             }
           </button>
         </div>
-        <div class="border border-gray-300 backdrop-blur bg-white/70 dark:bg-dark-800/70 shadow-lg lg:border-none lg:shadow-none lg:bg-[inherit] rounded-md w-full p-2 ltr:mr-auto rtl:ml-auto" [ngClass]="{ 'hidden lg:flex': !isMenuOpen }">
+        <div class=" dark:bg-dark-800/70 shadow-lg lg:border-none lg:shadow-none lg:bg-[inherit] rounded-md w-full p-2 ltr:mr-auto rtl:ml-auto" [ngClass]="{ 'hidden lg:flex': !isMenuOpen }">
           <app-link-content></app-link-content>
         </div>
         <!--      Session Button-->
@@ -29,12 +30,9 @@
       </div>
     } @else {
       <div class="container mx-auto flex items-center justify-between">
-        <div class="flex items-center gap-5">
-          <a routerLink="/" title="logo">
-            <img ngSrc="assets/images/logo-white.png" alt="" class="object-contain h-7 inline-block w-full" height="221"
-                 width="1211">
-          </a>
-        </div>
+        <button type="button" routerLink="/" class="cursor-pointer">
+              <app-title></app-title>
+        </button>
       </div>
     }
   </nav>
