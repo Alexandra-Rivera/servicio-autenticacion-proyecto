@@ -54,7 +54,7 @@ export class ResetPassword implements OnInit {
     private toast: HotToastService,
   ) {
     this.passwordForm = this.fb.group({
-        password: ['', [Validators.required, Validators.minLength(6)]],
+        password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/[0-9]/), Validators.pattern(/[!@#$%^&*()_+{}:;"'|\\<,>.?/-]/)]],
         confirmPassword: ['', [Validators.required]],
       },
       { validators: this.passwordMatchValidator });
@@ -84,7 +84,10 @@ export class ResetPassword implements OnInit {
       return 'Este campo es requerido';
     }
     if (field?.hasError('minlength')) {
-      return 'La contraseña debe de tener al menos 6 caracteres';
+      return 'La contraseña debe de tener al menos 8 caracteres';
+    }
+    if (field?.hasError('pattern')) {
+      return 'La contraseña debe contener números y símbolos';
     }
     return '';
   }
