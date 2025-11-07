@@ -16,7 +16,7 @@
     @apply text-gray-500;
   }
   .link-primary {
-    @apply text-white hover:text-purple-700 focus:text-purple-200 hover:rounded-full;
+    @apply text-white hover:text-purple-200 focus:text-purple-700 hover:rounded-full;
   }
 
   .card {
