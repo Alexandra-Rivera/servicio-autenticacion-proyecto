@@ -5,10 +5,9 @@ import {
 } from '@angular/core';
 import { SeoService } from '../../core/services/seo.service';
 import {
-  LucideAngularModule, LucideArrowUp, LucideArrowUpNarrowWide,
-  LucideCalendarSync, LucideCheckLine, LucideChevronDown, LucideChevronUp, LucideFan,
-  LucideImageUpscale,
-  LucideMoveRight
+  LucideAngularModule, LucideChevronDown, LucideChevronUp, LucideClipboardCheck, LucideContact,
+  LucideNewspaper, LucidePercent,
+  LucideTicket, LucideUser, LucideUserStar,
 } from 'lucide-angular';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 import AOS from 'aos';
@@ -21,9 +20,14 @@ import AOS from 'aos';
 export class Home implements OnInit {
   readonly chevronDown = LucideChevronDown;
   readonly chevronUp = LucideChevronUp;
-  readonly checkLine = LucideCheckLine;
-  readonly arrowUp = LucideArrowUpNarrowWide;
-  readonly calendarSync = LucideCalendarSync;
+
+  readonly clipboardCheck = LucideClipboardCheck;
+  readonly user  = LucideUser;
+  readonly ticket = LucideTicket;
+  readonly userStar = LucideUserStar;
+  readonly percent = LucidePercent;
+  readonly newspaper = LucideNewspaper;
+  readonly contact = LucideContact;
 
   year: number;
 

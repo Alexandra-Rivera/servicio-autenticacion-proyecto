@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, HostListener, OnInit, Renderer2} from '@angular/core';
 import {NavigationEnd, Router, RouterLink} from '@angular/router';
 import AOS from 'aos';
 import { SessionButton } from '../session-button/session-button';
@@ -19,13 +19,38 @@ export class Navbar implements OnInit {
   readonly menu = Menu;
   readonly x = LucideX;
 
+  private threshold = 100;
+  private stickyClass = 'scroll-sticky';
+
   currentRoute = "/";
   isMenuOpen = false;
   appTitle = "Colibrihub Systems";
 
   constructor(
     private router: Router,
+    private el: ElementRef,
+    private renderer: Renderer2,
   ) {
+  }
+
+  @HostListener('window:scroll')
+  onWindowScroll(): void {
+    this.updateStickyClass();
+  }
+
+  private updateStickyClass(): void {
+    const offset = window.pageYOffset || document.documentElement.scrollTop;
+    if (offset > this.threshold) {
+      this.renderer.addClass(
+        this.el.nativeElement.querySelector('header'),
+        this.stickyClass
+      );
+    } else {
+      this.renderer.removeClass(
+        this.el.nativeElement.querySelector('header'),
+        this.stickyClass
+      );
+    }
   }
 
   ngOnInit(): void {
