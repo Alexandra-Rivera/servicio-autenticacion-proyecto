@@ -104,7 +104,7 @@ export class Login implements OnInit {
               if (redirect) {
                 if (redirect.includes('localhost')) {
                   window.location.href = `http://${redirect}`;
-                } else window.location.href = `https://${redirect}`;
+                } else window.location.href = `${redirect}`;
               } else {
                 window.location.href = '/';
               }
