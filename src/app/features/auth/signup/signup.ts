@@ -62,7 +62,7 @@ export class Signup {
         lastName: ['', Validators.required],
         userName: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/[0-9]/), Validators.pattern(/[!@#$%^&*()_+{}:;"'|\\<,>.?/-]/)]],
+        password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/[0-9]/), Validators.pattern(/[!@#$%^&*()_+{}:;"'|\\<,>.?/-]/), Validators.pattern(/[A-Z]/), Validators.pattern(/[a-z]/)]],
         confirmPassword: ['', [Validators.required]],
       },
       { validators: this.passwordsMatchValidator }
@@ -108,7 +108,7 @@ export class Signup {
       return 'La contraseña debe de tener al menos 8 caracteres';
     }
     if (field?.hasError('pattern')) {
-      return 'La contraseña debe contener números y símbolos';
+      return 'La contraseña debe contener al menos una mayúscula, una minúscula, números y símbolos';
     }
     if (fieldName === 'confirmPassword' && field?.hasError('mismatch')) {
       return 'Las contraseñas no concuerdan';

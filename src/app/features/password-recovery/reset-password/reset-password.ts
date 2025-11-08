@@ -43,7 +43,7 @@ export class ResetPassword implements OnInit {
   showConfirmPassword: boolean = false;
 
   private passwordVerificationCode: string = "";
-  private email: string = "Alexandra.rivera1102@gmail.com";
+  private email: string = "";
 
   constructor(
     private fb: FormBuilder,
@@ -54,7 +54,7 @@ export class ResetPassword implements OnInit {
     private toast: HotToastService,
   ) {
     this.passwordForm = this.fb.group({
-        password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/[0-9]/), Validators.pattern(/[!@#$%^&*()_+{}:;"'|\\<,>.?/-]/)]],
+        password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/[0-9]/), Validators.pattern(/[!@#$%^&*()_+{}:;"'|\\<,>.?/-]/), Validators.pattern(/[A-Z]/), Validators.pattern(/[a-z]/)]],
         confirmPassword: ['', [Validators.required]],
       },
       { validators: this.passwordMatchValidator });
@@ -87,7 +87,7 @@ export class ResetPassword implements OnInit {
       return 'La contraseña debe de tener al menos 8 caracteres';
     }
     if (field?.hasError('pattern')) {
-      return 'La contraseña debe contener números y símbolos';
+      return 'La contraseña debe contener al menos una mayúscula, una minúscula, números y símbolos';
     }
     return '';
   }
