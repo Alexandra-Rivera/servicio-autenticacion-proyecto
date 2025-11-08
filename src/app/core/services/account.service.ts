@@ -23,12 +23,12 @@ export class AccountService {
 
   /** Guardar datos de usuario permanentemente en la base de datos **/
   saveUser(confirmAccountDto: ConfirmAccountDto): Observable<MessageDto> {
-    return this.http.post<MessageDto>(`${this.server_url}/register/users/persist`, confirmAccountDto);
+    return this.http.post<MessageDto>(`${this.server_url}/verification/users/persist`, confirmAccountDto);
   }
 
   /** Solicitar código de verificación que será enviado al email del usuario **/
   sendVerificationCode(emailDto: EmailDto): Observable<MessageDto> {
-    return this.http.post<MessageDto>(`${this.server_url}/register/codes/create`, emailDto);
+    return this.http.post<MessageDto>(`${this.server_url}/verification/codes/create`, emailDto);
   }
 
   /** Solicitar codigo de recuperación **/
